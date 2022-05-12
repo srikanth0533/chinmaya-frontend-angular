@@ -1,0 +1,1210 @@
+.navbar {
+  display: none !important;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+::-webkit-scrollbar {
+  background-color: #ffffff;
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: none;
+  border-radius: 10px;
+  background-color: #eb5757;
+}
+
+.pageContent {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: linear-gradient(180deg, #ffffff 0%, #fcf7ef 100%);
+  font-family: "Nunito Sans", sans-serif;
+}
+.webViewContainer,
+.webViewContainer1 {
+  max-width: 752px;
+  width: 100%;
+  margin: 71px auto;
+  box-shadow: 0px 0px 11px 8px #00000008;
+  background: #fff;
+  border-radius: 12px;
+}
+.introPageContainer .webViewContainer {
+  margin: 0 auto;
+}
+.introPageContainer {
+  justify-content: center;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.introPage {
+  padding: 35px 0px;
+}
+.introHeader,
+.introContent {
+  /* width: 560px; */
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.introTitle {
+  color: var(--formPrimary);
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+}
+.introContent .firstCont {
+  color: var(--formPrimary);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 20px 0px;
+}
+.introContent .secondCont {
+  color: #666666;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+.introContent .thirdCont {
+  font-weight: 600;
+  color: #333333;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+.introContent .introBtn {
+  display: flex;
+  justify-content: center;
+}
+.formBtn {
+  background: var(--formPrimary);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 24px;
+  box-shadow: 2px 2px 4px 1px #d7d7d7;
+}
+.formBtn:hover {
+  background: #d65050;
+}
+.formDivider {
+  margin-bottom: 0px;
+  margin-top: 20px;
+  border-bottom: 1px solid #d7d7d7;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+.instructions {
+  max-width: 592px;
+  width: 100%;
+  padding: 15px;
+  margin: 0 auto;
+}
+.instructionsFirst .title {
+  color: var(--formPrimary);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 38px;
+}
+.instructionsFirst .instruct {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.instructionsFirst .steps {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.instructionsFirst {
+  margin-top: 80px;
+  padding: 0px 15px 0px 15px;
+}
+
+.instructionsSecond p {
+  font-size: 20px;
+  color: #333333;
+}
+.boldDark {
+  color: #333333;
+  font-weight: 600;
+}
+.instructionsSecond {
+  background: #fcf7ef;
+  padding: 30px 15px 5px;
+}
+
+/* .instructionsThird .form-check input{
+  width: 20px;
+  height: 20px;
+}
+
+.instructionsThird .form-check input:checked {
+  background-color: var(--formPrimary)!important;
+  color: #ffffff !important;
+} */
+
+input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  font-size: 22px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+input[type="checkbox"]:after {
+  content: " ";
+  background-color: var(--formPrimary) !important;
+  display: inline-block;
+  visibility: visible;
+}
+input[type="checkbox"]:checked:after {
+  content: "\2714";
+  color: #ffffff !important;
+  padding: 0px 7px;
+  /* this is a checkmark symbol */
+}
+
+.instructionsThird .form-check label {
+  margin-left: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.instructionsThird .form-check {
+  display: flex;
+  align-items: center;
+}
+.instructionsThird {
+  margin-left: 6px;
+  margin-bottom: 60px;
+  padding: 0px 15px;
+}
+.instructionsThird label {
+  margin-top: 20px;
+}
+.formBtnBroad {
+  background: var(--formPrimary);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px;
+  box-shadow: 2px 2px 4px 1px #d7d7d7;
+}
+.formBtnBroad:hover {
+  background: #d65050;
+}
+.formLabelsActive {
+  font-size: 20px;
+  transition: linear 0.3s;
+  padding-bottom: 0px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0px;
+}
+.formInput::placeholder {
+  color: #999999;
+}
+.formInput {
+  border-radius: 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: #fcf7ef;
+  border-color: var(--formPrimary);
+  font-weight: 600;
+}
+.removeFeedbackFocus .form-control:focus {
+  background-color: #fcf7ef;
+  border-color: #fcf7ef;
+  box-shadow: none;
+}
+.feedbackBtn .btn:focus {
+  box-shadow: 0 0 0 0.2rem rgb(235 87 87 / 15%);
+}
+.formFocus .form-control:focus {
+  background-color: #fbf7f0;
+  box-shadow: none;
+  border-color: var(--formPrimary);
+}
+.formFocus:focus-within .formLabelsActive {
+  font-size: 16px;
+  /* transition: linear 0.3s; */
+  transition: font-size 0.3s;
+  -moz-transition: font-size 0.3s; /* Firefox 4 */
+  -webkit-transition: font-size 0.3s; /* Safari and Chrome */
+  -o-transition: font-size 0.3s;
+  outline: none;
+  font-weight: 600;
+  padding-bottom: 5px;
+  color: var(--formPrimary);
+  margin: 0px;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: none;
+}
+select option {
+  border: none;
+  padding: 20px;
+  background: #fae7e0;
+  color: #333333;
+}
+
+.nameFields {
+  /* width: 560px; */
+  margin: 0px auto;
+  padding: 55px 90px;
+  background: #fcf7ef;
+}
+.registrationFormCommon {
+  margin: 60px auto;
+  padding: 50px 0px;
+  max-width: 560px;
+  width: 100%;
+}
+.progressBar {
+  margin: 0 auto;
+  /* width: 560px; */
+  height: 4px;
+  position: relative;
+  background-color: #e7e7e7;
+}
+.redBarArea {
+  position: absolute;
+  max-width: 560px;
+  width: 100%;
+  height: 4px;
+  left: 0px;
+  top: 0px;
+}
+.redBarFirst {
+  background-color: var(--formPrimary);
+  width: 100%;
+  max-width: 112px;
+  transition: width 2s;
+}
+.redBarSecond {
+  background-color: var(--formPrimary);
+  width: 100%;
+  max-width: 224px;
+  transition: width 2s;
+}
+.redBarThird {
+  background-color: var(--formPrimary);
+  width: 100%;
+  max-width: 336px;
+  transition: width 2s;
+}
+.redBarFourth {
+  background-color: var(--formPrimary);
+  width: 100%;
+  max-width: 448px;
+  transition: width 2s;
+}
+.redBarFifth {
+  background-color: var(--formPrimary);
+  width: 100%;
+  max-width: 552px;
+  transition: width 2s;
+}
+.countProgress {
+  /* width: 560px; */
+  margin: 5px 20px 30px;
+  font-size: 12px;
+  color: #666666;
+}
+.regFormSpacingBulk {
+  max-width: 560px;
+  width: 100%;
+}
+.mainHeader p {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--formPrimary);
+  /* width: 560px; */
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.headerCountNumber {
+  color: var(--formPrimary);
+  font-size: 20px;
+  font-weight: 700;
+}
+.headerCountName {
+  color: #333333;
+  font-size: 20px;
+  font-weight: 700;
+}
+.headerCount {
+  font-size: 12px;
+  color: var(--formPrimary);
+  margin: 0px 6px;
+}
+.nameHeader,
+.emailHeader,
+.contactHeader,
+.schoolHeader,
+.extraInfoHeader {
+  /* width: 560px; */
+  margin: 0 auto;
+}
+.nameHeader p,
+.emailHeader p,
+.contactHeader p,
+.schoolHeader p,
+.extraInfoHeader p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.shortHeaderMsg {
+  /* width: 411px; */
+  margin: 0 35px 25px;
+  font-size: 16px;
+  color: #666666;
+}
+.extraFeedbackQuestions .formBtnBroad {
+  padding: 10px;
+}
+.form-check-input input[type="checked"]:checked {
+  color: var(--formPrimary);
+  background-color: var(--formPrimary);
+}
+.btnCustom {
+  border-radius: 0px;
+  background-color: #eb57570f;
+  border-color: #eb5757;
+  color: #333333;
+  font-weight: 600;
+}
+.btnCustom:hover {
+  background-color: #eb575745;
+}
+.active {
+  background-color: #eb575745;
+}
+.btnCustom:active {
+  background-color: #eb575745;
+}
+.btnCustom:focus {
+  background-color: #eb575745;
+}
+.previewForm {
+  max-width: 752px;
+  width: 100%;
+}
+.previewHeading {
+  max-width: 559px;
+  width: 100%;
+  color: var(--formPrimary);
+  font-weight: 600;
+  font-size: 24px;
+  margin: 30px auto 20px;
+}
+.previewDetailsBlock {
+  /* width: 752px; */
+  background-color: #fcf7ef;
+  padding: 20px 0px 15px;
+}
+.previewDetailsBlock .previewDetails {
+  max-width: 559px;
+  width: 100%;
+  background-color: #fff;
+  margin: 0 auto 20px;
+  padding: 15px 50px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 3px 2px #00000021;
+}
+.addMoreBtn .formBtnBroadAdd {
+  background: #fcf7ef;
+  color: var(--formPrimary);
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0px 122px 10px;
+}
+.editBtn {
+  background: #fff;
+  color: var(--formPrimary);
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 12px;
+}
+.preHeading {
+  font-size: 20px;
+  color: #666666;
+}
+.preAns {
+  font-size: 20px;
+  color: #333333;
+  font-weight: 700;
+}
+.preAnsFullName {
+  text-transform: capitalize;
+}
+.progressBarPayment {
+  margin: 0 auto;
+  width: 592px;
+  height: 4px;
+  position: relative;
+  background-color: #e7e7e7;
+}
+.redBarAreaPayment {
+  position: absolute;
+  width: 592px;
+  height: 4px;
+  left: 0px;
+  top: 0px;
+}
+.redBarFirstPayment {
+  background-color: var(--formPrimary);
+  width: 296px;
+  transition: width 2s;
+}
+.redBarSecondPayment {
+  background-color: var(--formPrimary);
+  width: 584px;
+}
+.countProgressPayment {
+  /* width: 592px; */
+  margin: 5px 25px 30px;
+  font-size: 12px;
+  color: #666666;
+}
+.detailsSaved {
+  font-size: 16px;
+  background-color: #fcf7ef;
+  color: #666666;
+  padding: 20px 0px 20px 20px;
+  text-align: left;
+
+  margin-bottom: 20px;
+}
+.paymentForm {
+  max-width: 592px;
+  width: 100%;
+  margin: 0 auto;
+}
+.paymentForm .registrationFormCommon .mainHeader {
+  margin-bottom: 20px;
+}
+.howManyReg {
+  font-size: 16px;
+  max-width: 368px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.noOfPart {
+  font-size: 16px;
+  color: #666666;
+}
+.amountPaid {
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  padding: 25px 0px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.amountHeading {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--formPrimary);
+  text-align: center;
+  margin-bottom: 10px;
+}
+.amountTicket {
+  width: 156px;
+  position: relative;
+  margin: 0 auto;
+}
+.amountAdded {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  left: 50%;
+  font-size: 32px;
+  transform: translate(-50%, -50%);
+}
+.paymentNote {
+  background-color: #ffffc3;
+  margin-bottom: 20px;
+  padding: 20px 0px;
+}
+.paymentNote .noteContent {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+.noteHeading {
+  font-size: 20px;
+  color: var(--formPrimary);
+  font-weight: 600;
+}
+.notePoints {
+  font-size: 16px;
+  color: #666666;
+}
+.upiBody {
+  border: 1px solid #d7d7d7;
+  border-radius: 5px;
+  padding: 20px 0px;
+}
+.upiBody .qrCode {
+  text-align: center;
+}
+.accordianPayment {
+  background-color: #ffffff;
+  color: #333333;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  box-shadow: 2px 2px 4px 1px #d7d7d7;
+  justify-content: space-between;
+}
+.upiContent {
+  max-width: 396px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.scanPay {
+  font-size: 20px;
+  color: #333333;
+  font-weight: 600;
+  text-align: center;
+}
+.upiId {
+  max-width: 312px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #fcf8f1;
+  padding: 5px;
+}
+
+.upiIdHeader {
+  font-size: 16px;
+  color: #666666;
+}
+.upiIdNumber {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333333;
+}
+.upiInstructions {
+  font-size: 16px;
+  color: #333333;
+  max-width: 367px;
+  width: 100%;
+  margin: 0 auto;
+}
+.uploadInstruct {
+  font-size: 20px;
+  color: #666666;
+}
+.bankCard {
+  max-width: 312px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.cardDetails {
+  position: absolute;
+  top: 16px;
+  left: 15px;
+  width: 352px;
+}
+.cardDetails .cardHeading {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 7px;
+}
+.cardDetails .axis {
+  font-size: 12px;
+  font-weight: 600;
+  color: #d30000;
+  margin-bottom: 7px;
+}
+.cardDetails .cardInfoHead {
+  font-size: 12px;
+  color: #000000;
+}
+.cardDetails .cardInfo {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+.cardDetails .cardInfo1 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+}
+.cardDetails .savingAcc {
+  font-size: 12px;
+  color: #000000;
+  padding-left: 8px;
+}
+.neftMode {
+  font-size: 16px;
+  color: #333333;
+  font-weight: 600;
+  text-align: center;
+}
+.showPayment .mainHeader p {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--formPrimary);
+  /* width: 560px; */
+  margin-bottom: 30px;
+}
+.uploadBtn {
+  border: 1px dashed #d7d7d7;
+  text-align: center;
+  /* width: 368px; */
+  margin: 0 auto;
+}
+.uploadImgText {
+  font-weight: 600;
+  font-size: 16px;
+  color: #cccccc;
+}
+.uploadContent {
+  /* width: 592px; */
+  margin: 0 auto;
+}
+.uploadUserInput {
+  background-color: #fcf7ef;
+  padding: 25px 0px;
+}
+.uploadUserInput .uploadInput {
+  max-width: 368px;
+  width: 100%;
+  margin: 0 auto;
+}
+.showPayment {
+  width: 100%;
+  max-width: 592px;
+}
+.showPaymentInfo {
+  width: 100%;
+  max-width: 592px;
+}
+.showPaymentInfo .mainHeader p {
+  margin: 0px 0px 25px;
+}
+.successPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.webViewSuccessPage {
+  max-width: 752px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 1px 15px 19px 6px #00000014;
+  text-align: center;
+  border-radius: 20px;
+  padding: 80px 105px;
+}
+.webViewSuccessPage .boldDark {
+  margin-top: 50px;
+}
+.lightSuccessInfo {
+  font-size: 20px;
+  color: #666666;
+}
+.regMultiList {
+  text-transform: capitalize;
+}
+.removeImage .uploadedImgRemove {
+  font-size: 12px;
+  color: var(--formPrimary);
+  cursor: pointer;
+}
+.removeImage {
+  text-align: end;
+}
+.outputImg {
+  max-width: 592px;
+  width: 100%;
+  text-align: center;
+}
+.previewForm .previewLampImg {
+  max-width: 752px;
+  width: 100%;
+}
+.formBtnBroadBack {
+  color: #666666;
+}
+.modalBtn {
+  width: 100%;
+}
+.modalText {
+  color: #eb5757;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: "Nunito Sans";
+}
+.modalAddMoreBtnNo {
+  background-color: #fff;
+  border: none;
+  color: #333333;
+  font-family: "Nunito Sans";
+}
+.modalAddMoreBtnYes {
+  background-color: #eb5757;
+  border: none;
+  font-family: "Nunito Sans";
+}
+.previewSpacing {
+  padding-top: 30px;
+}
+.modalAddMoreBtnNo:hover {
+  background: #d65050;
+}
+.modalAddMoreBtnYes:hover {
+  background: #d65050;
+}
+.modalAddMoreBtnNo:active {
+  background: #d65050;
+}
+.modalAddMoreBtnYes:active {
+  background: #d65050;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgb(235 87 87 / 17%);
+}
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgb(235 87 87 / 17%);
+}
+.otherSchoolText {
+  color: var(--formPrimary);
+  font-size: 14px;
+  font-weight: 700;
+}
+.orangecheckicon {
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+.DearParticipantName {
+  margin-top: 10px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #333333;
+  text-transform: capitalize;
+}
+
+.LightPara {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #666666;
+}
+
+.MobileNo {
+  color: #333333;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 576px) {
+  .previewSpacing {
+    padding-top: 0px;
+  }
+  .introPage {
+    max-width: 576px;
+    padding: 0px 0px 190px;
+  }
+  .webViewContainer {
+    max-width: 576px;
+    width: 100%;
+    margin: 0px auto;
+    box-shadow: none;
+    background-color: transparent;
+    border-radius: 0px;
+  }
+  .webViewContainer1 {
+    background-color: #fcf7ef;
+    max-width: 576px;
+    width: 100%;
+    margin: 0px auto;
+    box-shadow: none;
+    border-radius: 0px;
+  }
+  .detailsSaved {
+    background-color: #fff;
+  }
+  .introTitle {
+    font-size: 24px;
+  }
+  .introHeader,
+  .introContent {
+    /* max-width: 576px; */
+    padding: 0px 20px;
+  }
+  .formBtn {
+    max-width: 576px;
+    width: 100%;
+  }
+  .instructions {
+    padding: 0px;
+    max-width: 576px;
+    width: 100%;
+  }
+  .instructionsFirst {
+    padding: 80px 20px 0px;
+    background: #fff;
+    margin-top: 0px;
+  }
+  .instructionsFirst .title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .instructionsFirst .instruct {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .instructionsFirst .steps {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .instructionsSecond {
+    padding: 20px;
+  }
+  .instructionsSecond p {
+    font-size: 16px;
+  }
+  .formBtnBroad {
+    max-width: 576px;
+    width: 100%;
+    padding: 10px;
+  }
+  .instructionsThird {
+    padding: 0px 20px 20px;
+    margin: 0px;
+    background: #fff;
+  }
+  .registrationFormCommon {
+    padding: 0px;
+    max-width: 576px;
+    width: 100%;
+    margin: 0px;
+  }
+  .regFormSpacingBulk {
+    /* max-width: 576px;
+    width: 100%; */
+    padding: 0px 20px;
+  }
+  .redBarArea {
+    position: absolute;
+    max-width: 576px;
+    height: 4px;
+    left: 0px;
+    top: 0px;
+  }
+  .redBarFirst {
+    max-width: 90px;
+    transition: width 2s;
+  }
+  .redBarSecond {
+    max-width: 160px;
+    transition: width 2s;
+  }
+  .redBarThird {
+    max-width: 260px;
+    transition: width 2s;
+  }
+  .redBarFourth {
+    max-width: 320px;
+    transition: width 2s;
+  }
+  .redBarFifth {
+    max-width: 370px;
+    transition: width 2s;
+  }
+  .countProgress {
+    margin: 5px 20px 30px;
+  }
+  .nameFields {
+    padding: 55px;
+  }
+  .headerCountNumber,
+  .headerCountName {
+    font-size: 18px;
+  }
+  .shortHeaderMsg {
+    font-size: 18px;
+    margin: 0 35px 20px;
+  }
+  .mainHeader p {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .formLabelsActive {
+    font-size: 16px;
+  }
+  .formFocus:focus-within .formLabelsActive {
+    font-size: 12px;
+  }
+  .previewForm {
+    max-width: 576px;
+    width: 100%;
+  }
+  .previewSpacingBtn {
+    padding: 0px 20px;
+    /* background: #fff;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px; */
+  }
+  .previewDetailsBlock {
+    padding: 20px 20px 0px;
+  }
+  .previewHeading {
+    font-size: 20px;
+    padding-left: 20px;
+    background: #fff;
+    padding: 30px 20px 15px;
+    margin: 0px;
+  }
+  .preAns {
+    font-size: 16px;
+  }
+  .preHeading {
+    font-size: 12px;
+  }
+  .previewForm .previewLampImg {
+    max-width: 576px;
+    width: 100%;
+  }
+  .progressBarPayment {
+    margin: 0 auto;
+    max-width: 576px;
+    width: 100%;
+    height: 4px;
+    position: relative;
+    background-color: #e7e7e7;
+  }
+  .paymentForm {
+    max-width: 576px;
+    width: 100%;
+  }
+  .redBarAreaPayment {
+    position: absolute;
+    max-width: 576px;
+    width: 100%;
+    height: 4px;
+    left: 0px;
+    top: 0px;
+  }
+  .redBarFirstPayment {
+    max-width: 288px;
+  }
+  .redBarSecondPayment {
+    max-width: 380px;
+  }
+  .howManyReg {
+    padding: 0px 20px;
+    max-width: 576px;
+    width: 100%;
+  }
+  .paymentNote {
+    max-width: 576px;
+    width: 100%;
+    padding: 20px;
+  }
+  .noteContent {
+    max-width: 576px;
+    width: 100%;
+  }
+  .amountPaid {
+    border: none;
+    border-radius: 0px;
+    background-color: #fff;
+  }
+  .uploadBtnSpacing {
+    padding: 0px 20px 25px;
+  }
+  .accordianPayment {
+    padding: 16px;
+  }
+  .showPayment {
+    width: 100%;
+    max-width: 576px;
+  }
+  .showPaymentInfo {
+    padding: 0px 20px;
+    width: 100%;
+    max-width: 576px;
+  }
+  .addMoreBtn .formBtnBroadAdd {
+    padding: 0px 0px 10px;
+  }
+  .paymentForm .registrationFormCommon .showPayment .mainHeader p {
+    padding: 0px 20px;
+  }
+  .showPayment .mainHeader p {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .extraFeedbackQuestions .formBtnBroad {
+    padding: 10px;
+  }
+  .cardDetails {
+    max-width: 312px;
+    width: 100%;
+    top: 5px;
+  }
+  .qrCode img {
+    max-width: 312px;
+    width: 100%;
+  }
+  .bankCard img {
+    max-width: 312px;
+    width: 100%;
+  }
+  .upiContent {
+    width: 312px;
+    width: 100%;
+  }
+
+  .bankCard {
+    max-width: 312px;
+    width: 100%;
+  }
+  .uploadBtn {
+    background-color: #fff;
+  }
+  .uploadUserInput {
+    padding: 0px;
+  }
+  .uploadInstruct {
+    font-size: 16px;
+  }
+  .uploadUserInput .uploadInput {
+    max-width: 312px;
+  }
+  .outputImg {
+    max-width: 576px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .showPaymentInfo .formBtnBroad {
+    margin-bottom: 20px;
+  }
+  .webViewSuccessPage {
+    max-width: 576px;
+    padding: 50px;
+  }
+  .webViewSuccessPage img {
+    max-width: 60px;
+    width: 100%;
+  }
+  .webViewSuccessPage .lightSuccessInfo,
+  .webViewSuccessPage .boldDark {
+    font-size: 16px;
+  }
+  .successPage {
+    padding: 0px 20px;
+    background-color: #fcf7ef;
+  }
+  .previewDetailsBlock .previewDetails {
+    padding: 15px 10px;
+  }
+  .upiBody {
+    border: none;
+    border-radius: 0px;
+    padding: 0px;
+  }
+  .upiInstructions {
+    max-width: 312px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px dashed #d7d7d7;
+    border-width: 1px;
+  }
+  .upiId {
+    box-shadow: 0px 0px 6px rgb(0 0 0 / 25%);
+    border-radius: 4px;
+  }
+  .outputImageView {
+    max-width: 312px;
+    width: 100%;
+  }
+  .uploadInstruct .row {
+    padding: 0px 20px;
+  }
+  .pageContent {
+    /* background: none; */
+    background: #fcf7ef;
+  }
+  .introPageContainer {
+    background: linear-gradient(180deg, #ffffff 0%, #fcf7ef 100%);
+  }
+  .whiteBg {
+    background: #fff;
+    padding: 20px 0px 1px;
+  }
+  .paymentForm .registrationFormCommon {
+    padding: 20px 0px 0px;
+  }
+  .fixedBottomIntro {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 20px 0px;
+  }
+  .successText {
+    color: #44c42f;
+    font-size: 24px;
+    margin: 15px 0px 40px;
+    font-weight: 600;
+    /* margin-top: 0px; */
+  }
+}
+
+/* @media (max-width: 360px) { 
+   
+   } */
+
+/* @media (min-width: 576px) and (max-width: 1450px) { 
+  
+   } */

@@ -1,0 +1,277 @@
+<div class="main-loader" *ngIf="mainLoaderIs">
+    <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+
+<div class="pageContent">
+ <div class="webViewContainer1" *ngIf="showPayment || showPaymentInfo">
+        <div class="paymentForm">
+
+            <div class="registrationFormCommon">
+                <div class="progressBarPayment">
+                    <div class="redBarAreaPayment"
+                        [ngClass]="{'redBarFirstPayment':showPayment == true,'redBarSecondPayment':showPaymentInfo == true}">
+                    </div>
+
+                </div>
+                <p *ngIf="showPayment" class="countProgressPayment"><span class="boldDark">1</span><span> out of
+                        2</span></p>
+                <p *ngIf="showPaymentInfo" class="countProgressPayment"><span class="boldDark">2</span><span> out of
+                        2</span></p>
+                <div class="showPayment" *ngIf="showPayment">
+                    <div class="mainHeader">
+                        <p>Payment Page</p>
+                    </div>
+                    <div class="detailsSaved">
+                        <p class="boldDark mb-1">Participant Details have been saved.</p>
+                        <p class="mb-0">Please make the Payment to complete Registration.</p>
+                    </div>
+                    <div class="howManyReg">
+                        <div *ngIf="paymentPendingList.length">
+                           <p class="noOfPart">Number of Participants 
+                            <span class="boldDark"
+                                [innerHTML]="': ' + paymentPendingList.length"></span></p>  
+                        </div>
+                        <div class="row no-gutters boldDark" *ngFor="let singlePart of paymentPendingList">
+                            <div class="col-9 mb-1"><span>1</span> - <span class="regMultiList"
+                                    [innerHTML]="singlePart.firstName.toLowerCase() + ' ' + singlePart.lastName.toLowerCase()"> </span></div>
+                            <div class="col-3 mb-1"><span><img src="../../assets/img/rupees.svg" alt=""></span>
+                                 <span [innerHTML]="singlePart.school.reg_fees + '/-'"></span>
+                                </div>
+                        </div>
+                  
+                    </div>
+                    <div class="amountPaid">
+                        <div class="amountHeading">
+                            Amount to be Paid 
+                        </div>
+                        <div class="amountTicket">
+                            <img src="../../assets/img/ticketMultiMob.svg" alt="">
+                            <div class="amountAdded boldDark"><span class="d-flex align-items-center"><img src="../../assets/img/rupessMobSize.svg" height="24"
+                                        alt=""></span> <span class="ml-2" [innerHTML]="toBePaidAmount"></span></div>
+                        </div>
+                    </div>
+                    <div class="paymentNote">
+                        <div class="noteContent">
+                            <p class="noteHeading">Payment Instructions</p>
+                            <div class="notePoints">
+                                <div class="row no-gutters">
+                                    <div class="col-12">
+
+                                        <p><span class="boldDark">1. </span>Make the payment using<span
+                                                class="boldDark">
+                                                UPI ID or NEFT</span> mode to Chinmaya Mission Thane. Account details
+                                            are
+                                            given below.
+                                        </p>
+                                        <p><span class="boldDark">2. Download or take a screenshot</span> of Successful
+                                            Payment confirmation.
+                                        </p>
+                                        <p><span class="boldDark">3. Upload that screenshot</span> on the next page and
+                                            confirm registration.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payUPI mb-4">
+                        <div class="row no-gutters">
+                            <div class="col-12">
+                                <button class="btn btn-block accordianPayment" type="button" data-toggle="collapse"
+                                    data-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    <span>Pay with UPI</span> <span><i class="fas fa-chevron-down"></i></span>
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <div class="upiBody ">
+                                    <div class="qrCode">
+
+                                        <img src="../../assets/img/AxisQRCode .svg" alt="">
+                                    </div>
+                                    <div class="upiContent">
+                                        <div class="scanPay my-3">
+                                            Scan to PAY
+                                        </div>
+                                        <div class="upiId">
+                                            <div class="row no-gutters">
+                                                <div class="col-auto"><img src="../../assets/img/upiRegFormIcon.svg"
+                                                        alt="">
+                                                </div>
+                                                <div class="col">
+                                                    <p class="upiIdHeader mb-2">UPI ID</p>
+                                                    <p class="upiIdNumber mb-0">6100020024096707</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="upiInstructions">
+                                        <div class="row no-gutters">
+                                            <div class="col-12">
+
+                                                <p><span class="boldDark">1. </span>Open any <span class="boldDark">UPI app</span> (PayTM, Gpay, PhonePe).</p>
+                                                <p class="mb-0"><span class="boldDark">2. </span>Scan the <span class="boldDark">QR code</span> above or Enter the <span class="boldDark">UPI ID</span> and complete the payment.
+                                                </p>
+                                                
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payNeft">
+                        <div class="row no-gutters">
+                            <div class="col-12">
+                                <button class="btn btn-block accordianPayment" type="button" data-toggle="collapse"
+                                    data-target="#collapseExample1" aria-expanded="false"
+                                    aria-controls="collapseExample1">
+                                    <span>Pay using NEFT</span> <span><i class="fas fa-chevron-down"></i></span>
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <div class="collapse" id="collapseExample1">
+                            <div class="card card-body">
+                                <div class="upiBody ">
+                                    <div class="bankCard">
+
+                                        <img src="../../assets/img/bankPinkCard.svg" alt="">
+                                        <div class="cardDetails">
+                                            <p class="cardHeading">Chinmaya Mission Thane</p>
+                                            <p class="axis">AXIS BANK</p>
+                                            <div class="row no-gutters mb-2">
+                                                <div class="col-2 cardInfoHead">a/c no</div>
+                                                <div class="col-10 cardInfo">: 7 7 2 0 1 0 1 0 0 0 0 5 5 2 4</div>
+                                            </div>
+                                            <div class="row no-gutters mb-2">
+                                                <div class="col-2 cardInfoHead">IFSC</div>
+                                                <div class="col-10 cardInfo1">: UTIB0000772</div>
+                                            </div>
+                                            <div class="row no-gutters">
+                                                <div class="col-2 cardInfoHead">Branch</div>
+                                                <div class="col-10 cardInfo1">: Ghodbunder Rd Branch</div>
+                                            </div>
+                                            <div class="row no-gutters">
+                                                <div class="col-2"></div>
+                                                <div class="col-10 savingAcc">(Saving Account)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="neftMode mt-3">
+                                        Pay to CMT using NEFT mode.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters justify-content-center uploadBtnSpacing">
+                        <div class="col-12 text-center mt-4">
+                            <button class="btn formBtnBroad" (click)="showPaymentInfo = true;showPayment=false;">Upload
+                                Transaction details</button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="showPaymentInfo" *ngIf="showPaymentInfo">
+                    <div class="mainHeader">
+                        <p>Upload Transaction Details</p>
+                    </div>
+                    <p class="uploadInstruct">Upload screenshot/ Photo here after successfull transaction *</p>
+                    <div class="uplodContent">
+                        <div class="row no-gutters justify-content-center mb-4">
+                            <div class="col-12">
+                                <p><input type="file" accept="image/*" name="image" id="file"
+                                        (change)="selectFile($event)" style="display: none;"></p>
+                                <div><label for="file" class="btn btn-block uploadBtn mb-2"
+                                        style="cursor: pointer;"><span><img src="../../assets/img/uploadImgIcon.svg"
+                                                alt=""></span> <span class="uploadImgText"> Click to Upload
+                                            Photo</span></label>
+                                </div>
+                                <div *ngIf="isUrl" class="outputImg"><img id="output" class="outputImageView" width="390" [src]="url" /></div>
+                                <div *ngIf="isUrl" class="removeImage" (click)="removeImage()">
+                                    <span class="uploadedImgRemove">
+                                        Remove Image
+                                    </span>
+                                    <span>
+                                     <img src="../../assets/img/deleteUpload.svg" alt="">
+                                    </span>
+                                </div>
+                                <!-- <div *ngIf="isUrl == false" class="text-center"><img id="output" width="390"
+                                            src="../../assets/img/Default_Image_Thumbnail.png" /></div> -->
+
+                            </div>
+                        </div>
+                        <div class="uploadUserInput">
+                            <div class="uploadInput">
+                                <p class="uploadInstruct">Add Transaction details</p>
+                                <div class="row no-gutters justify-content-center mt-4">
+                                    <div class="col-12">
+                                        <div class="mb-4 form-group formFocus">
+                                            <label for="amountPaidByUser" class="formLabelsActive">Amount Paid *</label>
+                                            <input type="text" class="form-control formInput" name="amountPaidByUser"
+                                                id="amountPaidByUser" [(ngModel)]="amountPaidByUser">
+                                                <small class="text-danger" *ngIf="formSubmit && !amountPaidByUser">
+                                                    This field is required
+                                                </small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <div class="mb-4 form-group formFocus">
+                                            <label for="modeTransaction" class="formLabelsActive">Mode of transaction</label>
+                                            <!-- <input type="text" class="form-control formInput" name="modeTransaction"
+                                                id="modeTransaction" [(ngModel)]="modeTransaction"> -->
+
+                                                <select class="form-control formInput" id="modeTransaction" name="modeTransaction"
+                                                    [(ngModel)]="modeTransaction">
+                                                    <option disabled>Select payment mode</option>
+                                                    <option>NEFT</option>
+                                                    <option>UPI</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group formFocus">
+                                            <label for="trackId" class="formLabelsActive">Transaction ID/ Payement ID *</label>
+                                            <input type="text" class="form-control formInput" name="trackId"
+                                                id="trackId" [(ngModel)]="trackId">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters mt-4">
+                            <div class="col-12 text-center">
+                                <button class="btn formBtnBroad" (click)="checkPaymentValidation();">Complete
+                                    Registration</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="successPage" *ngIf="showSuccess">
+        <div class="webViewSuccessPage">
+            <img src="../../assets/img/checkCircleMob.svg" alt="">
+            <p class="successText">Success</p>
+            <p class="boldDark">Your Registration details have been Recorded.</p>
+            <p class="lightSuccessInfo">We will send you a confirmation email soon after verifying your payment details.</p>
+                </div>
+    </div>
+   
+</div>

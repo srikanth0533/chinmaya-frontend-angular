@@ -1,0 +1,141 @@
+.editRow {
+  color: #175f8e;
+  padding: 10px;
+}
+.editRow:hover {
+  background: aliceblue;
+
+  border-radius: 3px;
+  cursor: pointer;
+}
+.cust-table-view .table thead th {
+  background-color: #175f8e;
+  border: 0;
+  color: #fff;
+  /* background-color: #7a5a1e; */
+  color: white;
+  white-space: nowrap;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.main-section {
+  padding-left: 250px;
+}
+.inputClear {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.54);
+  border: 1px solid #ac9167;
+  border-radius: 50%;
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: -2px;
+  box-shadow: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  cursor: pointer;
+}
+.inputClear i {
+  font-size: 12px;
+  pointer-events: none;
+}
+.ipClear {
+  top: 18px;
+}
+.statusActive {
+  text-shadow: 0px 0px 3px #28a745;
+  color: #28a745;
+}
+.statusDelete {
+  text-shadow: 0px 0px 3px#dc3545;
+  color: #dc3545;
+}
+.statusDummy {
+  text-shadow: 0px 0px 3px #adb5bd;
+  color: #adb5bd;
+}
+.yes {
+  border: 1px solid #4caf50;
+  padding: 3px 10px;
+  border-radius: 3px;
+  color: #4caf50;
+
+  text-transform: capitalize;
+}
+.no {
+  border: 1px solid #dc3545;
+  padding: 3px 10px;
+  border-radius: 3px;
+  color: #dc3545;
+
+  text-transform: capitalize;
+}
+.labelHeaders {
+  font-weight: 500;
+}
+/* .addReset{
+margin-right: 200px;  
+} */
+.blurArea {
+  background: #0000006b;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  z-index: 12;
+  align-items: center;
+}
+.mainModalContent {
+  width: 500px;
+  height: 300px;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.modalHeader {
+  border-bottom: 1px solid #efefef;
+}
+.modalBody {
+  padding: 50px 0;
+  text-align: center;
+}
+.modalFooter {
+  border-top: 1px solid #efefef;
+}
+.modalTitle {
+  color: #00558c;
+}
+.sendEmail {
+  color: #00558c;
+}
+.email02Bg {
+  background: #e2f2fb;
+}
+.delivered{
+  color: #175f8e;
+    font-weight: 700;
+}
+.delIcon{
+  color: #175f8e;
+    font-weight: 700;
+}
+
+.opened{
+color: #28a745;
+    font-weight: 700;
+}
+.openIcon{
+color: #28a745;
+    font-weight: 700;
+}
+.modal-footer{
+  justify-content: space-between;
+}

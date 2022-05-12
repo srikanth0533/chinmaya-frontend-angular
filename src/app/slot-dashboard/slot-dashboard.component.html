@@ -1,0 +1,716 @@
+<app-nav-bar></app-nav-bar>
+<div class="main-loader" *ngIf="mainLoaderIs">
+  <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+<div class="slotCreateDashboard p-3">
+
+  <div class="row m-0">
+    <!-- <p class="slotTxt"><i class="fas fa-cog"></i> Slot Dashboard</p> -->
+    <p class="slotTxt"><span *ngIf="slotSetting"><i class="fas fa-cog"></i> Slot Settings</span><span *ngIf="!slotSetting">  Slot Dashboard</span></p>
+    
+    <button type="button" class="slotSetingTime btn btn-primary" (click)="slotSettingToggle()" *ngIf="!slotSetting">
+      <i class="fas fa-cog"></i> Slot Settings
+    </button>
+    <button type="button" *ngIf="slotSetting" class="slotSetingTime btn btn-primary" (click)="slotSettingToggle()">
+      <i class="far fa-clock"></i> Slot Dashboard
+    </button>
+    <button type="button" class="slotSetingTime btn btn-primary" (click)="openSm(content)">
+      <i class="far fa-clock"></i> Time Settings
+    </button>
+  </div>
+  <!-- empty list -->
+  <div class="emptyList" *ngIf="!dataListAvaialable">
+    <img src="../../assets/img/slotDashboardEmptyImg.svg" height="118" alt="" />
+    <p>No Slots Created Yet</p>
+    <span class="emptyListContent">Hit Slot Setting above to <br />
+      Setup New Slots</span>
+  </div>
+
+  <!-- *ngIf="IsSlotDashBoardList" -->
+  <div *ngIf="dataListAvaialable && slotSetting">
+    <div class="row no-gutters mt-3" >
+      <div class="col-10 p-3" style="background: #f2f8ff">
+        <div class="row no-gutters slotTableHedr">
+          <div class="col-1">
+            <span>Standards</span>
+          </div>
+          <div class="col-3">
+            <span>Confirmed Participants</span>
+          </div>
+          <div class="col-5">
+            <div class="row n0-gutters">
+              <div class="col-6">
+                <span>Slots</span>
+              </div>
+              <div class="col-6">
+                <span>Capacity</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="row no-gutters">
+              <div class="col-6">
+                <span>Allotments</span>
+              </div>
+              <div class="col-6"></div>
+            </div>
+          </div>
+        </div>          
+          <div class="mt-3" style="background: #fff; border-radius: 4px">
+            <div *ngFor="let register of registerUser; let i = index">
+              <div class="row no-gutters text-center py-2 align-items-center" [ngClass]="register.eventParticipantStatuses.Confirmed == 0 ? 'disableRow' : ''">
+                <div class="col-1">
+                  <span class="stdTxt" [innerHTML]="register.std"></span>
+                </div>
+                <div class="col-3">
+                  <span
+                    class="confrmPartCip"
+                    style="font-weight: 700"
+                    [innerHTML]="register.eventParticipantStatuses.Confirmed"
+                    >--</span
+                  >/<span
+                    class="confrmPartCip"
+                    [innerHTML]="register.eventParticipantStatuses.Registered"
+                    >--</span
+                  >
+                </div>
+                <div class="col-5">
+                  <div class="row no-gutters">
+                    <div class="col-6">
+                      <div class="row no-gutters">
+                        <div class="col-4">
+                          <button
+                            type="button"
+                            class="addReduce btn btn-primary"
+                            (click)="slotCapacityDtl('-', i, 'slot')"
+                          >
+                            <i class="fas fa-minus"></i>
+                          </button>
+                        </div>
+                        <div class="col-4 slotCapacityInput">
+                          <div class="form-group">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="slot"
+                              [(ngModel)]="register.slot"
+                              (keyup)="batchAllotment(i)"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <button
+                            type="button"
+                            class="addReduce btn btn-primary"
+                            (click)="slotCapacityDtl('+', i, 'slot')"
+                          >
+                            <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6" style="border-left: 1px solid #d7d7d7">
+                      <div class="row no-gutters">
+                        <div class="col-4">
+                          <button
+                            type="button"
+                            class="addReduce btn btn-primary"
+                            (click)="slotCapacityDtl('-', i, 'capacity')"
+                          >
+                            <i class="fas fa-minus"></i>
+                          </button>
+                        </div>
+                        <div class="col-4 slotCapacityInput">
+                          <div class="form-group">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="capacity"
+                              [(ngModel)]="register.capacity"
+                              (keyup)="batchAllotment(i)"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <button
+                            type="button"
+                            class="addReduce btn btn-primary"
+                            (click)="slotCapacityDtl('+', i, 'capacity')"
+                          >
+                            <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="row no-gutters">
+                    <div class="col-6">
+                      <span
+                        class="confrmPartCip"
+                        style="font-weight: 700"
+                        [innerHTML]="register.allotment"
+                      ></span>
+                    </div>
+                    <div class="col-6">
+                      <button
+                        type="button"
+                        class="createBtn btn btn-primary pt-1 px-4"
+                        (click)="slotCapacity(i)"
+                        [disabled]="!register.eventParticipantStatuses.canAllocate">
+                        Create
+                      </button>                      
+                    </div>
+                  </div>
+                </div>
+              </div>              
+            </div>
+          </div>      
+        
+      </div>
+      <div class="col-2"></div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-10 py-3 text-right">
+        <button type="button" class="cencelSlot btn px-3 py-2" (click)="slotSettingToggle()">
+          Cancel
+        </button>
+        <button type="button" class="createBtn btn btn-primary ml-3 px-3 py-2" (click)="slotSettingToggle()">
+          Confirm
+        </button>
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </div>
+  
+
+  <div>
+        <!-- empty list -->
+    <div class="emptyList" *ngIf="!dataListAvaialable && !slotSetting">
+      <img src="../../assets/img/slotDashboardEmptyImg.svg" height="118" alt="" />
+      <p>No Slots Created Yet</p>
+      <span class="emptyListContent"
+        >Hit Slot Setting above to <br />
+        Setup New Slots</span
+      >
+    </div>
+
+    <div *ngIf="dataListAvaialable && !slotSetting">
+    <div class="row no-gutters mt-3">
+      <div class="col-7 colSevenHead slotTableHedr">
+        <div class="row no-gutters">
+          <div class="col-2">
+            <span>Standards</span>
+          </div>
+          <div class="col-3">
+            <span>Confirmed Participants</span>
+          </div>
+          <div class="col-1">
+            <span>slot</span>
+          </div>
+          <div class="col-1">
+            <span>Capacity</span>
+          </div>
+          <div class="col-2">
+            <span>Date</span>
+          </div>
+          <div class="col-3">
+            <span>Time</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 colThreeHead"  *ngIf="startAssign">
+        <button class="btn btn-large btn-block btn-primary slotTableHedr" (click)="assignParticipant('')"><i class="fas fa-user-plus"></i>  Start Assigning</button>        
+      </div>
+      <div class="col-3 colThreeHead slotTableHedr" *ngIf="!startAssign">        
+        <div class="row no-gutters">
+          <div class="col-4">
+            <span>Assigned</span>
+          </div>
+          <div class="col-4">
+            <span>Judge Sheet</span>
+          </div>
+          <div class="col-4"></div>
+        </div>
+      </div>
+      <div class="col-2 colTwoHead slotTableHedr" *ngIf="!startAssign">
+        <span>Add Zoom Link <i class="fas fa-link"></i></span>
+      </div>
+    </div>
+    <div class="mt-3">
+      <div *ngFor="let slotValue of registerUser; let i = index">
+        <div *ngFor="let slotData of slotValue.slots; let ii = index">
+          <!-- Update row -->
+          <div class="row no-gutters text-center  align-items-center">
+            <div class="col-7 colSeven">
+              <div class="row no-gutters">
+                <div class="col-2">
+                  <div class="row no-gutters">
+                    <div class="col-4 text-right">
+                      <button
+                        type="button"                        
+                        [ngClass]="ii >= 1 ? 'd-none' : '' || slotData.IsEdit ? 'editBtn' : 'editIcon'"
+                        (click)="addSingleSloteEdit(i, ii)"
+                        
+                      >
+                        <i class="far fa-edit"></i>
+                      </button>
+                    </div>
+                    <div class="col-8">
+                      <span class="stdTxt pl-2" [ngClass]="ii >= 1 ? 'd-none' : ''"
+                        [innerHTML]="slotValue.std || '--'"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-2">
+                  <span [ngClass]="ii >= 1 ? 'd-none' : ''">
+                    <span class="confrmPartCip" style="font-weight: 700"
+                      [innerHTML]="slotValue.eventParticipantStatuses.Confirmed"></span>/<span class="confrmPartCip"
+                      [innerHTML]="
+                        slotValue.eventParticipantStatuses.Registered
+                      "></span>
+                  </span>
+                </div>
+                <div class="col-2 text-right">
+                  <span class="confrmPartCip" style="font-weight: 700" [innerHTML]="slotData.slot || '--'"></span>
+                </div>
+                <div class="col-1 align-items-center">
+                  <!-- <span class="confrmPartCip" [innerHTML]="slotData.capacity || '--'"></span> -->
+                  <input 
+                   type="number"
+                   class="form-control ml-2  SlottingCapcity"
+                   [disabled]="!slotData.IsEdit"
+                   [(ngModel)]="slotData.capacity"
+                  >
+                </div>
+                <div class="col-2">
+                  <button class="dateicon" (click)="d.toggle()" [disabled]="!slotData.IsEdit"><i class="far fa-calendar" ></i></button>                  
+                  <input
+                    type="text"
+                    class="form-control dateInput p-1"
+                    aria-label="Username"
+                    placeholder="Select Date"
+                    aria-describedby="basic-addon1"
+                    ngbDatepicker
+                    #d="ngbDatepicker"
+                    [(ngModel)]="slotData.date"
+                    [disabled]="!slotData.IsEdit"
+                  />
+                </div>
+                <div class="col-3">
+                  <div class="row no-gutters">
+                    <div class="col-10">
+                      <div class="input-group">
+                        <select
+                          class="form-select form-control"
+                          [(ngModel)]="slotData.slotTimingId"
+                          [disabled]="!slotData.IsEdit "
+                        >
+                          <option *ngFor="let time of slotTime; let i = index" [value]="time.id" >
+                            {{ time.timing }}
+                          </option>
+                          <!-- time.id == slotData.slotTimingId  -->
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-2" *ngIf="slotData.IsEdit">
+                      <span class="deleteBinIcon"><i class="far fa-trash-alt pt-2"
+                          (click)="deleteSingleSlot(slotData.id)"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3 colThree" *ngIf="!startAssign">
+              <div class="row no-gutters">
+                <div class="col-3 text-center">
+                  <span class="confrmPartCip" style="font-weight: 700" [ngClass]="{
+                      pendingSeat: slotData.alloted < slotData.capacity
+                    }" [innerHTML]="slotData.alloted || '0'"></span>/<span class="confrmPartCip"
+                    [innerHTML]="slotData.capacity"></span>
+                </div>
+                <div class="col-4 text-right">
+                  <button class="btn btn-primary viewBtn" (click)="
+                      opensheet(longContent,slotData.id)">
+                    View
+                  </button>
+                </div>
+                <div class="col-5 pl-4" *ngIf="slotValue.unassigned.length > 0" [ngClass]="ii >= 1 ? 'd-none' : ''">
+                  <div class="row no-gutters" *ngFor="let getCount of slotValue.unassigned">
+                    <button class="btn btn-primary assignBtn" style="padding: 3px 10px"
+                      (click)="assignParticipant(slotData.standard)">
+                      Assign
+                    </button>
+                    <span class="assignPendingSeat" [innerHTML]="getCount.count"></span>
+                  </div>
+                </div>
+                <div class="col-5 pl-4" *ngIf="slotValue.unassigned.length <= 0" [ngClass]="ii >= 1 ? 'd-none' : ''">
+                  <div class="row no-gutters">
+                    <button class="btn btn-primary assignBtn" disabled style="padding: 3px 10px" (click)="unAssignParticipant()">
+                      Assign
+                    </button>
+                    <!-- <span class="assignPendingSeat">0</span> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div  class="col-3 colThree" *ngIf="!startAssign"></div> -->
+
+            <div class="col-2 colTwo" *ngIf="!startAssign">
+              <input
+                type="text"
+                class="form-control p-1"
+                [disabled]="!slotData.IsEdit "
+                #userinput
+                [(ngModel)]="slotData.zoom_link"
+              />
+              <i
+                class="far fa-clone copyTxtIcon"
+                (click)="copyInputMessage(userinput)"
+              ></i>
+            </div>
+            <!-- <div class="col-2 colTwo" *ngIf="!startAssign"></div> -->
+
+          </div>
+        </div>
+
+        <!-- add row -->
+        <div *ngIf="slotValue.addnewSlote > 0">          
+            <div class="row no-gutters" *ngFor="let addSingleRow of slotValue.addnewSloteData">
+              <div class="col-7 colSeven">
+                <div class="row no-gutters">
+                  <div class="col-2 offset-4 text-right">
+                    <input type="text" class="form-control" placeholder="Jr Kg-S0" [(ngModel)]="addSingleRow.slot" />
+                    
+                  </div>
+                  <div class="col-1 px-1">
+                    <input type="text" class="form-control" [(ngModel)]="addSingleRow.capacity" placeholder="00"/>
+                  </div>
+                  <div class="col-2">
+                    <i class="far fa-calendar dateicon" (click)="d.toggle()"></i>
+                    <input type="text" class="form-control dateInput p-1" aria-label="Username" placeholder="Select Date"
+                      aria-describedby="basic-addon1" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="addSingleRow.date" />
+                  </div>
+                  <div class="col-3">
+                    <div class="row no-gutters">
+                      <div class="col-10">
+                        <div class="input-group">
+                          <select class="form-select form-control" aria-label="Example select with button addon"
+                            [(ngModel)]="addSingleRow.time" >
+                            <option selected disabled>Select Time</option>
+                            <option *ngFor="let time of slotTime; let i = index">
+                              {{ time.timing }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3 colThree" *ngIf="!startAssign"></div>
+              <div class="col-2 colTwo" *ngIf="!startAssign"></div>
+            </div>
+            <div class="row no-gutters" *ngIf="isAddButtonDisable">
+              <div class="col-7 colSeven py-2 d-flex justify-content-center">
+                <button class="btn btn-primary assignBtn px-5"  (click)="addNewSloteData(i)">
+                  + Add New Slot
+                </button>  
+              </div>    
+              <div class="col-3 colThree" *ngIf="!startAssign"></div>
+              <div class="col-2 colTwo" *ngIf="!startAssign"></div>                  
+            </div>
+            <div class="row no-gutters">
+              <div class="col-7 colSeven pb-2 d-flex justify-content-end">
+                <button class="btn btn-primary saveUpdateSlot"  (click)="updateSlotData(i)" type="submit" *ngIf="isAddButtonDisable"> Update Changes</button>
+                <button class="btn btn-primary saveUpdateSlot  mx-3" style="font-weight: 700" (click)="addSlotData(i)" type="submit"> Save Slot </button>              
+              </div>      
+              <div class="col-3 colThree bg-none" *ngIf="!startAssign"></div>
+              <div class="col-2 colTwo bg-none" *ngIf="!startAssign"></div>      
+            </div>          
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </div> 
+</div>
+  
+
+<ng-template #content let-modal>
+ 
+  
+  <div class="modal-header modalHeader">
+    <div>
+      <button [ngClass]="showInputBox ? 'editBtn' : 'editIcon'">
+        <i class="far fa-edit" (click)="activeInput()"></i>
+      </button>
+      <span class="modelHeader"> Add Slot Timing</span>
+    </div>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click');getParcipantCount()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body modalBody">
+   
+    <div class="row no-gutters mb-2" *ngFor="let allSlotTime of slotTime; let i = index">
+      <div class="col-1 pt-1" *ngIf="!showInputBox">
+        <input type="checkbox" [(ngModel)]="allSlotTime.IsCheck" />
+      </div>
+      <div class="col-1 pt-1" [ngClass]="showInputBox ? 'offset-1':''">
+        <span [innerHTML]="i + 1"></span>
+      </div>
+      <div class="col-10 text-center">
+        <div class="row no-gutters">
+          <div class="col-5 pt-1 ">
+            <span class="" [innerHTML]="allSlotTime.start_time" *ngIf="!showInputBox"></span>
+            <input type="text" class="form-control" id="startTime" aria-label="Username" aria-describedby="basic-addon1"
+              [(ngModel)]="allSlotTime.start_time" *ngIf="showInputBox" />
+          </div>
+          <div class="col-2 text-center pt-2">
+            <span>-</span>
+          </div>
+          <div class="col-5 pt-1 ">
+            <span class="" [innerHTML]="allSlotTime.end_time" *ngIf="!showInputBox"></span>
+            <input type="text" class="form-control" id="endTime" aria-label="Username" aria-describedby="basic-addon1"
+              [(ngModel)]="allSlotTime.end_time" *ngIf="showInputBox" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="addslotIs">
+    <div class="row no-gutters mb-2 addNewSlotData" *ngFor="let addSlot of addSloteTime; let i = index">
+      <!-- <div class="col-1 pt-1">
+            <input type="checkbox" [(ngModel)]="allSlotTime.IsCheck">
+         </div> -->
+      <!-- <div class="col-1 pt-1">
+            <span [innerHTML]="i+1"></span>
+         </div> -->
+      <div class="col-10 offset-2">
+        <div class="row no-gutters">
+          <div class="col-5 pt-1 ">
+            <!-- <span class="" [innerHTML]="allSlotTime.start_time" *ngIf="!showInputBox"></span>                -->
+            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
+              [(ngModel)]="addSlot.start_time" />
+          </div>
+          <div class="col-2 text-center pt-2">
+            <span>-</span>
+          </div>
+          <div class="col-5 pt-1 ">
+            <!-- <span class="" [innerHTML]="allSlotTime.end_time" *ngIf="!showInputBox"></span>                -->
+            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
+              [(ngModel)]="addSlot.end_time" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="modal-footer d-block modalFooter ">
+    <div class="row no-gutters">      
+      <button type="submit" class="addBtn btn btn-primary p-0 px-1"  (click)="newSlotTiming()" *ngIf="!showInputBox">+ Add New</button>
+    </div>
+    <div class="row no-gutters py-2" *ngIf="showInputBox">
+      <div class="col-6 text-center">
+        <button type="button" class="cencelSlot btn py-1" (click)="modal.dismiss('Cross click');activeInput()">
+          close
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <button type="button" class="createBtn btn btn-primary modalFoterBtn" (click)="editSlotTimeing();activeInput()" type="submit">
+          Update
+        </button>
+      </div>
+    </div>
+    <div class="row no-gutters py-2" *ngIf="!showInputBox">
+      <div class="col-6 text-center">
+        <button type="button" class="deleteBtn btn btn-danger modalFoterBtn" (click)="deleteSlot()">
+          Delete
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <button type="button" class="createBtn btn btn-primary modalFoterBtn" (click)="addSlotTiming()" type="submit">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+  
+</ng-template>
+
+<ng-template #longContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Judge's Sheet</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="row no-gutters m-2">
+  <div class="col-auto ">
+    <label for="filterSTD">Select round</label>
+    <select class="form-control" name="round" id="round" (change)="getround()" [(ngModel)]="cRound" placeholder="Select round">
+      <option value="single" [selected] >Single round</option>
+      <option value="preliminary">preliminary round</option>
+      <option value="Final">Final round</option>
+    </select>  
+  </div>
+    <div class="col-auto download">  
+      <button type="button" class="downloadbtn btn btn-primary" [useExistingCss]="true" printSectionId="print-section" ngxPrint>
+        Download
+      </button>    
+          
+    </div>
+  </div>
+  <div class="modal-body" id="print-section">
+    <div class="row no-gutters justify-content-center" *ngIf="downloadSheet.length == 0">
+      <h4>No Slot Allocated</h4>
+    </div>
+
+    <div *ngIf="downloadSheet.length >= 1">
+      <div class="pt-1" >
+        <div class="row no-gutters mb-2">
+          <div class="col-12 mb-4 text-center title" *ngIf="cRound == 'none'">
+            GEETA CHANTING COMPETITION 2021 
+                    </div>
+          <div class="col-12 mb-4 text-center title" *ngIf="cRound == 'single'">
+            GEETA CHANTING COMPETITION 2021 (Single Round)
+          </div>
+          <div class="col-12 mb-4 text-center title" *ngIf="cRound == 'preliminary'" >
+            GEETA CHANTING COMPETITION 2021 (Preliminary Round)
+          </div>
+          <div class="col-12 mb-4 text-center title" *ngIf="cRound == 'Final'" >
+            GEETA CHANTING COMPETITION 2021 (Final Round)
+          </div>
+        
+          <div class="col-3">STD: <span class="font-weight-bold" [innerHTML]="studentstd" ></span>
+          </div>
+          <div class="col-3">Slot: <span class="font-weight-bold" [innerHTML]="studentslot"></span></div>
+          <!-- <div class=""></div> -->
+          <!-- <div class="col-4">GEETA CHANTING 2021(Single round)</div> -->
+          <div class="col-2">Date: <span class="font-weight-bold" [innerHTML]="studentdate | date:'mediumDate'"></span></div>
+          <div class="col-2">
+            Room no :
+          </div>
+          <div class="col-1">
+            Sheet no :
+          </div>
+        </div>
+        <div class="mainScoreTable">
+          <table>
+            <tr>
+              <th class="OverallPresHead">S.No.</th>
+              <th class="OverallPresHead">R.No.</th>
+              <th class="bigHead">Name</th>
+              <th class="bigHead" *ngIf="cRound == 'single'">Memory (45)</th>
+              <th class="bigHead" *ngIf="cRound == 'none'">Memory (45)</th>
+              <th class="bigHead" *ngIf="cRound == 'preliminary'">Memory (50)</th>
+              <th class="bigHead" *ngIf="cRound == 'Final'">Memory (40)</th>
+              <th class="bigHead" *ngIf="cRound == 'single'">Pronunciation (45)</th>
+              <th class="bigHead" *ngIf="cRound == 'none'">Pronunciation (45)</th>
+              <th class="bigHead" *ngIf="cRound == 'preliminary'">Pronunciation (40)</th>
+              <th class="bigHead" *ngIf="cRound == 'Final'">Pronunciation (50)</th>
+              <th class="OverallPresHead">Overall Presentation (10)</th>
+              <th class="bigHead">Remark</th>
+            </tr>
+            <tr *ngFor="let downloadSheetData of downloadSheet; let i = index">
+              <td class="smallData"><span [innerHTML]="offset+i+1"></span></td>
+              <td class="smallData"><span [innerHTML]="downloadSheetData.participant.id"> </span></td>
+              <td class="smallData name">
+                <span class="pr-1" [innerHTML]="downloadSheetData.participant.firstName.toLowerCase()"> </span>
+                <span class="pr-1" [innerHTML]="downloadSheetData.participant.middleName.toLowerCase()" *ngIf="downloadSheetData.participant.middleName != null"></span>
+                <span [innerHTML]="downloadSheetData.participant.lastName.toLowerCase()"></span>
+              </td>
+              <td class="memoryData"><span></span></td>
+              <td class="pronunData"><span></span></td>
+              <td class="OverallPres"><span></span></td>
+              <td class="bigData"><span></span></td>
+            </tr>
+          </table>
+          <div class="row no-gutters mt-4">
+            <div class="col-10">Judge's Name</div>
+            <div class="col-2">Signature</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination justify-content-center mt-3">
+    <ngb-pagination [collectionSize]="totalCount" [(pageSize)]="pageSize" [(page)]="page"
+      (pageChange)="pageChanged($event)" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
+    </ngb-pagination>
+  </div>
+</ng-template>
+
+<!-- <div class="dashboadContainer">
+   <div class="row">
+     <div class="col-auto">
+       <button type="button" class="btn btn-sm btn-danger" (click)="openShortModal()">Send Bulk 03 Email</button>
+     </div>
+   </div>
+   <h5 class="mt-4">Phase 1</h5>
+   <div class="dashboardTable">
+     <div class="dashboardHeader">
+       <div class="row no-gutters">
+         <div class="col-2">Std</div>
+         <div class="col-1 text-center">Active <br />(Count)</div>
+         <div class="col-3 text-center">Email02 Confirmed <br />(Count)</div>
+         <div class="col-3 text-center">Batch Allocated <br />(Count)</div>
+         <div class="col-3 text-center">Email03 Delivery Succesfully <br />(Count)</div>
+       </div>
+     </div>
+     <div class="dashboardData">
+       <div class="row no-gutters singleData" *ngFor="let data of slotDashboardData">
+         <div class="col-2" [innerHTML]="data.std">STD 1</div>
+         <div class="col-1 text-center" [innerHTML]="data.active"></div>
+         <div class="col-3 text-center" [innerHTML]="data.email02Confirmed"></div>
+         <div class="col-3 text-center" [innerHTML]="data.batchAllocated"></div>
+         <div class="col-3 text-center" [innerHTML]="data.email03DeliverySuccesfully"></div>
+       </div>
+     </div>
+   </div>
+   <h5 class="mt-4">Phase 2</h5>
+   <div class="dashboardTable">
+     <div class="dashboardHeader">
+       <div class="row no-gutters">
+         <div class="col-2">Std</div>
+         <div class="col-1 text-center">Active <br />(Count)</div>
+         <div class="col-3 text-center">Email02 Confirmed <br />(Count)</div>
+         <div class="col-3 text-center">Batch Allocated <br />(Count)</div>
+         <div class="col-3 text-center">Email03 Delivery Succesfully <br />(Count)</div>
+       </div>
+     </div>
+     <div class="dashboardData">
+       <div class="row no-gutters singleData" *ngFor="let data of slotDashboardDataPhase2">
+         <div class="col-2" [innerHTML]="data.std">STD 1</div>
+         <div class="col-1 text-center" [innerHTML]="data.active"></div>
+         <div class="col-3 text-center" [innerHTML]="data.email02Confirmed"></div>
+         <div class="col-3 text-center" [innerHTML]="data.batchAllocated"></div>
+         <div class="col-3 text-center" [innerHTML]="data.email03DeliverySuccesfully"></div>
+       </div>
+     </div>
+   </div>
+   <div *ngIf="isSendBulk" class="blurArea">
+     <div *ngIf="showSendBulkModal" class="mainModalContent p-3">
+   
+       <div class="modalHeader pb-3">
+         <h4 class="modalTitle">Confirmation to send email</h4>        
+       </div>
+   
+       <div class="modalBody">
+   
+         <h5>Are you sure?</h5>
+         <h3>You want to <strong class="sendEmail">send bulk email</strong>. </h3>
+       </div>
+   
+       <div class="modalFooter d-flex justify-content-end pt-2">
+         <button type="button" class="btn btn-light" (click)="showSendBulkModal = false;isSendBulk=false;">Close</button>
+         <button type="submit" class="btn btn-primary ml-2" (click)="SendeventInvitationEmail()">Submit</button>
+   
+       </div>
+     </div>
+   </div>
+   </div> -->

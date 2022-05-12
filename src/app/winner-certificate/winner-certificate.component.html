@@ -1,0 +1,25 @@
+<div class="certificateMain">
+    <div class="downloadCerti">
+      <button type="button" class="btn btn-primary mt-2 ml-2" [useExistingCss]="true" [printTitle]="participantName + '_' +'GCC-2020_Winner'" printSectionId="print-section"
+        ngxPrint>Download</button>
+    </div>
+  
+    <div id="print-section">
+      <div class="text-center">
+        <div class="bgImg">
+          <img class="backImg" src="../../assets/img/Winner Certificate.svg" alt="CMT" />
+         
+          <div class="mainCertiContent">
+            <div class="row no-gutters">
+              <div class="col-12 partiCertiName" [innerHTML]="participantName"></div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-12 partiCertiRank">
+                    <span>has been awarded the <span  class="rank" [innerHTML]="participantRank"></span> <span class="rank"> Prize</span> in the <br/> Geeta Chanting Competition 2020</span>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

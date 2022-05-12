@@ -1,0 +1,36 @@
+
+<div class="main-loader" *ngIf="mainLoaderIs">
+    <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+
+<div class="pageContent">
+ 
+    <!-- <div class="successPage" *ngIf="showSuccess">
+        <div class="webViewSuccessPage">
+            <img src="../../assets/img/checkCircleMob.svg" alt="">
+            <p class="successText">Success</p>
+            <p class="boldDark">Your Registration details have been Recorded.</p>
+            <p class="lightSuccessInfo">We will send you a confirmation email soon after verifying your payment details.</p>
+                </div>
+    </div> -->
+    <div class="successPage" *ngIf="showRegAlreadyDone">
+        <div class="webViewSuccessPage">
+            <div class="row no-gutters orangecheckicon">
+                <img src="../../assets/img/Subtract.png" alt="">
+            </div>
+            <p class="DearParticipantName" [innerHTML]= "'Dear ' + (finalMultiparticipantList[0].firstName.toLowerCase() + ' ' + finalMultiparticipantList[0].lastName.toLowerCase()) || '--'">Dear  </p>
+            <p class="LightPara">It looks like you have already completed the registration process with this name and details.</p>
+            <p class="LightPara">Please check your old emails for payment receipt.</p>
+            <p class="LightPara">For any issues regarding registration, please get in touch with our coordinators.</p>
+          
+           <div class="row MobileNo">
+               <div class="col-6 name">Smt Indira Rajesh</div>
+               <div class="col-6 Mob">: 93200 17282</div>
+           </div>
+           <div class="row MobileNo">
+            <div class="col-6 name">Smt Rajashree Gopalakrishnan</div>
+            <div class="col-6 Mob">: 98208 09200</div>
+           </div>
+        </div>
+    </div>
+</div>

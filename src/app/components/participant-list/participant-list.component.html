@@ -1,0 +1,840 @@
+<app-nav-bar></app-nav-bar>
+<div class="main-loader" *ngIf="mainLoaderIs">
+  <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+<div class="filter-tickets-inputs">
+  <div class="form-row mx-0 mb-2 justify-content-center flex-nowrap">
+    <div class="col-2">
+      <label for="name">Name:</label>
+      <!-- <select class="form-control" (change)="reset_list('selection')" id="selStandard" name="std"
+        [(ngModel)]="partiFilterObj.std">
+        <option value="all">All</option>
+        <option *ngFor="let stdList of partiFilteringData.std" value="{{ stdList.std }}">{{ stdList.std }}</option>
+      </select> -->
+
+
+
+      <input type="text" class="form-control" name="name" id="name" [(ngModel)]="partiFilterObj.name"
+        [ngbTypeahead]="searchName" #instance1="ngbTypeahead" (focus)="focus$1.next($any($event).target.value)"
+        (keyup.enter)="reset_list('name')" />
+      <button type="button" class="btn inputClear" *ngIf="partiFilterObj.name" (click)="partiFilterObj.name= ''">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- <div class="col-2">
+      <label for="contact">Contact:</label>
+      <select class="form-control" (change)="reset_list('selection')" id="selStandard" name="std"
+        [(ngModel)]="partiFilterObj.std">
+        <option value="all">All</option>
+        <option *ngFor="let stdList of partiFilteringData.std" value="{{ stdList.std }}">{{ stdList.std }}</option>
+      </select>
+
+
+
+      <input type="text" class="form-control" name="contact" id="contact" [(ngModel)]="partiFilterObj.contactNo"
+        [ngbTypeahead]="searchContact" #instance2="ngbTypeahead" (focus)="focus$2.next($any($event).target.value)"
+        (keyup.enter)="reset_list('contactNo')" />
+      <button type="button" class="btn inputClear" *ngIf="partiFilterObj.contactNo"
+        (click)="partiFilterObj.contactNo= ''">
+        <i class="fas fa-times"></i>
+      </button>
+    </div> -->
+
+    <div class="col-3">
+      <label for="selSchool">School:</label>
+      <input type="text" class="form-control" name="school" id="selSchool" [(ngModel)]="partiFilterObj.schoolName"
+        [ngbTypeahead]="searchSchool" #instance3="ngbTypeahead" (focus)="focus$3.next($any($event).target.value)"
+         (keyup.enter)="reset_list('school')" />
+      <button type="button" class="btn inputClear" *ngIf="partiFilterObj.schoolName"
+        (click)="partiFilterObj.schoolName= ''">
+        <i class="fas fa-times"></i>
+      </button>
+      
+    </div>
+
+    <!-- <select class="form-control" (change)="reset_list('school')" id="selSchool" name="school"
+    [(ngModel)]="partiFilterObj.schoolName">
+    <option value="all">All</option>
+    <option *ngFor="let schList of partiFilteringData.schools" value="{{ schList.schoolName }}">
+      {{ schList.schoolName }}</option>
+  </select> -->
+
+    <!-- <div class="col-auto">
+      <label for="selBranch">Branch:</label>
+      <select class="form-control" (change)="reset_list('selection')" id="selBranch" name="branch"
+        [(ngModel)]="partiFilterObj.branch">
+        <option value="all" *ngIf="partiFilteringData.branch.length > 1">All</option>
+        <option *ngFor="let brnList of partiFilteringData.branch" value="{{ brnList.branch }}">{{ brnList.branch }}
+        </option>
+      </select>
+    </div> -->
+    <div class="col-1">
+      <label for="selStandard">Standard:</label>
+      <select class="form-control" (change)="reset_list('selection');getSlotEventDateList();" id="selStandard" name="std"
+        [(ngModel)]="partiFilterObj.std">
+        <option value="All">All</option>
+        <option *ngFor="let stdList of partiFilteringData.std" value="{{ stdList.std }}">{{ stdList.std }}</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <label for="emailid">Email ID:</label>
+      <!-- <select class="form-control" (change)="reset_list('selection')" id="selStandard" name="std"
+        [(ngModel)]="partiFilterObj.std">
+        <option value="all">All</option>
+        <option *ngFor="let stdList of partiFilteringData.std" value="{{ stdList.std }}">{{ stdList.std }}</option>
+      </select> -->
+
+
+
+      <input type="text" class="form-control" name="emailid" id="emailid" [(ngModel)]="partiFilterObj.emailid"
+        [ngbTypeahead]="searchEmail" #instance4="ngbTypeahead" (focus)="focus$4.next($any($event).target.value)"
+        (keyup.enter)="reset_list('emailid')" />
+      <button type="button" class="btn inputClear" *ngIf="partiFilterObj.emailid" (click)="partiFilterObj.emailid= ''">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <!-- <div class="col-auto">
+      <label for="selEventName">Event Name:</label>
+      <select class="form-control" id="selEventName" name="eventName" (change)="reset_list('selection')"
+        [(ngModel)]="partiFilterObj.eventName">
+        <option value="all">All</option>
+        <option *ngFor="let evnList of partiFilteringData.event" value="{{ evnList.eventName }}">
+          {{ evnList.eventName }}</option>
+      </select>
+    </div> -->
+    <div class="col-1">
+      <label for="status">Status:</label>
+      <select class="form-control" (change)="reset_list('status')"  name="status" id="status" 
+        [(ngModel)]="partiFilterObj.status">
+        <option value="All">All</option>
+        <option *ngFor="let statusList of tempStoreStatusList" value="{{ statusList.status }}">{{ statusList.status }}</option>
+      </select>
+
+
+      <!-- <input type="text" class="form-control" name="status" id="status" [(ngModel)]="partiFilterObj.status"
+        [ngbTypeahead]="searchStatus" #instance5="ngbTypeahead" (focus)="focus$5.next($any($event).target.value)"
+         (keyup.enter)="reset_list('status')" />
+      <button type="button" class="btn inputClear" *ngIf="partiFilterObj.status" (click)="partiFilterObj.status= ''">
+        <i class="fas fa-times"></i>
+      </button> -->
+    </div>
+    
+    
+  </div>
+  <div class="form-row mx-0 justify-content-center align-items-end flex-nowrap">
+  
+   <div class="col-auto">
+      <label for="status">Subscription:</label>
+      <select class="form-control" (change)="reset_list('subscribe')"  name="subscribe" id="subscribe" 
+        [(ngModel)]="partiFilterObj.subscribe" >
+        <option value="All">All</option>
+        <option value="subscribe">Subscribe</option>
+        <option value="unsubscribe">UnSubscribe</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label for="status">Website Stats:</label>
+      <select class="form-control" (change)="reset_list('webStats')"  name="webStats" id="webStats" 
+        [(ngModel)]="partiFilterObj.webStats" >
+        <option value="All">All</option>
+        <option value="entered">Entered Website</option>
+        <option value="nonEntered">Non entered Website</option>
+      </select>
+    </div>
+    <!-- <div class="col-auto">
+      <label for="status">Phase:</label>
+      <select class="form-control" (change)="reset_list('cnfStatus')"  name="cnfStatus" id="cnfStatus" 
+        [(ngModel)]="partiFilterObj.phase" >
+        <option value="All">All</option>
+        <option value="phase1">Phase 1</option>
+        <option value="phase2">Phase 2</option>
+      </select>
+    </div> -->
+
+    <!-- <div class="col-auto">
+      <label for="allocationStatus">Allocated Status:</label>
+      <select class="form-control" (change)="reset_list('allocationStatus')"  name="allocationStatus" id="allocationStatus" 
+        [(ngModel)]="partiFilterObj.allocationStatus" >
+        <option value="true">Allocated</option>
+        <option value="null">Non Allocated</option>
+     
+      </select>
+    </div> -->
+
+    <!-- <div class="col-auto">
+     
+        <label for="usr" class="labelHeaders">Event Date:</label>
+
+          <select class="form-control" id="slot" name="slot"
+          [(ngModel)]="partiFilterObj.slotFilter" (change)="getSlotEventDateFilter();reset_list('scheduleDetails')" >
+          <option value="All">All</option>
+          <option *ngFor="let date of eventDate" value="{{ date.eventDate }}">{{ date.eventDate }}</option>
+        </select>
+      </div> -->
+    
+    <!-- <div class="col-auto">
+     
+        <label for="usr" class="labelHeaders">Event Slot Time:</label>
+
+          <select class="form-control" id="schedule" name="schedule"
+          [(ngModel)]="partiFilterObj.scheduleFilter" (change)="reset_list('slotDetails')" >
+          <option value="All">All</option>
+          <option *ngFor="let date of eventStartTime" value="{{ date.eventSlotTime }}">{{ date.eventSlotTime }}</option>
+        </select>
+        </div> -->
+    
+
+    <div class="col-auto addReset">
+      <div class="form-row mx-0justify-content-center flex-nowrap">
+        <!-- <div class="col-auto">
+          <button type="button" class="btn btn-sm btn-primary" (click)="openLg(longContent,'add',null)">Add Participant</button>
+        </div> -->
+        <div class="col-auto ">
+          <button type="button" class="btn btn-sm btn-light" (click)="resetFilter()">Reset filters</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto d-flex align-items-center">
+    <p class="m-0">
+      Total Count: <strong>{{ total || 0 }}</strong>
+    </p>
+  </div>
+  <div class="col-auto">
+    <button type="button" *ngIf="downloadData" class="btn btn-sm btn-outline-primary" (click)="DownloadParticipantsData()">Download Data</button>
+  </div>
+  <div class="col-auto">
+    <button type="button" *ngIf="filteredDownload" class="btn btn-sm btn-outline-primary" (click)="DownloadFilteredParticipantsData()">Download Filtered Data</button>
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-sm btn-danger" disabled (click)="openShortModal()">Send bulk email#02</button>
+  </div>
+  </div>
+</div>
+
+<div class="cust-table-view" *ngIf="total != 0">
+  <table class="table">
+    <thead>
+      <tr>
+        <!-- <th scope="col">
+        </th> -->
+        <th scope="col">STATUS
+          <span *ngIf="sortChange" (click)="getParticipantsList('','status','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','status','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span>
+        </th>
+        <th scope="col">ILM No.</th>
+        <!-- <th scope="col">Clean RNo
+          <span *ngIf="sortChange" (click)="getParticipantsList('','cleanRNo','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','cleanRNo','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span>
+          
+        </th> -->
+        <th scope="col"><i class="far fa-user"></i> Name 
+          <span *ngIf="sortChange" (click)="getParticipantsList('','name','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','name','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span></th>
+        <th scope="col"><i class="fas fa-mobile-alt"></i> Contact
+          <span *ngIf="sortChange" (click)="getParticipantsList('','contactNo','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','contactNo','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span></th>
+        <th scope="col"><i class="fas fa-school"></i> School Name
+          <span *ngIf="sortChange" (click)="getParticipantsList('','schoolName','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','schoolName','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span></th>
+        
+        <th scope="col"><i class="fas fa-graduation-cap"></i> STD
+          <span *ngIf="sortChange" (click)="getParticipantsList('','std','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','std','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span>
+          </th>
+        <!-- <th scope="col"><i class="fas fa-graduation-cap"></i> Div</th> -->
+        <!-- <th scope="col"> Event Name</th> -->
+        <!-- <th scope="col"><i class="fas fa-users"></i> Event Group</th>
+        <th scope="col"><i class="fas fa-calendar-alt"></i> Event Date</th>
+        <th scope="col"><i class="fas fa-hourglass-start"></i> Start Time</th>
+        <th scope="col"><i class="fas fa-hourglass-end"></i> End Time</th>
+        <th scope="col">
+          <i class="fas fa-flag-checkered"></i> Reporting Time
+        </th> -->
+        <!-- <th scope="col">Confirm Status
+          <span *ngIf="sortChange" (click)="getParticipantsList('','confirmStatus','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','confirmStatus','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span>
+        </th> -->
+        <th scope="col">Email Id
+          <span *ngIf="sortChange" (click)="getParticipantsList('','emailid','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','emailid','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span>
+        </th>
+        <!-- <th scope="col">Clean Original Email
+          
+          <span *ngIf="sortChange" (click)="getParticipantsList('','cleanOriginalEmail','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','cleanOriginalEmail','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span>
+        </th> -->
+        
+       
+        <!-- <th scope="col">Email01 PMA Delivery Status
+          <span *ngIf="sortChange" (click)="getParticipantsList('','email01PMADeliveryStatus','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','email01PMADeliveryStatus','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span>
+          
+        </th> -->
+        
+        <th scope="col">UnSubscribed</th>
+
+        <!-- <th scope="col">Email01 Attempted Date</th>
+        <th scope="col">Email01 PMA Acceptance Status
+          <span *ngIf="sortChange" (click)="getParticipantsList('','email01PMAAcceptanceStatus','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','email01PMAAcceptanceStatus','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span>
+          
+        </th>
+        <th scope="col">Email01 PMADeliveryStatus</th> -->
+        <!-- <th scope="col">Email03 AttemptedDate</th>
+        <th scope="col">Email03 PMAAcceptanceStatus</th>
+        <th scope="col">Email03 PMADeliveryStatus</th>
+        <th scope="col">Slot</th>
+        <th scope="col">Schedule</th>
+        <th scope="col">Zoom Link</th>
+        <th scope="col">Present</th> -->
+        <!-- <th scope="col">Username</th>-->
+        
+       
+
+        <!-- <th scope="col">Email02 Reconfirmation</th>
+        <th scope="col">Email02 ContactNo Edited</th>
+        <th scope="col">Email02 Name Edited</th> -->
+        <th scope="col">Email02 AttemptedDate</th>
+        <th scope="col">Email02 PMAAcceptanceStatus</th>
+        <!-- <th scope="col">Email02 PMADeliveryStatus</th> -->
+
+
+        <!-- <th scope="col">Clean Update Comments
+          <span *ngIf="sortChange" (click)="getParticipantsList('','cleanUpdateComments','asc')"><i class="fas fa-sort-down"></i></span> 
+          <span (click)="getParticipantsList('','cleanUpdateComments','desc')" *ngIf="!sortChange"><i class="fas fa-sort-up"></i></span>
+          </th>
+        -->
+
+
+        <!-- <th scope="col">Edited By</th>
+        <th scope="col">Certification Link</th>
+        <th scope="col"><i class="fas fa-code-branch"></i> Branch</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataList of participantsList; index as i">
+        <!-- <td>
+          <span class="editRow" (click)="openLg(longContent,'edit',dataList)">
+            <i class="fas fa-edit"></i>
+          </span>
+        </td> -->
+        <!-- <td>{{ pageOffset.offset + i + 1 }}</td> -->
+        <td>
+          <span [ngClass]="{'statusActive': dataList.status == 'ACTIVE','statusDelete': dataList.status == 'DELETE','statusDummy': dataList.status == 'DUMMY'}">{{ dataList.status || "--" }}</span>
+          </td>
+        <td>{{ dataList.id || "--" }}</td>
+        <!-- <td>{{ dataList.cleanRNo || "--" }}</td> -->
+        <td>{{ dataList.name || "--" }}</td>
+        <td>{{ dataList.contactNo || "--" }}</td>
+        <td>{{ dataList.schoolName || "--" }}</td>
+        
+        <td>
+          {{ dataList.std || "--" }}
+          <span *ngIf="
+              dataList.div != '' &&
+              dataList.div != null &&
+              dataList.div != undefined
+            ">({{ dataList.div }})</span>
+        </td>
+        <!-- <td>{{dataList.div || '--'}}</td> -->
+        <!-- <td>{{ dataList.eventName || "Geeta Chanting" }}</td> -->
+        <!-- <td>{{ dataList.eventGroupCode || "--" }}</td>
+        <td>{{ dataList.date || "--" }}</td>
+        <td>{{ dataList.slotStartTime || "--" }}</td>
+        <td>{{ dataList.slotEndTime || "--" }}</td>
+        <td>{{ dataList.reportTime || "--" }}</td> -->
+        <!-- <td><span [ngClass]="{'yes': dataList.confirmStatus == 'Yes','no': dataList.confirmStatus != 'Yes'}">{{dataList.confirmStatus || '--'}}</span></td> -->
+        <td>{{ dataList.emailid || "--" }}</td>
+        <!-- <td>{{ dataList.cleanOriginalEmail || "--" }}</td> -->
+            <!-- <td>{{ dataList.email01PMADeliveryStatus || "--" }}</td> -->
+
+
+
+            <td><span  [ngClass]="{'yes': dataList.unsubscribe == 'Yes','no': dataList.unsubscribe == 'No'}">{{dataList.unsubscribe || '--'}}</span></td>
+
+
+
+        <!-- <td class="email02Bg">{{ (dataList.email03AttemptedDate | date: 'dd/MM/yyyy') || "--" }}</td>
+        <td class="email02Bg"><span [ngClass]="{'success': dataList.email03PMAAcceptanceStatus == 'success','notToBeSent': dataList.email03PMAAcceptanceStatus == 'NOT_TO_BE_SENT'}">{{ dataList.email03PMAAcceptanceStatus || "--" }}
+          <i class="far fa-check-circle" *ngIf="dataList.email03PMAAcceptanceStatus == 'success'"></i></span></td>
+        
+        <td class="email02Bg"><span [innerHTML]="dataList.email03PMADeliveryStatus || '--'"></span></td>
+        <td class="email02Bg">{{ dataList.slot || "--" }}</td>
+        <td class="email02Bg">{{ dataList.schedule || "--" }}</td>
+
+        <td class="email02Bg" >
+          <span *ngIf="dataList.allocationStatus==1">
+          <a href="{{dataList.zoomLink}}" target="_blank" class="btn btn-sm btn-primary">
+          Join
+          </a>
+        </span>
+        </td>
+        <td class="email02Bg text-capitalize">
+          <span [ngClass]="{'yes': dataList.isAttended == 'yes','no': dataList.isAttended == 'no'}">{{dataList.isAttended || '--'}}</span>
+        </td> -->
+        <!-- <td>{{ getUserData || "--" }}</td> -->
+      
+
+          <!-- <td class=""><span [ngClass]="{'yes': dataList.email02Reconfirmation == 'Yes','no': dataList.email02Reconfirmation == 'No'}">{{dataList.email02Reconfirmation || '--'}}</span></td> -->
+          <!-- <td class=""><span [ngClass]="{'yes': dataList.contactNoEdited == 'Yes','no': dataList.contactNoEdited == 'No'}">{{dataList.contactNoEdited || '--'}}</span></td> -->
+          <!-- <td class=""><span [ngClass]="{'yes': dataList.isNameEdited == 'Yes','no': dataList.isNameEdited == 'No'}">{{dataList.isNameEdited || '--'}}</span></td> -->
+          <td class="">{{ (dataList.email02AttemptedDate | date: 'dd/MM/yyyy') || "--" }}</td>
+          <td class=""><span [ngClass]="{'success': dataList.email02PMAAcceptanceStatus == 'success','notToBeSent': dataList.email02PMAAcceptanceStatus == 'NOT_TO_BE_SENT'}">{{ dataList.email02PMAAcceptanceStatus || "--" }}
+            <i class="far fa-check-circle" *ngIf="dataList.email02PMAAcceptanceStatus == 'success'"></i></span></td>
+          
+          <!-- <td class="">
+            <span [ngClass]="{'delivered':dataList.email02PMADeliveryStatus == 'Delivered','opened':dataList.email02PMADeliveryStatus == 'Opened'}" [innerHTML]="dataList.email02PMADeliveryStatus || '--'"></span>
+            <i *ngIf="dataList.email02PMADeliveryStatus == 'Opened'" class="fas fa-envelope-open-text ml-2 openIcon"></i>
+            <i *ngIf="dataList.email02PMADeliveryStatus == 'Delivered'" class="fas fa-shipping-fast ml-2 delIcon"></i>
+          </td> -->
+<!-- 
+          <td>{{ dataList.cleanUpdateComments || "--" }}</td> -->
+          <!-- <td>{{ (dataList.email01AttemptedDate | date: 'dd/MM/yyyy')  || "--" }}</td>
+          <td><span
+              [ngClass]="{'success': dataList.email01PMAAcceptanceStatus == 'success','notToBeSent': dataList.email01PMAAcceptanceStatus == 'NOT_TO_BE_SENT'}">{{ dataList.email01PMAAcceptanceStatus || "--" }}
+              <i class="far fa-check-circle" *ngIf="dataList.email01PMAAcceptanceStatus == 'success'"></i></span></td>
+              <td class="">
+                <span [ngClass]="{'delivered':dataList.email01PMADeliveryStatus == 'Delivered','opened':dataList.email01PMADeliveryStatus == 'Opened'}" [innerHTML]="dataList.email01PMADeliveryStatus || '--'"></span>
+                <i *ngIf="dataList.email01PMADeliveryStatus == 'Opened'" class="fas fa-envelope-open-text ml-2 openIcon"></i>
+                <i *ngIf="dataList.email01PMADeliveryStatus == 'Delivered'" class="fas fa-shipping-fast ml-2 delIcon"></i>
+              </td> -->
+<!-- 
+          <td>{{ dataList.editedBy || "--" }}</td>
+          <td>{{ dataList.certificationLink || "--" }}</td>
+          <td>{{ dataList.branch || "--" }}</td> -->
+
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="form-row mx-0 my-3 justify-content-center flex-nowrap"  *ngIf="total > 99">
+  <div class="col-auto">
+    <button type="button" (click)="getParticipantsList('start','','')" class="btn btn-sm btn-primary">
+      <i class="fas fa-angle-double-left"></i> First
+    </button>
+  </div>
+  <div class="col-auto">
+    <button type="button" (click)="getParticipantsList('prev','','')" class="btn btn-sm btn-primary">
+      Previous 100
+    </button>
+  </div>
+  <div class="col-auto">
+    <select class="form-control" (change)="getParticipantsList('pageNo','','')" pageNoname="std" [(ngModel)]="pagination">
+      <option *ngFor="let pageNo of pageNumber" value="{{ pageNo.offset }}">{{
+        pageNo.value
+      }}</option>
+    </select>
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-sm btn-primary" (click)="getParticipantsList('next','','')">
+      Next 100
+    </button>
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-sm btn-primary" (click)="getParticipantsList('end','','')">
+      Last <i class="fas fa-angle-double-right"></i>
+    </button>
+  </div>
+ 
+</div>
+
+<div class="error-msg-view" *ngIf="total == 0">
+  <i class="fas fa-exclamation-triangle"></i>
+  <h4>No data found</h4>
+</div>
+<!-- <ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template> -->
+
+<ng-template #longContent let-modal>
+
+  <div class="modal-header">
+    <h4 class="modal-title" *ngIf="!hideShowInput">Add Participant</h4>
+    <h4 class="modal-title" *ngIf="hideShowInput">Edit Participant</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form class="formbg" #FormData="ngForm" name="formData" autocomplete="off" (keydown.enter)="$event.preventDefault()">
+     <div class="form-row no-gutters">
+      <!-- <div class="col-3" *ngIf="hideShowInput">
+        <div class="form-group">
+         <label for="usr">Id:</label>
+         <input type="text" class="form-control" id="participantName" [(ngModel)]="id">
+        </div>
+      </div> -->
+
+      <div class="col-6">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Name:</label>
+          <input type="text" class="form-control" name="participantName" id="participantName" [(ngModel)]="participantName" >
+          <small class="text-danger" *ngIf="formSubmit && !participantName">
+            This field is required
+          </small>
+        </div>
+     
+      </div>
+
+      <div class="col-6">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Contact:</label>
+          <input type="tel" name="contactNo"  class="form-control" id="contactNo" [(ngModel)]="contactNo" (ngModelChange)="validationCheck()" required>
+         
+          <small class="text-danger" *ngIf="formSubmit && !contactNo">
+            This field is required
+          </small>
+          <small class="text-danger" *ngIf="contactNo && !validMobile">
+            Please enter valid Mobile Number
+          </small>
+        </div>
+       
+      </div>
+
+      <div class="col-3" *ngIf="showSchoolInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">School Name:</label>
+          <input type="text" name="schoolName"   class="form-control" id="schoolName" [(ngModel)]="schoolName">
+        
+        </div>
+        
+      </div>
+      <div class="col-3" *ngIf="dropdownSchool">
+        <div class="form-group">
+          <label for="selSchool" class="labelHeaders">School:</label>
+          <select class="form-control" id="selSchool" name="school"
+            [(ngModel)]="isSchoolName">
+            <option value="">Choose</option>
+            <option *ngFor="let schList of partiFilteringData.schools" value="{{ schList.schoolName }}">
+              {{ schList.schoolName }}</option>
+              
+          </select>
+          <small class="text-danger" *ngIf="formSubmit && !isSchoolName">
+            This field is required
+          </small>
+        </div>
+      </div>
+
+      <div class="col-3 d-flex align-items-end" *ngIf="addSchoolNameBtn">
+        <div class="form-group">
+          <div class="btn btn-outline-primary" (click)="showSchoolnameInput();">Add new</div>
+        </div>
+      </div>
+      <div class="col-3 d-flex align-items-end" *ngIf="addDropSchoolNameBtn">
+        <div class="form-group">
+          <div class="btn btn-outline-primary" (click)="showSchoolnameDrop();">Add from dropdown</div>
+        </div>
+      </div>
+
+
+      <!-- <div class="col-6">
+        <div class="form-group">
+          <label for="usr">Branch:</label>
+          <input type="text" class="form-control" id="branchName" [(ngModel)]="branchName">
+        </div>
+      </div> -->
+
+      <div class="col-3" *ngIf="inputSTD">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">STD:</label>
+          <input type="text" class="form-control" name="std"   id="std" [(ngModel)]="std" (change)="getSlotEventDateList()">
+        </div>
+      </div>
+      <div class="col-3" *ngIf="dropSTD">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">STD:</label>
+          <select class="form-control" id="selStandard" name="isSTD"
+            [(ngModel)]="isSTD" (change)="getSlotEventDateList()">
+            <option value="">Choose</option>
+            <option *ngFor="let stdList of partiFilteringData.std" value="{{ stdList.std }}">{{ stdList.std }}</option>
+          </select>
+          <small class="text-danger" *ngIf="formSubmit && !isSTD">
+            This field is required
+          </small>
+        </div>
+      </div>
+
+      <div class="col-3 d-flex align-items-end" *ngIf="addStdNameBtn">
+        <div class="form-group">
+          <div class="btn btn-outline-primary" (click)="showStdnameInput();">Add new</div>
+        </div>
+      </div>
+
+      <div class="col-3 d-flex align-items-end" *ngIf="addDropStdNameBtn">
+        <div class="form-group">
+          <div class="btn btn-outline-primary" (click)="showStdnameDrop();">Add from dropdown</div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <label for="status" class="labelHeaders">Status:</label>
+        <select class="form-control" id="status" name="status"
+          [(ngModel)]="isStatus">
+         
+          <option *ngFor="let statusList of tempStoreStatusList" value="{{ statusList.status }}">{{ statusList.status }}</option>
+        </select>
+  
+  
+        <!-- <input type="text" class="form-control" name="status" id="status" [(ngModel)]="partiFilterObj.status"
+          [ngbTypeahead]="searchStatusModel" #instance5="ngbTypeahead" (focus)="focus$5.next($any($event).target.value)"
+           (keyup.enter)="reset_list('status')" />
+        <button type="button" class="btn inputClear ipClear" *ngIf="partiFilterObj.status" (click)="partiFilterObj.status= ''">
+          <i class="fas fa-times"></i>
+        </button> -->
+      </div>
+
+      <div class="col-3">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Event Name:</label>
+          <input type="text"  name="eventName"  class="form-control" id="eventName" [(ngModel)]="eventName" [innerHTML]="'Geeta Chanting'"
+            disabled>
+        </div>
+      </div>
+
+      <!-- <div class="col-3 d-flex align-items-end" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="comment" class="labelHeaders">Confirm Status:</label>
+          <input class="form-check-input cnfStatus"  name="confirmStatus" type="checkbox" value="" id="confirmStatus"
+            [(ngModel)]="confirmStatus">
+        </div>
+      </div>
+      <div class="col-3 d-flex align-items-end" *ngIf="!hideShowInput">
+        <div class="form-group">
+          <label for="comment" class="labelHeaders">Confirm Status:</label>
+          <input class="form-check-input cnfStatus"  name="confirmStatus" type="checkbox" value="" id="confirmStatus"
+            [(ngModel)]="confirmStatus">
+
+        </div>
+      </div> -->
+      <!-- <div class="col-3">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Clean RNo:</label>
+          <input type="text" class="form-control"  name="cleanRNo"  id="cleanRNo" [(ngModel)]="cleanRNo" required>
+        </div>
+      </div> -->
+
+      <div class="col-6">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Email Id:</label>
+          <input type="email" [ngClass]="{'is-invalid': FormData.submitted && emailId.invalid}" class="form-control"   name="email"  id="emailId" [(ngModel)]="emailId"  #email="ngModel" (ngModelChange)="validationCheck()" >
+      
+        
+          <small class="text-danger" *ngIf="formSubmit && !emailId">
+            This field is required
+          </small>
+          <small class="text-danger" *ngIf="emailId && !validEmail">
+            Please enter valid email Id
+          </small>
+       
+      
+      </div>
+      </div>
+      <!-- <div class="col-6">
+      <div class="form-group">
+       <label for="usr">Email01 Attempted Date:</label>
+       <input type="date" class="form-control" id="email01AttemptedDate" [(ngModel)]="email01AttemptedDate">
+      </div>
+     </div> -->
+
+
+      
+
+      <!-- <div class="col-6" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Clean Original Email:</label>
+          <input type="text" class="form-control"  name="cleanOriginalEmail"  id="cleanOriginalEmail" [(ngModel)]="cleanOriginalEmail" [disabled]=true>
+        </div>
+      </div> -->
+
+      <div class="col-6" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Email03 PMA Acceptance Status:</label>
+          <input type="text" class="form-control"  name="email03PMAAcceptanceStatus" id="email03PMAAcceptanceStatus"
+            [(ngModel)]="email03PMAAcceptanceStatus" [disabled]=true/>
+        </div>
+      </div>
+      <div class="col-6" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Email03 PMA Delivery Status:</label>
+          <input type="text" class="form-control"  name="email03PMADeliveryStatus" id="email03PMADeliveryStatus"
+            [(ngModel)]="email03PMADeliveryStatus" [disabled]=true/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Event Date:</label>
+          <!-- <input type="text"  name="slot" class="form-control" id="slot"
+            [(ngModel)]="slot" [disabled] = true/> -->
+
+            <select class="form-control" id="schedule" name="schedule"
+            [(ngModel)]="schedule" (change)="getSlotEventDateList()">
+            <option value="">Choose</option>
+            <option *ngFor="let date of eventDate" value="{{ date.eventDate }}">{{ date.eventDate }}</option>
+          </select>
+          <!-- <small class="text-danger" *ngIf="formSubmit && !schedule">
+            This field is required
+          </small> -->
+        </div>
+      
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Event Slot Time:</label>
+          <!-- <input type="text" class="form-control" name="schedule" id="schedule"
+            [(ngModel)]="schedule" [disabled] = true/> -->
+
+            <select class="form-control" id="slot" name="slot"
+            [(ngModel)]="slot"  (change)="getSelectedBatch($event)">
+            <option value="">Choose</option>
+            <option *ngFor="let date of eventStartTime" [value]="date.id">{{ date.eventSlotTime }}</option>
+          </select>
+          <!-- <small class="text-danger" *ngIf="formSubmit && !slot">
+            This field is required
+          </small> -->
+          </div>
+      </div>
+      
+      <div class="col-6" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Clean Update Comments:</label>
+          <textarea type="text" class="form-control"  name="cleanUpdateComments" rows="1" id="cleanUpdateComments"
+            [(ngModel)]="cleanUpdateComments"></textarea>
+        </div>
+      </div>
+      <!-- <div class="col-6" *ngIf="hideShowInput">
+        <label for="usr" class="labelHeaders">Email01 PMA Acceptance Status:</label>
+      
+        <input type="text" class="form-control" name="email01PMAAcceptanceStatus" id="email01PMAAcceptanceStatus" [(ngModel)]="email01PMAAcceptanceStatus">
+      </div> -->
+
+      <!-- <div class="col-6" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Email01 PMA Delivery Status:</label>
+          <input type="text" class="form-control" name="email01PMADeliveryStatus" id="email01PMADeliveryStatus" [(ngModel)]="email01PMADeliveryStatus">
+        </div>
+      </div> -->
+      
+      <!-- <div class="col-6 d-flex align-items-end" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">ContactNo Edited:</label>
+          <input type="checkbox" class="form-check-input cnfStatus"  name="contactNoEdited" id="contactNoEdited"
+            [(ngModel)]="contactNoEdited"/>
+        </div>
+      </div> -->
+      <div class="col-6 d-flex align-items-end" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Email02 Reconfirmation:</label>
+          <input type="checkbox" class="form-check-input cnfStatus" [checked]="email02Reconfirmation" name="email02Reconfirmation" id="email02Reconfirmation"
+            [(ngModel)]="email02Reconfirmation" />
+        </div>
+      </div>
+      <div class="col-6" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Email02 PMA Acceptance Status:</label>
+          <input type="text" class="form-control"  name="email02PMAAcceptanceStatus" id="email02PMAAcceptanceStatus"
+            [(ngModel)]="email02PMAAcceptanceStatus"/>
+        </div>
+      </div>
+      <div class="col-6" *ngIf="hideShowInput">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Email02 PMA Delivery Status:</label>
+          <input type="text" class="form-control"  name="email02PMADeliveryStatus" id="email02PMADeliveryStatus"
+            [(ngModel)]="email02PMADeliveryStatus"/>
+        </div>
+      </div>
+    
+      <!-- <div class="col-6">
+        <div class="form-group">
+          <label for="usr" class="labelHeaders">Zoom Link:</label>
+          <input type="text" class="form-control" name="zoomLink"  id="zoomLink"
+            [(ngModel)]="zoomLink" [disabled] = true/>
+        </div>
+      </div> -->
+      <!-- <div class="col-6">
+        <div class="form-group">
+          <label for="usr">Certification Link:</label>
+          <input type="text" class="form-control" id="certificationLink"
+            [(ngModel)]="certificationLink"/>
+        </div>
+      </div> -->
+
+     </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <div class="emailAction">
+    <button type="submit" class="btn btn-danger" *ngIf="hideShowInput == true"
+    (click)="getEditData('emailUpdate');">Update & Send Email#03</button>
+  </div>
+    <div class="action">
+      <button type="button" class="btn btn-light mr-2" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" class="btn btn-primary" *ngIf="hideShowInput == false"
+        (click)="getNewAddedData()">Submit</button>
+      <button type="submit" class="btn btn-primary" *ngIf="hideShowInput == true"
+        (click)="getEditData('update');">Update</button>
+    </div>
+    
+     
+  </div>
+</ng-template>
+<!-- <ng-template #shortContent let-modal>
+
+  <div class="modal-header">
+    <h4 class="modal-title">Confirmation to send email</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+   
+ <p>Are you sure?</p>
+ <p>You want to <strong>send bulk email</strong>. </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button type="submit" class="btn btn-primary" *ngIf="hideShowInput == false"
+      (click)="getNewAddedData()">Submit</button>
+  
+  </div>
+</ng-template> -->
+<div *ngIf="isSendBulk" class="blurArea">
+  <div *ngIf="showSendBulkModal" class="mainModalContent p-3">
+
+    <div class="modalHeader pb-3">
+      <h4 class="modalTitle">Confirmation to send email</h4>
+      <!-- <button type="button" class="close" aria-label="Close" (click)="showSendBulkModal = false">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+  
+    <div class="modalBody">
+     
+   <h5>Are you sure?</h5>
+   <h3>You want to <strong class="sendEmail">send bulk email</strong>. </h3>
+    </div>
+  
+    <div class="modalFooter d-flex justify-content-end pt-2">
+      <button type="button" class="btn btn-light" (click)="showSendBulkModal = false;isSendBulk=false;">Close</button>
+      <button type="submit" class="btn btn-primary ml-2" (click)="sendBulkEmail()">Submit</button>
+    
+    </div>
+  </div>
+</div>

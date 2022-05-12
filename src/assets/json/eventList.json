@@ -1,0 +1,97 @@
+[{
+    "event_name": "Geeta Chanting",
+    "event_specific": [{
+        "value": "Tune is not a criterion for judgement."
+      },
+      {
+        "value": "Portion verses (Please refer the booklet for details)."
+      }
+    ],
+    "generic": [{
+        "value": "Please report misspelt names at the registration counter."
+      },
+      {
+        "value": "Parents will be allowed to watch the event."
+      },
+      {
+        "value": "All vehicles to be parked outside the complex."
+      }
+    ],
+    "spacer": [1, 2, 3]
+  },
+  {
+    "event_name": "Fancy Dress",
+    "event_specific": [{
+        "value": "No hiring of costumes and playing recorded messages."
+      },
+      {
+        "value": "Duration of delivery of message - 2 mins."
+      },
+      {
+        "value": "Theme (Please refer the booklet for details)."
+      },
+      {
+        "value": "Language : Sanskrit/Marathi/Hindi/English."
+      }
+    ],
+    "generic": [{
+        "value": "Please report misspelt names at the registration counter."
+      },
+      {
+        "value": "Parents will be allowed to watch the event."
+      },
+      {
+        "value": "All vehicles to be parked outside the complex."
+      }
+    ],
+    "spacer": [1]
+  },
+  {
+    "event_name": "Drawing",
+    "event_specific": [{
+        "value": "Please go through meanings of verses (40 to 55 for Stds 1 & 2, 40 to 60 for Stds 3 & 4) of Chapter 18."
+      },
+      {
+        "value": "A theme will be given based on the verses to draw."
+      },
+      {
+        "value": "Basic paper will be provided."
+      },
+      {
+        "value": "Bring your own colouring medium (pencil/color-pencil/wax crayons/water colour), pad/board."
+      }
+    ],
+    "generic": [{
+        "value": "Please report misspelt names at the registration counter."
+      },
+      {
+        "value": "All vehicles to be parked outside the complex."
+      }
+    ],
+    "spacer": []
+  },
+  {
+    "event_name": "Poster Making",
+    "event_specific": [{
+        "value": "Please go through meaning of verses (40 to 65 for Std 5 & 6, 40 to 70 for Std 7 & 8 ) of chapter 18."
+      },
+      {
+        "value": "Participants will be given a theme based on the above verses."
+      },
+      {
+        "value": "Basic paper will be provided."
+      },
+      {
+        "value": "Bring your own colouring medium, pad/board, materials like appropriate paper cuttings, designs, etc."
+      }
+    ],
+    "generic": [{
+        "value": "Please report misspelt names at the registration counter"
+      },
+      {
+        "value": "All vehicles to be parked outside the complex."
+      }
+    ],
+    "spacer": []
+  }
+]

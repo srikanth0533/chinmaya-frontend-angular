@@ -1,0 +1,222 @@
+<div class="main-loader" *ngIf="mainLoaderIs">
+    <img src="assets/img/loader.gif" alt="Loading..." />
+  </div>
+<div class="pageContent">
+    <div class="appealPage" *ngIf="isAppeal">
+        <div class="row">
+            <div class="col-12 appealMainContent">
+                <div class="row appealPageContent">
+                    <div class="col-12 mb-4 appealTitle">
+                        <span class="appealTitle">APPEAL</span>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <span class="appealSubTitle">Hari Om !!</span>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <span class="appealData">
+                            Srimad Bhagawad Geeta is a manual which guides us to emerge strong and victorious during our journey of life.
+                        </span>
+                    </div>
+                    <div class="col-12 mb-4 ">
+                        <span class="appealData">
+                            The Geeta Chanting Competition is an initiative undertaken by Chinmaya Mission to impart the teachings of this manual of life to as many as possible and is based on the principle of Chant-Study-Know-Live.
+                        </span>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <span class="appealData">
+                            Chinmaya Mission, Thane has been conducting this event since decades. This year too, we are conducting this event<span class="appealDataBold"> virtually from Dec 4th to Dec 10th 2021.</span> 
+                        </span>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <span class="appealData">
+                            This initiative has grown from strength to strength only because of the backing of sincere devotees who have reposed their faith in this noble cause.
+                        </span>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <span class="appealData">
+                            We are very grateful for the constant support given to this initiative over the previous years.<span class="appealDataBold"> We appeal to devotees to donate generously for this year’s event too and make it a memorable one.</span>
+                        </span>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <span class="appealData appealDataBold">
+                            Kindly note the following details for making your Donation through NEFT or QR Code:
+                        </span>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <span class="appealData">
+                             <div class="bankCard">
+                                    <h5 class="text-center accTitle mb-1">Chinmaya Mission Thane</h5>
+                                    <div class="accDetails"> 
+                                    <img src="../../assets/img/bhim-3-69845 1.svg" alt=""><span>MAB.037322007720025@AXISBANK</span>
+                                    </div>
+                                    <h6 class="mb-1 bankHeading text-center">Scan QR Code to Donate</h6>
+                                 
+                                    <div class="qrCode d-flex justify-content-center">
+                                        <img class="text-center" src="../../assets/img/QR code.svg" style="width: 70%;" alt="">
+                                    </div>
+                                    <hr>
+                                    <p class="mb-1 preJoinedclosedSession">Axis Bank</p>
+                                    <p class="mb-1 bankHeading">a/c no.</p>
+                                    <h5 class="mb-1 accMob">7 7 2 0 1 0 1 0 0 0 0 5 5 2 4</h5>
+                                    <p class="mb-1 bankHeading">IFSC Code</p>
+                                    <h5 class="mb-1 accMob" >UTIB0000772</h5>
+                                    <p class="mb-1 bankHeading">Branch</p>
+                                    <h5 class="mb-1 accMob">Ghodbunder Rd Branch <small>(Saving Account)</small></h5>
+                            </div>
+        
+                        </span>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <span class="appealData">
+                              <span class="appealDataBold">Once you make the transfer, please do take a screenshot of the payment, add your name and full postal address and send it to us on 9987400873</span> so that we can send you the official receipt for the same.<span class="appealDataBold"> In case of the donation amount exceeding Rs 2000/- kindly provide your PAN too.</span> 
+                        </span>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <span class="appealData appealDataBold">
+                            All Donations made to Chinmaya Mission, Thane are eligible for exemption under Sec 80 G of the Income Tax Act.
+                        </span>
+                    </div>
+                    <div class="col-12 mb-4 p-0">
+                        <div class="col-12">
+                            <img src="../../assets/img/sign.png" alt="">
+                        </div>
+                        <div class="col-12 mb-4">
+                            <span class="appealData appealDataBold">
+                                <div class="1">Indira Rajesh</div>
+                                <div class="1">Treasurer- Chinmaya Mission, Thane</div>
+                                
+                            </span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="btn btn-primary btn-block  mt-3 mb-3 ackBtn" (click)="gotoVerification()">CLIICK HERE TO ACKNOWLEDGE RECEIPT</div>
+            </div>
+        </div>
+       
+       
+    </div>
+    <div class="mobileVerificationPage" *ngIf="isVerificationPage">
+        <div class="imgHeader">
+            <img src="../../assets/img/gurujiPosterNew.svg" alt="">
+        </div>
+    
+        <div class="mainContent">
+        <h3 class="mainHeader">Geeta Chanting Competition 2021</h3>
+      
+            <div class="hideShow" *ngIf="showReconfirmation && !showexpiry">
+            <!-- <div class="hideShow" *ngIf="showReconfirmation"> -->
+                <div class="ticket">
+                    <h5 class="m-3 boldWeight mobViewTicketName">Dear <strong  class="editName boldWeight" [innerHTML]="(participantName.toLowerCase()) || '--'"></strong></h5>
+                    <p class="mb-1 mt-3 boldWeight mobViewTicketHereBy">We have <span class="redText">successfully acknowledged </span>the receipt of your participation in GCC 2021</p>
+                    <!-- <h5 class="mb-3 boldColor mobViewTicketConfirmed">CONFIRMED!</h5> -->
+                </div>
+    
+    
+                <div class="bgContent">
+                    <p class="note">Please confirm/update the following details registered with us:</p>
+    
+                    <div class="editableContent">
+                        <p class="partiLabel"><strong>Participant’s full name</strong> </p>
+                        <!-- <div class="row no-gutters inpBelow">
+                            <div class="col-8"> -->
+                                <div *ngIf="!isEditName" class="form-group candidateName" [innerHTML]="(participantName.toLowerCase()) || '--'">
+                                    <!-- <input type="text" class="form-control" placeholder="Candidate name" name="name" id="name"
+                                        [(ngModel)]="editName" [disabled]=true> -->
+                                </div>
+                                <!-- <div *ngIf="isEditName" class="form-group candidateNameEdit">
+                                    <input type="text" class="form-control" placeholder="Candidate name" name="name" id="name"
+                                        [(ngModel)]="editName">
+                                </div> -->
+                            <!-- </div> -->
+                            <!-- <div class="col-1"></div> -->
+                            <!-- <div class="col-4 d-flex justify-content-end align-items-center editNameOption" (click)="edittedName()"><i class="fas fa-pen mr-1"></i>Edit name</div> -->
+                        <!-- </div> -->
+                        <!-- <div class="d-flex belowTxt">*As it would appear on your Certificate</div> -->
+                      
+                        <!-- <p class="editNameOption" (click)="edittedName()"></p> -->
+        
+        
+                        <p class="partiLabel"><strong>Phone number</strong></p>
+        
+                        <div class="row no-gutters">
+                            <!-- <div class="col-2" *ngIf="isEdited"><span class="plus">+91 </span></div> -->
+                            <div class="col-8" [ngClass]="{'col-12':isEdited}">
+                                
+                                <div *ngIf="!isEdited" class="form-group candidateName mb-0"  [innerHTML]="'+91 ' + mobileNo">
+                                </div>
+    
+                                <div *ngIf="isEdited" class="input-group candidateNameEdit mb-0">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-default">+91</span>
+                                    
+                                    <input type="tel" class="form-control" id="mobileNo" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="no" id="no"
+                                    [(ngModel)]="mobileNo" (ngModelChange)="validationCheck()" autofocus></div>
+                                    <div><p class="validation" *ngIf="mobileNo && !validMobile">
+                                        Please enter valid 10 digit mobile number
+                                      </p></div>
+                                    <p class="validation" *ngIf="!mobileNo">
+                                            This field is required
+                                      </p>
+                                      <p *ngIf="isEdited" class="d-flex validation">*Check the mobile number for accuracy as we will be communicating
+                                        with you on this number</p>
+                                  </div>
+                
+                            </div>
+                            <div *ngIf="!isEdited" class="col-4 d-flex justify-content-end align-items-center editNo" (click)="editMobileNo()">Edit Number</div>
+                        </div>
+                        
+                    </div>
+                    
+                        <p class="checkedRecorded mb-1">Please click on the button below to verify your Details.</p>
+                    <div *ngIf="isEditName || isEdited" class="confirmTrns">
+                        <div class="btn btn-primary btn-block mt-3 confirmMob" (click)="confirmMobile()">UPDATE</div>
+                    </div>
+                    <div *ngIf="!isEditName && !isEdited" class="confirmTrns">
+                        <div class="btn btn-primary btn-block mt-3 confirmMob" (click)="verify()">VERIFY</div>
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+            <div class="hideShow" *ngIf="showReconfirmation == false && !showexpiry">
+                <div class="lastConfInfo">
+    
+            
+                <div class="m-5">
+                    <p *ngIf="isEdited" class="commonHead mb-2">Your Details have been</p> 
+                    <p *ngIf="isEdited" class="confirmedData mb-0">UPDATED!</p>
+                    <p *ngIf="isEditName" class="verifiedData">Thank you for Verifying!</p></div>
+              
+                <div *ngIf="isEdited" class="confImg my-3">
+                    <img src="../../assets/img/Frame 5.svg" alt="">
+                </div>
+                <div class="infoCompetition">
+                <p class="dayTime">The exact date and time slot of your event as well as the link to join the online session for GCC 2021 will be provided in our next email around
+                    <span class="appealDataBold">end Nov 2021</span></p>
+            </div>
+    
+    </div>
+            </div>
+            <div class="hideShow" *ngIf="showexpiry">
+                <div class="errorIcon">
+                
+                    <div class="expiryInfoPage">
+                        <i class="fas fa-exclamation-circle expiryIcon"></i>
+                        <h6 class="mb-0">The Re-confirmation for GCC-2020 is <span class="expiryClosed">CLOSED</span> at 12:00 am on Saturday, 12 December 2020.</h6>
+                    </div>
+                    <p class="expiryNote">
+                        <strong>Note: </strong>
+                      If you missed the deadline and still want to participate, get in touch with us on mobile.</p>
+                </div>
+                <h5 class="mt-2"><strong>{{msg}}</strong></h5>
+            </div>
+        </div>
+    </div>
+   
+</div>

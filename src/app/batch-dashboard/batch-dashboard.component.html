@@ -1,0 +1,219 @@
+<app-nav-bar></app-nav-bar>
+<div class="main-loader" *ngIf="mainLoaderIs">
+  <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+<div class="dashboadContainer">
+    <!-- <div class="row">
+    <div class="col-auto">
+        <button type="button" class="btn btn-sm btn-danger" (click)="openShortModal()">Send Bulk 03 Email</button>
+      </div>
+    </div> -->
+    <div class="row no-gutters">
+      <button class="btn btn-light" (click)="openLg2(longContent2)">Blank Sheet</button>
+    </div>
+    <div class="dashboardTable">
+        <div class="dashboardHeader">
+            <div class="row no-gutters">
+                <div class="col-1">Id</div>
+                <div class="col-1">Batch</div>
+                <div class="col-1 text-center">Max Participants</div>
+                <div class="col-1 text-center">Total Allocation Count</div>
+                <div class="col-1 text-center">Event Date</div>
+                <div class="col-1 text-center">Onboarding Time</div>
+                <div class="col-1 text-center">Start Time</div>
+                <div class="col-1 text-center">Std</div>
+                <div class="col-1 text-center">Phase</div>
+                <div class="col-2 text-center"></div>
+            </div>
+        </div>
+        <div class="dashboardBatchData">
+            <div class="row no-gutters singleBatchData" *ngFor="let data of batchDashboardData" [ngClass]="{'ifPhaseOne':data.phase == 'phase2'}">
+                <div class="col-1" [innerHTML]="data.id"></div>
+               <div class="col-1" [innerHTML]="data.batch">Batch</div>
+                <div class="col-1 text-center" [innerHTML]="data.maxParticipants">Max Participants</div>
+                <div class="col-1 text-center" [ngClass]="{'text-danger': data.totalParticipantsAlloted >= data.maxParticipants}" [innerHTML]="data.totalParticipantsAlloted">Max Participants</div>
+                <div class="col-1 text-center" [innerHTML]="data.eventDate  | date:'mediumDate'">Event Date</div>
+                <div class="col-1 text-center" [innerHTML]="data.eventOnboardingTime">Onboarding Time</div>
+                <div class="col-1 text-center" [innerHTML]="data.eventStartTime">Start Time</div>
+                <div class="col-1 text-center" [innerHTML]="data.std">Std</div>
+                <div class="col-1 text-center text-capitalize" [innerHTML]="data.phase">Phase</div>
+                <div class="col-2 text-center text-capitalize">
+                  <button class="btn btn-outline-secondary btn-sm" (click)="openLg(longContent,data)">Show Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div *ngIf="isSendBulk" class="blurArea">
+    <div *ngIf="showSendBulkModal" class="mainModalContent p-3">
+
+      <div class="modalHeader pb-3">
+        <h4 class="modalTitle">Judge's Sheet</h4>
+        <button type="button" class="close" aria-label="Close" (click)="showSendBulkModal = false;isSendBulk=false;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+
+      <div class="downloadBtn">
+      <button type="button" class="btn btn-primary" [useExistingCss]="true" printSectionId="print-section" ngxPrint>Download</button>
+    </div>
+
+
+
+      <div class="modal-body" id="print-section">
+    <div class="row no-gutters justify-content-center">
+      <h4>  No Slot Allocated</h4>
+    </div>
+    
+      <div class="row no-gutters mb-2">
+        <div class="col-3">STD:</div>
+        <div class="col-2">Slot:</div>
+        <div class="col-5">GEETA CHANTING (Single round)</div>
+        <div class="col-2">Date:</div>
+      </div>
+      <!-- <div class="row no-gutters mb-2">
+        <div class="col-10">No.</div>
+        <div class="col-2">Sheet</div>
+      </div> -->
+      <div class="mainScoreTable">
+      <table>
+        <tr>
+          <th class="OverallPresHead">S.No.</th>
+          <th class="OverallPresHead">R.No.</th>
+          <th class="bigHead">Name</th>
+          <th class="bigHead">Memory (45)</th>
+          <th class="bigHead">Pronunciation (45)</th>
+          <th class="OverallPresHead">Overall Presentation (10)</th>
+          <th class="bigHead">Remark</th>
+        </tr>
+        <tr *ngFor=" let array of [1,2,3,4,5,6,7,8,9,10,11]">
+          <td class="smallData"></td>
+          <td class="smallData"></td>
+          <td class="nameData"></td>
+          <td class="memoryData"></td>
+          <td class="pronunData"></td>
+          <td class="OverallPres"></td>
+          <td class="bigData"></td>
+        </tr>
+      
+        </table>
+         <div class="row no-gutters mt-4">
+        <div class="col-10">Judge's Name</div>
+        <div class="col-2">Signature</div>
+      </div>
+    </div>
+      </div>
+    
+  </div>
+</div>
+<ng-template #longContent2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Judge's Sheet</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="downloadBtn">
+    <button type="button" class="btn btn-primary" [useExistingCss]="true" printSectionId="print-section" ngxPrint>Download</button>
+  </div>
+  <div class="modal-body" id="print-section">
+    
+    
+      <div class="row no-gutters mb-2">
+        <div class="col-3">STD:</div>
+        <div class="col-2">Slot:</div>
+        <div class="col-5">GEETA CHANTING (Single round)</div>
+        <div class="col-2">Date:</div>
+      </div>
+      <!-- <div class="row no-gutters mb-2">
+        <div class="col-10">No.</div>
+        <div class="col-2">Sheet</div>
+      </div> -->
+      <div class="mainScoreTable">
+      <table>
+        <tr>
+          <th class="OverallPresHead">S.No.</th>
+          <th class="OverallPresHead">R.No.</th>
+          <th class="bigHead">Name</th>
+          <th class="bigHead">Memory (45)</th>
+          <th class="bigHead">Pronunciation (45)</th>
+          <th class="OverallPresHead">Overall Presentation (10)</th>
+          <th class="bigHead">Remark</th>
+        </tr>
+        <tr *ngFor=" let array of [1,2,3,4,5,6,7,8,9,10,11]">
+          <td class="smallData"></td>
+          <td class="smallData"></td>
+          <td class="nameData"></td>
+          <td class="memoryData"></td>
+          <td class="pronunData"></td>
+          <td class="OverallPres"></td>
+          <td class="bigData"></td>
+        </tr>
+      
+        </table>
+         <div class="row no-gutters mt-4">
+        <div class="col-10">Judge's Name</div>
+        <div class="col-2">Signature</div>
+      </div>
+    </div>
+      </div>
+
+</ng-template>
+<ng-template #longContent let-modal>
+
+  <div class="modal-header">
+    <h4 class="modal-title">Judge's Sheet</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="downloadBtn" *ngIf="slotWiseData.length">
+  <button type="button" class="btn btn-primary" [useExistingCss]="true" printSectionId="print-section" ngxPrint>Download</button>
+</div>
+  <div class="modal-body" id="print-section">
+<div class="row no-gutters justify-content-center" *ngIf="!slotWiseData.length">
+  <h4>  No Slot Allocated</h4>
+</div>
+
+  <div class="row no-gutters mb-2" *ngIf="slotWiseData.length">
+    <div class="col-3">STD: <span class="font-weight-bold" [innerHTML]="std"></span></div>
+    <div class="col-2">Slot:</div>
+    <div class="col-5">GEETA CHANTING (Single round)</div>
+    <div class="col-2">Date: <span class="font-weight-bold" [innerHTML]="eventDate | date:'mediumDate'"></span></div>
+    
+  </div>
+  <!-- <div class="row no-gutters mb-2" *ngIf="slotWiseData.length">
+    <div class="col-10">No.</div>
+    <div class="col-2">Sheet</div>
+  </div> -->
+  <div class="mainScoreTable" *ngIf="slotWiseData.length">
+  <table>
+    <tr>
+      <th class="OverallPresHead">S.No.</th>
+      <th class="OverallPresHead">R.No.</th>
+      <th class="bigHead">Name</th>
+      <th class="bigHead">Memory (45)</th>
+      <th class="bigHead">Pronunciation (45)</th>
+      <th class="OverallPresHead">Overall Presentation (10)</th>
+      <th class="bigHead">Remark</th>
+    </tr>
+          <tr *ngFor="let slotData of slotWiseData; index as i">
+      <td class="smallData"><span [innerHTML]="i + 1"></span></td>
+      <td class="smallData"><span [innerHTML]="slotData.id"></span></td>
+      <td class="smallData"><span [innerHTML]="slotData.name"></span></td>
+      <td class="memoryData"></td>
+      <td class="pronunData"></td>
+      <td class="OverallPres"></td>
+      <td class="bigData"></td>
+    </tr>
+  
+    </table>
+     <div class="row no-gutters mt-4" *ngIf="slotWiseData.length">
+    <div class="col-10">Judge's Name</div>
+    <div class="col-2">Signature</div>
+  </div>
+</div>
+  </div>
+
+</ng-template>

@@ -1,0 +1,96 @@
+
+<app-nav-bar></app-nav-bar>
+<div class="main-loader" *ngIf="groupListLoaderIs">
+  <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+
+<div>
+  <div class="cust-table-view" *ngIf="groupListObj.length > 0">
+    <p class="m-0 pb-3">
+      Total Slots: <strong>{{ getTotalCountGrpList }}</strong>
+    </p>
+    <div class="accordion-tiggle-btn">
+      <button class="btn btn-primary btn-sm" placement="left" tooltipClass="text-nowrap" ngbTooltip="Click to Collapse"
+        (click)="acc.collapseAll(); accordionExpandIs = false" *ngIf="accordionExpandIs">
+        <i class="fas fa-compress"></i>
+      </button>
+
+      <button class="btn btn-primary btn-sm" placement="left" tooltipClass="text-nowrap" ngbTooltip="Click to Expand"
+        (click)="acc.expandAll(); accordionExpandIs = true" *ngIf="!accordionExpandIs" id="expandAllBtn">
+        <i class="fas fa-expand"></i>
+      </button>
+    </div>
+    <div class="row no-gutters align-items-center tbl-header">
+      <!-- <div class="col"><i class="fas fa-hashtag"></i> Sr. No.</div> -->
+      <div class="col-1"><i class="fas fa-graduation-cap"></i> Class</div>
+      <div class="col"><i class="far fa-calendar"></i> Event Name</div>
+      <div class="col"><i class="fas fa-users"></i> Event Group</div>
+      <div class="col"><i class="fas fa-calendar-alt"></i> Event Date</div>
+      <div class="col"><i class="fas fa-hourglass-start"></i> Start Time</div>
+      <div class="col"><i class="fas fa-hourglass-end"></i> End Time</div>
+      <div class="col">
+        <i class="fas fa-flag-checkered"></i> Reporting Time
+      </div>
+      <div class="col"><i class="fas fa-users"></i> Total Participants</div>
+    </div>
+    <ngb-accordion class="d-block" #acc="ngbAccordion">
+      <ngb-panel id="group{{ i }}" *ngFor="let grpList of groupListObj; index as i">
+        <ng-template ngbPanelTitle>
+          <div class="row no-gutters align-items-center">
+            <div class="col-1">
+              <strong>{{ grpList.std }}</strong>
+            </div>
+            <div class="col"></div>
+            <div class="col-1 text-center">
+              Total: <strong>({{ grpList.total_parti }})</strong>
+            </div>
+          </div>
+          <div class="toggle-arrow"><i class="fas fa-chevron-down"></i></div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <div class="row no-gutters align-items-center" *ngFor="let dataList of grpList.dataList; index as i">
+            <div class="col-1"></div>
+            <div class="col">{{ dataList.eventName || "--" }}</div>
+            <div class="col">{{ dataList.eventGroupCode || "--" }}</div>
+            <div class="col">{{ dataList.date || "--" }}</div>
+            <div class="col">{{ dataList.slotStartTime || "--" }}</div>
+            <div class="col">{{ dataList.slotEndTime || "--" }}</div>
+            <div class="col">{{ dataList.reportTime || "--" }}</div>
+            <div class="col">{{ dataList.totalParticipants || "--" }}</div>
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>
+<div class="error-msg-view" *ngIf="groupListObj.length == 0">
+  <i class="fas fa-exclamation-triangle"></i>
+  <h4>No data found</h4>
+</div>
+
+<!-- <ng-template #roomAddAndEditModal let-modal>
+  <form (ngSubmit)="roomFormValSubmit()" novalidate>
+    <div class="modal-header">
+      <h4 class="modal-title">Add Room</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="roomName"><i class="fab fa-intercom"></i> Room Name</label>
+        <input type="text" name="roomName" class="form-control" id="roomName" placeholder="Enter Room Name"
+          [(ngModel)]="roomsValues.roomName" />
+      </div>
+      <div class="form-group">
+        <label for="capacity"><i class="fas fa-expand-arrows-alt"></i> Capacity</label>
+        <input type="text" name="capacity" class="form-control" id="capacity" placeholder="Capacity"
+          [(ngModel)]="roomsValues.capacity" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.close()">Cancel</button>
+      <button type="submit" class="btn btn-primary" ngbAutofocus>Submit</button>
+    </div>
+  </form>
+</ng-template> -->

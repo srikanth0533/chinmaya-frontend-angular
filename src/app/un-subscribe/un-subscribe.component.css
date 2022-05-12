@@ -1,0 +1,182 @@
+
+.pageContent {
+    /* width: 100%;
+    margin: 15px auto;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute; */
+  
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    padding-bottom: 30px;
+  }
+  .pageMainContent{
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+    padding: 65px 0;
+  }
+  .navbar {
+    display: none !important;
+  }
+  /* .mainHeader {
+    text-align: center;
+    padding: 16px 0px;
+    color: #000000;
+    font-family: 'Mulish', sans-serif;
+    box-shadow: 1px 1px 7px 4px #0000001f;
+    
+} */
+.mainHeader h3{
+font-weight: 700;
+}
+  
+  .contentHeaderUnsubscribe{
+    font-family: 'Charm', cursive;
+    font-style: normal;
+    line-height: 50px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #333333;
+  }
+  .contentHeaderUnsubscribe h2{
+      
+    font-weight: 700;
+  }
+
+  .secondaryHeading{
+    font-family: 'Charm', cursive;
+    font-style: normal;
+    line-height: 37px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: #FF6610;
+    margin-bottom: 32px;
+
+  }
+  .secondaryHeading h3{
+
+    font-weight: 700;
+  }
+  .unSubscribeContent {
+    text-align: center;
+    margin: 0px auto;
+    width: 752px;
+    padding: 50px;
+    background-color: #f2f2f2;
+  }
+  
+ .infoContent{
+    padding: 36px 30px;
+    background: #fff;
+    width: 624px;
+    margin: 0 auto;
+    border-top: 4px solid #FF6610;
+}
+ .infoContent h3{
+    text-align: left;
+    font-family: 'Mulish', sans-serif;
+font-style: normal;
+font-weight: bold;
+line-height: 30px;
+margin-bottom: 20px;
+color: #333333;
+ }
+.nonHighlights{
+    color: #828282;
+    font-family: 'Mulish', sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+}
+.highlightsText{ 
+    font-family: 'Mulish', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+.infoContent p{
+    text-align: left;
+}
+.spacer{
+    width: 511px;
+    border: 1px solid #F2F2F2;
+    margin: 10px auto;
+}
+.nameEmail{
+    font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 20px;
+color: #4F4F4F;
+font-family: 'Mulish', sans-serif;
+}
+.emailaddress, .participantName{
+    width: 511px;
+    margin: 0 auto;
+    text-align: left;
+}
+.unsubscribeBtn{
+    margin-top: 50px;
+}
+.unsubscribeBtn button{
+    background: #4F4F4F;
+    padding: 12px 40px;
+border-radius: 4px;
+cursor: pointer;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 20px;
+display: flex;
+align-items: center;
+font-family: 'Mulish', sans-serif;
+text-align: center;
+color: #F2F2F2;
+}
+.feedback .highlightsText{
+    text-align: center;
+}
+  @media (max-width: 1400px) {
+    .pageContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* justify-content: center; */
+      width: 100%;
+      /* margin: 50px auto; */
+    }
+  
+    .unSubscribeContent{
+        width: 368px;
+        padding: 35px 18px;
+    }
+    .infoContent{
+        width: 333px;
+        padding: 36px 14px 22px;
+    }
+    .infoContent h3{
+        font-size: 24px;
+    }
+    .spacer{
+        width: 305px;
+    }
+    .emailaddress, .participantName{
+        width: 305px;
+    }
+    .unsubscribeBtn button{
+        width: 305px;
+        padding: 12px 32px;
+    }
+
+    .feedback .highlightsText{
+        padding: 0px 40px;
+    }
+   
+  }
+  

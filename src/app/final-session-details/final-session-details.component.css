@@ -1,0 +1,768 @@
+.navbar {
+    display: none !important;
+  }
+  .pageContent {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    padding: 30px 15px;
+    overflow: auto;
+    font-family: "Nunito Sans", sans-serif;
+  }
+  
+  .ruleBox{
+    background-color: #FAFAFA;
+     
+  }
+  .rule{
+    padding: 35px 45px;
+    overflow: auto;
+    height: 100%;
+    max-height: 750px;
+  }
+  .pName{
+    text-transform: capitalize;
+  }
+  
+  .boldRule , .wish{
+    font-weight: 600;
+  }
+  .info{
+    color: #666666;
+  }
+  .ruleBtn{
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    width: 212px;
+  height: 42px;
+  color: #EB5757;
+  font-weight: 600;
+  margin: auto;
+    border: 1px solid #EB5757;
+  }
+  .imgHeader {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .mainHeader {
+    text-align: center;
+    margin: 16px 0px 26px;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-family: 'Charm', cursive;
+    color: #EB5757;
+  }
+  
+  .ticket {
+    text-align: center;
+    position: relative;
+  
+  }
+  
+  .mainContent {
+    text-align: center;
+      margin: 0px auto;
+      max-width: 450px;
+      padding: 0px 15px;
+      width: 100%;
+  }
+  .greet{
+    
+    color: #666666;
+  }
+  .slotText{
+    text-transform: uppercase;
+    color: #333333;
+    font-weight: 600;
+  }
+  .referSlot {
+    width: 100%;
+    position: absolute;
+    top: 46px;
+    font-size: 14px;
+    margin-bottom: 0px;
+    color: #666666;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  .editName {
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-bottom: 0px;
+    font-size: 18px;
+    color: #333333;
+    transform: translateX(-50%);
+  }
+  
+  .bgContent {
+    background-color: #FAFAFA;
+    padding: 15px;
+  }
+  
+  .reportHeading{
+    font-size: 12px;
+      color: #666666;
+  }
+  
+  
+  .timeSlot {
+    width: 100%;
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  
+  .reportingTime {
+    width: 100%;
+    position: absolute;
+    top: 145px;
+    left: 50%;
+    font-weight: 600;
+  font-size: 14px;
+  color: #666666;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  .boardingSessionTime{
+    color: #EB5757;
+  }
+  .boardingSessionAmPm{
+    color: #333333;
+  }
+  .reportTime {
+    color: #EB5757;
+    font-size: 21px;
+    font-weight: 600;
+    display: inline;
+  }
+  
+  .time {
+    
+    text-align: left;
+  
+  }
+  .yearSlotDateTime{
+    font-weight: 600;
+  font-size: 18px;
+  color: #333333;
+  }
+  .slotDate {
+    background: #f5f5f5;
+    padding: 5px 18px;
+    margin: 0px 10px 0px 0px;
+    border-radius: 5px;
+    width: 83%;
+    height: 61px;
+  }
+  
+  .slotTime {
+    background: #f5f5f5;
+      margin: 0px 0px 0px 10px;
+      padding: 5px 5px;
+      border-radius: 5px;
+      width: 76%;
+      height: 61px;
+  }
+  
+  /* .expiryInfoPage {
+  padding: 15px 62px;
+    background: #FFFFFF;
+      box-shadow: 0px 4px 28px rgb(0 0 0 / 4%);
+      border-radius: 8px;
+  } */
+  .multiStatusPage{
+    padding: 15px 54px;
+    background: #FFFFFF;
+      box-shadow: 0px 4px 28px rgb(0 0 0 / 4%);
+      border-radius: 8px;
+  }
+  .wrongInfoPage {
+  padding: 15px 54px;
+   background: #FFFFFF;
+      box-shadow: 0px 4px 28px rgb(0 0 0 / 4%);
+      border-radius: 8px;
+  }
+  .wrongPhase {
+    font-size: 1.2rem;
+  }
+  .timeLeft {
+    font-size: 14px;
+    font-weight: 600;
+  color: #666666;
+  }
+  .inactive {
+    color: #EC561E;
+  }
+  .preJoinMsg{
+    font-size: 14px;
+    text-align: center;
+    color: #333333;
+  }
+  .countDown {
+    background: #FAE7E0;
+    border: 1px solid #EC561E;
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 45px;
+    width: 45px;
+    margin: 0 auto;
+    font-weight: 600;
+      font-size: 24px;
+      letter-spacing: 0.04em;
+      color: #EC561E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .countDownHeader{
+    margin: 0 auto;
+    font-size: 10px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  
+  color: #666666;
+  }
+  .preJoinedButton {
+    border: none;
+      color: #999999;
+      background: #EEEEEE;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+  }
+  
+  .onBoardingInfo {
+    background: #FFFFFF;
+    border: 1.4px dashed #00BA07;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    color: #00BA07;
+    padding: 10px 0px;
+  }
+  .boldOnBoardTime{
+    font-weight: 600;
+  }
+  .onBoardNote {
+    margin: 10px 10px 25px;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #333333;
+  }
+  .confirmMob {
+    cursor: pointer;
+    font-weight: 600;
+      border-color: #EB5757;
+      padding: 10px;
+      background: #EB5757;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+      color: #FFFFFF;
+  }
+  .confirmMob:hover{
+    background: #c44747;
+    border-color: #c44747;
+  }
+  .confirmMob:active{
+    background: #c44747;
+    border-color: #c44747;
+  }
+  .goToSlotDetails{
+    width: 366px;
+      height: 42px;
+      margin: auto;
+  }
+  
+  .agreementConfirmation .checkbox input {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .agreementText {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 12px;
+  color: #666666;
+  }
+  .onSessionInfo{
+    
+    background: #FFFFFF;
+    border: 1.4px dashed #EB5757;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    color: #EB5757;
+    padding: 10px 0px;
+  }
+  .expiryNote {
+    font-size: 14px;
+    color: #666666;
+  }
+  .closedSession {
+    font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  margin: 30px 0px 15px;
+  color: #EB5757;
+  }
+  .hariOmGreetings{
+    font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  
+  color: #333333;
+  }
+  .modalTitle{
+    font-size: 20px;
+  color: #666666;
+  text-align: left;
+  }
+  .modalHeader {
+    border-bottom: none;
+  }
+  .mainModalContent {
+    max-width: 750px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    box-shadow: 0px 0px 3px 4px #00000012;
+    background: #fff;
+    margin: 0 auto;
+    padding: 30px 40px;
+    border-radius: 5px;
+  }
+  .listOfInstructions {
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: #333333;
+  }
+  .modalBody {
+    padding: 15px 20px;
+    background: #FCF7EF;
+  }
+  .modalFooter {
+    border-top: 1px solid #efefef;
+  }
+  .boldHeadingRules{
+    font-weight: 600;
+  font-size: 20px;
+  color: #EB5757;
+  }
+  .modalFooterAppeal {
+    padding: 15px 0px;
+    text-align: center;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .errorIcon {
+    width: 450px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    display: block;
+  }
+  
+  
+  .expiryIcon {
+    color: #ef4923;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+  
+  
+  .expiryClosed {
+    color: #ef4923;
+  }
+  
+  .imgBlock {
+    position: relative;
+  }
+  
+  .insideImg {
+    /* position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); */
+    padding: 25px 0px;
+  }
+  
+  .confirmedInsideImg {
+    color: #377abd;
+  }
+  
+  .participantImg {
+    background: #f9f9f9;
+    margin: 0px -5px;
+  }
+  
+  .correctData {
+    color: #007bff;
+  }
+  
+  .noEditName {
+    width: 400px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+  }
+  
+  
+  
+  .ticket img {
+    width: 100%;
+  }
+  
+  .editNameOption {
+    color: #007bff;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  
+  .editNameOption i {
+    font-size: 0.75rem;
+  }
+  
+  .editNo {
+    color: #007bff;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  
+  .editNo i {
+    font-size: 0.75rem;
+  }
+  
+  
+  
+  .candidateName .form-control {
+    background: #cce4f0;
+    border: none;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #007bff;
+  }
+  
+  .checkedRecorded {
+    font-size: 0.8rem;
+  }
+  
+  hr {
+    border-color: #fff;
+  }
+  
+  .candidateNameEdit .form-control {
+    background: #ffffff;
+    border: none;
+    letter-spacing: 1px;
+    box-shadow: 1px 1px 3px 3px #00000014;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #007bff;
+  }
+  
+  .partiLabel {
+    width: 350px;
+    margin: 15px auto 6px;
+    text-align: left;
+  }
+  
+  .mobLabel {
+    width: 350px;
+    margin: 15px auto 6px;
+    text-align: left;
+  }
+  
+  .inpBelow {
+    width: 350px;
+    margin: 0px auto;
+  }
+  
+  .inpBelow .form-group {
+    margin-bottom: 0px;
+  }
+  
+  .belowTxt {
+    width: 350px;
+    font-size: 0.9rem;
+    color: #dc3545;
+    text-align: left;
+    margin: 0 auto;
+  }
+  
+  /* .checkedRecorded {
+    text-align: left;
+    } */
+  .mPinInputCont .checkedRecorded {
+    font-size: 0.9rem;
+    width: 350px;
+    margin: 25px auto 0px;
+    font-weight: 500;
+    text-align: left;
+    color: #868686;
+    max-width: 100%;
+  }
+  
+  .dayTime {
+    margin: 28px auto;
+    width: 400px;
+    background: #ffe00040;
+    padding: 10px;
+    max-width: 100%;
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  .confirmedData {
+    color: #28a745;
+  }
+  
+  .validation {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #e21a2d;
+  }
+  
+  .hariOm {
+    text-align: center;
+    color: #ef4923;
+  }
+  
+  
+  
+  .prejoinedInstructionNote {
+    margin-top: 15px;
+    font-size: 1rem;
+    text-align: left;
+    font-weight: 700;
+  }
+  .rulesBtn {
+    background-color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+  
+    padding: 10px;
+    border-color: #fff;
+    color: #2959a2;
+    box-shadow: 0px 0px 2px 2px #f7f0f0;
+  }
+  
+  
+  
+  .preJoinedInfo {
+    padding: 15px;
+    border: 1px dashed #ef4923;
+    background: #fff;
+    margin: 0px 10px;
+    color: #ef4923;
+  }
+  
+  .preJoinedNote {
+    /* color: #D30000; */
+    text-align: left;
+    margin: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .appeal {
+    padding: 15px;
+    text-align: center;
+    position: absolute;
+    top: 290px;
+    right: 200px;
+    width: 225px;
+    box-shadow: 0px 0px 4px 3px #0000001f;
+  }
+  
+  .appealBtn {
+    width: 200px;
+    position: relative;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  .appealImg {
+    width: 200px;
+    cursor: pointer;
+  }
+  .textOfBtn {
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .appealNote {
+    width: 150px;
+    margin: 0 auto;
+  }
+  .appealGreet {
+    color: #ef4923;
+    margin-top: 10px;
+  }
+  .blurArea {
+    background: #0000006b;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    z-index: 12;
+    align-items: center;
+  }
+  
+  
+  
+  .bankCard {
+    width: 400px;
+    box-shadow: 0px 0px 3px 4px #00000012;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  .bankHeading {
+    color: #888888;
+  }
+  .cross {
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .cross:hover {
+    color: #00558c;
+  }
+  .appealMobileBtn {
+    width: 200px;
+    position: relative;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  
+  .kindlyNote {
+    font-weight: 500;
+  }
+  
+  .activated {
+    color: #00558c;
+  }
+  
+  .accDetails {
+    text-align: center;
+  }
+  @media (max-width: 576px) {
+    .pageContent{
+      max-width: 576px;
+      width: 100%;
+    }
+    .imgHeader img{
+      max-width: 576px;
+      width: 100%;
+    }
+    .mainHeader{
+      font-size: 20px;
+    }
+    .reportingTime img{
+      max-width: 576px;
+      width: 100%;
+    }
+    
+    .editName{
+      font-size: 16px;
+    }
+    .referSlot , .reportingTime{
+      font-size: 12px;
+    }
+    .reportTime{
+      font-size: 17px;
+    }
+    .yearSlotDateTime{
+      font-size: 16px;
+    }
+    .multiStatusPage{
+      padding: 15px 25px;
+    }
+    .slotDate{
+      height: 53px;
+    }
+    .slotTime{
+      padding: 5px 12px;
+      height: 53px;
+    }
+    .onBoardingInfo{
+      font-size: 14px;
+    }
+    .onSessionInfo{
+      font-size: 14px;
+    }
+    .modalTitle{
+      font-size: 14px;
+    }
+    .boldHeadingRules, .listOfInstructions{
+      font-size: 16px;
+    }
+    .goToSlotDetails{
+      max-width: 366px;
+      width: 100%;
+        height: 42px;
+        margin: auto;
+    }
+  }
+  @media (max-width: 460px) {
+    .reportingTime{
+      top: 76%;
+    }
+    .timeSlot{
+      top: 36%;
+    }
+    .referSlot{
+      top: 24%;
+    }
+    .editName{
+      top: 10%;
+    }
+  }
+  
+  
+  
+  

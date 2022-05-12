@@ -1,0 +1,539 @@
+<div class="main-loader" *ngIf="mainLoaderIs">
+    <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+<div class="pageContent">
+    <div class="imgHeader">
+        <img src="../../assets/img/gurujiPoster.svg" alt="">
+    </div>
+    <h3 class="mainHeader">Geeta Chanting Competition 2021</h3>
+    <div class="mainContent" >
+
+        <div class="hideShow">
+            <div class="ruleBox ticket mb-4 p3 pt-2" *ngIf="!sessionClosed">
+                <div class="info pb-2">
+                    Please click on the button below and carefully read the
+                    instructions for GCC 2021 before joining the competition.
+                </div>
+                <div class="pb-2">
+                    <button class="btn btn btn-block ruleBtn" (click)="openrRule(longContentRules)">Read Instructions</button>
+                </div>
+            </div>
+            <div class="ticket" *ngIf="!sessionClosed">
+                <h5 class="editName"><span class="greet">Dear </span> <strong class="pName" [innerHTML]="eventSlotData.eventParticipantStatuses[0].participant.firstName + ' ' + eventSlotData.eventParticipantStatuses[0].participant.lastName"></strong></h5>
+                <p class="referSlot">Please refer to your <span class="slotText">SLOT</span> Details</p>
+                <div class="timeSlot">
+                    <div class="row no-gutters">
+                        <div class="col-6 d-flex justify-content-end ">
+                            <div class="slotDate">
+                                <p class="mb-0 text-left reportHeading">Competition Date</p>
+                                <div class="time">
+                                    <span class="reportTime mb-0" [innerHTML]="monthDayConcat"></span>
+                                    <span class="yearSlotDateTime" [innerHTML]=" ' ' + year"> </span>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex">
+                            <div class="slotTime">
+                                <p class="mb-0 text-left reportHeading">Slot Time</p>
+                                <div class="time">
+                                    <span class="reportTime mb-0" [innerHTML]="sessionStartTime + '-'"></span> 
+                                    <span class="reportTime" [innerHTML]="sessionEndTime + 'hrs'"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="reportingTime">
+                    Reporting Time : 
+                    <span class="boardingSessionTime"
+                            [innerHTML]="sessionBoardingTime">5:45</span>
+                            <span class="boardingSessionAmPm" [innerHTML]="' ' + 'hrs'"></span></p>
+                <img src="../../assets/img/sessionTicket.svg" alt="">
+            </div>
+
+            <div class="bgContent">
+                <!-- after 5:45 pm -->
+                <div class="multiStatusPage" *ngIf="onBoarding ">
+                    <div class="onBoardingInfo">
+                        <span>Onboarding has started at 
+                            <span class="boldOnBoardTime" [innerHTML]="' ' + sessionBoardingTime"></span> 
+                            <span class="boldOnBoardTime" [innerHTML]="' ' + amPm"></span>
+                        </span>
+                    </div>
+                    <p class="onBoardNote">
+                        Incase if you drop from the competition, connect on the same link below.
+                    </p>
+                    <div class="agreementConfirmation">
+                        <div class="row no-gutters">
+                            <div class="col-auto d-flex align-items-center">
+                                <div class="checkbox">
+                                    <label class="mb-0"><input type="checkbox"  [(ngModel)]="isChecked" [checked]="isChecked"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="agreementText">
+                                    I have read all the instructions with Rules and Regulations and I agree.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="confirmTrns">
+                        <button class="btn btn-primary btn-block mt-3 confirmMob" [disabled]="!isChecked" (click)="openZoomLink();">Go to Competition</button>
+                    </div>
+
+                </div>
+                <!-- before 5:45 pm -->
+                <div class="multiStatusPage" *ngIf="preJoined">                 
+                    <div class="expiryInfoPage">
+                        <p class="timeLeft">Time Left</p>
+                        <!-- <p class="countDown" [innerHTML]="timerCountDays + ' ' +
+                        timerCountHours + ' ' +
+                        timerCountMinutes + ' ' +
+                        timerCountSeconds"></p> -->
+                        <div class="row no-gutters justify-content-center mb-2">
+                            <div class="col-10">
+                                <div class="row no-gutters">
+                                    <div class="col-3"><div class="countDownHeader">Days</div></div>
+                                    <div class="col-3"><div class="countDownHeader">Hours</div></div>
+                                    <div class="col-3"><div class="countDownHeader">Minutes</div></div>
+                                    <div class="col-3"><div class="countDownHeader">Seconds</div></div>
+                                </div>
+                                </div>
+                        </div>
+                        <div class="row no-gutters justify-content-center mb-4">
+                            <div class="col-10">
+                                <div class="row no-gutters">
+                                    <div class="col-3"><div class="countDown" [innerHTML]="timerCountDays"></div></div>
+                                    <div class="col-3"><div class="countDown" [innerHTML]="timerCountHours"></div></div>
+                                    <div class="col-3"><div class="countDown" [innerHTML]="timerCountMinutes"></div></div>
+                                    <div class="col-3"><div class="countDown" [innerHTML]="timerCountSeconds"></div></div>
+                                </div>
+                                </div>
+                        </div>
+                        <!-- <span *ngIf="preJoined" [innerHTML]="timer"></span> -->
+                        <p class="mb-0 font-weight-bolder preJoinMsg">Link to join Competition will be activated
+                            <span class="inactive"> 15 minutes </span> before your Slot. 
+                        </p>
+                        <button class="btn btn-block mt-3 preJoinedButton" (click)="openZoomLink()" disabled>Click here to join the competition
+                        </button>
+                    </div>
+                </div>
+                <!-- after 6 pm -->
+                <div class="multiStatusPage" *ngIf="inSession ">
+                    <div class="onSessionInfo">
+                        <span>Competition is in session</span>
+                    </div>
+                    <p class="onBoardNote">
+                        Incase if you drop from the competition, connect on the same link below.
+                    </p>
+                    <div class="agreementConfirmation">
+                        <div class="row no-gutters">
+                            <div class="col-auto d-flex align-items-center">
+                                <div class="checkbox">
+                                    <label class="mb-0"><input type="checkbox"  [(ngModel)]="isChecked" [checked]="isChecked"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="agreementText">
+                                    I have read all the instructions with Rules and Regulations and I agree.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="confirmTrns">
+                        <button class="btn btn-primary btn-block mt-3 confirmMob" [disabled]="!isChecked" (click)="openZoomLink();">Go to Competition</button>
+                    </div>
+
+                </div>
+                <!-- after 9:00 pm -->
+                <div class="multiStatusPage" *ngIf="sessionClosed">
+
+                    <div class="expiryInfoPage">
+
+                        <img src="../../assets/img/alertSession.svg" alt="">
+                        <div class="closedSession">Your slot for GCC 2021 is over</div>
+                    </div>
+                    <p class="expiryNote">
+                        Participation certificates will be emailed on <strong>11th December 2021.</strong>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <!-- WRONG SESSION PAGE -->
+        <div class="multiStatusPage" *ngIf="wrongSession">
+
+            <div class="wrongInfoPage">
+
+                <i class="fas fa-exclamation-circle expiryIcon"></i>
+                <h4 class="mb-4"><span class="closedSession"></span>Kindly treat this email as INVALID</h4>
+                <p class="mb-0 wrongPhase">Your Slot is in GCC 2020 - <strong>Phase 2</strong></p>
+                <p><strong>(2 Jan 2021 - 6 Jan 2021)</strong></p>
+                <p><strong>A fresh email</strong> will be sent to you 5-6 days before Phase 2 commences which will
+                    contain your slot details.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- APPEAL BUTTON -->
+    <!-- <div class="appeal" *ngIf="!wrongSession">
+        <img src="../../assets/img/Om 1.svg" alt="">
+        <h5 class="appealGreet">Hari Om!</h5>
+        <div class="appealBtn" (click)="openShortModal()">
+            <img src="../../assets/img/Appeal GIF 01.gif" class="appealImg" alt="">
+            <p class="textOfBtn">APPEAL</p>
+        </div>
+
+        <h6 class="appealNote">
+            Please click on the APPEAL above
+        </h6>
+    </div> -->
+
+<!-- APPEAL PAGE AFTER EMAIL LINK WEBPAGE -->
+    <!-- <div class="mainModalContent p-3" *ngIf="isAppealPage">
+        <div class="modalHeader pb-2">
+             <h4 class="modalTitle"><small>🙏</small> APPEAL <small>🙏</small></h4>
+        </div>
+        <div class="modalBody">
+    
+            <div class="confirmTrns d-flex justify-content-end">
+    <button class="btn btn-light mt-3" (click)="downloadPDFAppeal();">Download
+                </button>
+                
+            </div>
+            <div class="div">
+            <h5 class="preJoinedclosedSession">Hari Om!</h5>
+            <p class="mb-1">Pujya Gurudev, Swami Chinmayananda, had started the Geeta Chanting Competition for children over 6 decades ago and this event is being conducted regularly by Chinmaya Mission, Thane since then. This year too, in the current situation, we are going ahead with the event virtually in December 2020.
+            </p>
+            <p class="mb-1">We have been receiving your donations for this noble cause over the years and appeal to you to donate generously for this year's event too.
+            </p>
+            <p class="mb-3 kindlyNote">Kindly note the following details for making your Donation through NEFT:</p>
+            
+            <div class="bankCard">
+                <h5 class="text-center mb-1">Chinmaya Mission Thane</h5>
+                <div class="accDetails"> 
+                <img src="../../assets/img/bhim-3-69845 1.svg" alt=""><span>MAB.037322007720025@AXISBANK</span>
+                 </div>
+                <h6 class="mb-1 bankHeading text-center">Scan QR Code to Donate</h6>
+                
+                <div class="qrCode d-flex justify-content-center">
+                    <img class="text-center" src="../../assets/img/QR code.svg" style="width: 70%;" alt="">
+                </div>
+                <p class="mb-1 preJoinedclosedSession">Axis Bank</p>
+                <p class="mb-1 bankHeading">a/c no.</p>
+                <h5 class="mb-1">7 7 2 0 1 0 1 0 0 0 0 5 5 2 4</h5>
+                <p class="mb-1 bankHeading">IFSC Code</p>
+                <h5 class="mb-1">UTIB0000772</h5>
+                <p class="mb-1 bankHeading">Branch</p>
+                <h5 class="mb-1">Ghodbunder Rd Branch <small>(Saving Account)</small></h5>
+            </div>
+            <p class="my-3">Once you make the transfer,<strong> please do take a screenshot of the payment, add your
+                    name and email id and send it to us on 9987400873</strong> so that we can send you the
+                official e-receipt for the same. In case of the donation amount exceeding Rs 2000/- kindly provide your
+                PAN too.</p>
+            <p class="mb-1">All Donations made to Chinmaya Mission Thane are eligible for exemption under Sec 80 G of the Income Tax Act.
+            </p>
+            </div>
+        </div>
+        <div class="modalFooterAppeal">
+            <h5><strong>Slot details follow after Rules and Regulations</strong></h5>
+            <button class="btn btn-primary btn-block confirmMob" (click)="appealCalled();">Proceed to read Rules and Regulations for the competition
+            </button>
+        </div>
+    </div> -->
+
+
+     <!-- RULES & REGULATIONS WEBPAGE AFTER APPEAL -->
+     <!-- <div class="mainModalContent " *ngIf="isRulesRegulation">
+        <div class="modalHeader pb-2">
+            <p class="hariOmGreetings">Hari Om!</p>
+             <p class="modalTitle">Rules and Regulations for GCC 2021</p> 
+        </div>
+        <div class="modalBody ">
+            <div class="boldHeadingRules mb-3">
+                Rules and Regulations for GCC 2021
+            </div>
+            <ul class="listOfInstructions">
+                <li class="mb-3">
+                 Participants can be asked to chant the verses in any one of the following methods which will be decided by the judges:
+                </li>
+                <ol type="1" class="pl-4 mb-3">
+                    <li class="mb-3">
+                        To chant all the verses without a break.
+                    </li>
+                    <li class="mb-3">
+                        To chant selected verses identified by the judges.
+                    </li>
+                    <li class="mb-3">
+                        To chant selected verses through dodging as decided by the judges.
+                    </li>
+                </ol>
+
+                <li class="mb-3">
+                    Participants will be judged under the following three criteria:
+                </li>
+                <ol type="1" class="pl-4 mb-3">
+                    <li class="mb-3">
+                        Memory
+                    </li>
+                    <li class="mb-3">
+                        Pronunciation
+                    </li>
+                    <li class="mb-3">
+                        Overall effect and presentation
+                    </li>
+                </ol>
+
+                <li class="mb-3">
+                    There is a possibility of a second round being conducted for some categories of participants. Announcements about this will be made during the course of the event. The final round, if any, will be conducted during the dates of the event declared in our earlier mail.
+                </li>
+
+                <li class="mb-3">
+                    The decisions taken by the Chinmaya Mission judges panel will be final in all respects.
+                </li>
+
+    
+            </ul>
+        </div>
+        <div class="modalFooterAppeal">
+            <div class="agreementConfirmation mb-3">
+                <div class="row no-gutters">
+                    <div class="col-auto d-flex align-items-center">
+                        <div class="checkbox">
+                            <label class="mb-0"><input type="checkbox" [(ngModel)]= "Agreecheckbox"  [checked]="Agreecheckbox"></label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="agreementText"><strong>I have read all the Rules and Regulations
+                        </strong>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+            </div>
+            <button class="btn btn-primary btn-block confirmMob goToSlotDetails" [disabled]="!Agreecheckbox" (click)="slotDetailsCalled();">Go to Slot Details</button>
+        </div>
+    </div>  -->
+</div>
+
+
+<!-- RULES & REGULATIONS POP UP -->
+<ng-template #longContentRules let-modal>
+    <div class="modal-body rule">
+
+        <div class="modalHariOm mb-4">
+            <h4>Hariom!</h4>
+        </div>
+        <div class="ruleAndRegulations modalBody">
+            <div class="boldHeadingRules text-center mb-3">
+                General Instructions for all participants of GCC 2021 :
+            </div>
+            <ul class="listOfInstructions">
+                <li class="mb-3">
+                    Please log in at the Reporting time according to the schedule given above
+                </li>
+              
+                <li class="mb-3">
+                    Sit comfortably so that you are completely visible.
+                </li>
+                <li class="mb-3">
+                    Please ensure that the room has proper lighting and no shadow falls on you.
+                </li>
+
+                <li class="mb-3">
+                    Position your device and adjust your camera in such a way that your posture is clearly seen. Check your net connection and audio device.
+                </li>
+                <li class="mb-3">
+                    Your test will be only for a short while. So no other distractions please!
+                </li>
+                <li class="mb-3">
+                    In the case of very young children (Nursery to Std. 1), an adult can be there next to the child as a moral support. In the case of children from Std. 2 onwards, an adult can be in the same room, but not within the frame of the camera.
+                </li>
+                <li class="mb-3 boldRule">
+                    Parents, please refrain from prompting or showing the text of the verses to the participants.
+                </li>
+                <li class="mb-3 ">
+                    During a particular time slot, there will be other participants in the room. Hence while chanting of one participant is on, others are requested to mute their microphones. You may keep the video on, but no movements please. This will distract the chanting participant. 
+                </li>
+                <li class="mb-3 ">
+                    While chanting, participants are requested not to close their eyes.
+                </li>
+                <li class="mb-3 ">
+                    There is no specific dress code for the participants. They must only be neatly, decently and comfortably clothed. Wearing school uniform is not mandatory.
+                </li>
+                <li class="mb-3 boldRule">
+                    Please ensure that the participant’s name and standard are displayed when they log into the Zoom session through the link attached herewith.
+                </li>
+                <li class="mb-3 boldRule">
+                    Participants are required to chant the verses only once. The Learning Aid with chanting of verses twice was for study and practice purpose only.
+                </li>
+                
+    
+            </ul>
+            <div class="wish p-3">
+                BEST WISHES TO ALL THE PARTICIPANTS !!!!!
+            </div>
+
+        </div>
+        <div class="closebtn mt-3">
+            <button class="btn btn btn-block ruleBtn" (click)="modal.dismiss('Cross click')">Close</button>
+        </div>
+    </div>
+</ng-template>
+<!-- <ng-template #longContent let-modal>
+
+    <div class="modal-header">
+        <h4 class="modal-title">Instructions</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="confirmTrns d-flex justify-content-end">
+
+            <button class="btn btn-light mt-3" disabled>Download
+            </button>
+        </div>
+        <div class="modalHariOm">
+            <h4>Hariom!</h4>
+        </div>
+
+        <div class="modalInstructions">
+            <h5>Rules and Regulations for GCC 2020:</h5>
+        </div>
+
+        <ul class="listOfInstructions">
+            <li>
+                Participants can be asked to chant the verses in any one of the following methods which will be decided
+                by the judges:
+            </li>
+            <ol type="a" class="pl-4">
+                <li>
+                    To chant all the verses without a break.
+                </li>
+                <li>
+                    To chant selected verses identified by the judges.
+                </li>
+                <li>
+                    To chant selected verses through dodging as decided by the judges.
+                </li>
+            </ol>
+            <li>
+                Participants will be judged under the following three criteria:
+            </li>
+            <ol type="a" class="pl-4">
+                <li>
+                    Memory
+                </li>
+                <li>
+                    Pronunciation
+                </li>
+                <li>
+                    Overall effect and presentation
+                </li>
+            </ol>
+            <li>
+                There is a possibility of a second round being conducted, if required. If so decided, the second round
+                for participants of Phase 1 and Phase 2 will be held within the respective dates of both phases as
+                advised in our earlier mail. Please refer to our earlier mail dated 3rd Nov or to our website for
+                details of standards covered under Phase 1 and Phase 2.
+            </li>
+            <li>
+                Participation certificates will be emailed to the registered email ID of all participants of Phase 1
+                between 25th to 31st December 2020 and for participants of Phase 2 between 8th to 15th January 2021.
+            </li>
+            <li>
+                Results will be declared for both Phase 1 and Phase 2 on the 12th of January, 2021, which coincides with
+                Swami Vivekananda Jayanti.
+            </li>
+            <li>
+                Prize distribution will be conducted in a virtual ceremony on the 26th of January, 2021. The timings for
+                the same will be intimated subsequently.
+            </li>
+            <li>
+                The decisions taken by the Chinmaya Mission judges panel will be final in all respects.
+
+            </li>
+
+        </ul>
+        <p>BEST WISHES TO ALL THE PARTICIPANTS!!!!!</p>
+
+        <div class="modal-footer">
+            <button *ngIf="preJoined" class="btn btn-primary btn-block confirmMob" (click)="openZoomLink();" disabled>Go
+                to
+                Competition
+            </button>
+            <button *ngIf="onBoarding || inSession" class="btn btn-primary btn-block confirmMob"
+                (click)="openZoomLink();modal.dismiss('Cross click')">Go to
+                Competition
+            </button>
+        </div>
+    </div>
+
+</ng-template> -->
+
+
+
+<!-- APPEAL POP UP -->
+<!-- <div *ngIf="isSendBulk" class="blurArea"
+    <div *ngIf="showSendBulkModal" class="mainModalContent p-3">
+
+        <div class="modalHeader pb-2">
+            <div class="row no-gutters">
+                <div class="col">
+                    <h4 class="modalTitle">APPEAL</h4>
+                </div>
+                <div class="col-auto px-2 cross" (click)="isSendBulk=false; showSendBulkModal=false;"><i
+                        class="fas fa-times"></i></div>
+            </div>
+
+        </div>
+
+        <div class="modalBody">
+
+            <h5>Hari Om!</h5>
+            <p class="mb-1">Bhagavad Geeta, the manual of life guides us thoroughly to go through our life experiences
+                smoothly and emerge strong and victorious. </p>
+            <p class="mb-1">Thus Pujya Gurudev's initiative of Geeta chanting competition is rooted on the principle of
+                Chant...Study...Know...Live.</p>
+            <p class="mb-1">Chinmaya Mission, Thane has been conducting this event for decades. This initiative has
+                grown from strength to strength only with the support of the general public. This year too, amidst this
+                grave adversity, we are going ahead with the event virtually in two phases - December 19 - 23, 2020 and
+                January 2 - 6, 2021.</p>
+            <p class="mb-1">All these years, you have been extremely supportive for this noble cause and we are very
+                grateful for the same.</p>
+            <p class="mb-4"><strong> We appeal to you to donate generously and make this event a memorable one.</strong>
+            </p>
+            <p><strong> Kindly note the following details for making your Donation through NEFT:</strong></p>
+
+            <div class="bankCard">
+                <h5 class="text-center">Chinmaya Mission Thane</h5>
+                <p class="mb-1 preJoinedclosedSession">Axis Bank</p>
+                <p class="mb-1 bankHeading">a/c no.</p>
+                <h5 class="mb-1">7 7 2 0 1 0 1 0 0 0 0 5 5 2 4</h5>
+                <p class="mb-1 bankHeading">IFSC Code</p>
+                <h5 class="mb-1">UTIB0000772</h5>
+                <p class="mb-1 bankHeading">Branch</p>
+                <p class="mb-1">Ghodbunder Rd Branch (Saving Account)</p>
+            </div>
+            <p class="my-3">Once you make the transfer,<strong> please do take a screenshot of the payment, add your
+                    name and full postal address and send it to us on 9987400873</strong> so that we can send you the
+                official receipt for the same. In case of the donation amount exceeding Rs 2000/- kindly provide your
+                PAN too.</p>
+            <p class="mb-1">All Donations made to Chinmaya Mission, Thane are eligible for exemption under Sec 80 G of
+                the Income Tax Act.</p>
+
+
+
+
+
+        </div>
+
+
+    </div>
+</div> -->

@@ -1,0 +1,950 @@
+<app-nav-bar></app-nav-bar>
+<div class="main-loader" *ngIf="mainLoaderIs">
+  <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+<div class="filter-tickets-inputs pb-0">
+  <div class="form-row mx-0 justify-content-center align-items-end flex-nowrap">    
+    <div class="col-auto">
+      <button type="button" class="btn btn-sm btn-primary" (click)="openLg(longContent,'add',null,null)">Add
+        Participant</button>
+    </div>    
+    
+    <div class="col-auto">
+      <label for="filterPartiName">Name:</label>
+      <input type="text" class="form-control" placeholder="Enter Participant Name" name="filterName"
+        id="filterPartiName" [(ngModel)]="participantFullName" [ngbTypeahead]="searchName" #instance1="ngbTypeahead"
+        (focus)="focus$1.next($any($event).target.value)" />
+      <button type="button" class="btn inputClear" *ngIf="participantFullName"
+        (click)="participantFullName = '';getParticipantRegData()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>   
+    <div class="col-auto">
+      <label for="filterStatus">Status:</label>
+      <select class="form-control" name="filterStatus" id="filterStatus" [(ngModel)]="filterStatus">
+        <option value="">All</option>
+        <option value="Registered">Registered</option>
+        <option value="Payment Failed">Payment Failed</option>
+        <option value="Form Submitted">Form Submitted</option>
+        <option value="Delete">Deleted</option>
+        <option value="Registered & Confirmed">Registered & Confirmed</option>
+        <option value="reallocate">Final Round</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label for="filtePaymentStatus">Payment Status:</label>
+      <select class="form-control" name="filtePaymentStatus" id="filtePaymentStatus" [(ngModel)]="filtePaymentStatus">
+        <option value="">All</option>
+        <option value="Credit">Done</option>
+        <option value="Failed">Failed</option>
+        <option value="pending">Pending</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label for="filtePaidAmountId">Amount:</label>
+      <input type="number" class="form-control" placeholder="Enter Amount" name="filtePaidAmount" id="filtePaidAmountId"
+        [(ngModel)]="paidAmountVal" />
+      <!-- <select class="form-control" name="filtePaidAmount" id="filtePaidAmountId" [(ngModel)]="paidAmountVal">
+        <option value="">All</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+      </select> -->
+    </div>
+    <div class="col-2">
+      <label for="filterPaymentId">Payment ID:</label>
+      <input type="text" class="form-control" placeholder="Enter Payment ID" name="filterPaymentId" id="filterPaymentId"
+        [(ngModel)]="filterPaymentId" />
+      <button type="button" class="btn inputClear" *ngIf="filterPaymentId"
+        (click)="filterPaymentId = '';getParticipantRegData()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>   
+    <div class="col-auto">      
+      <label for="filterSTD">STD</label>
+      <select class="form-control" name="participantStd" id="participantStd" [(ngModel)]="filterSTD">
+        <option value="">All</option>
+        <option value="Std 11 & Above">Std 11 & Above</option>
+        <option value="Nursery">Nursery</option>
+        <option value="Jr Kg">Jr Kg</option>
+        <option value="Sr Kg">Sr Kg</option>
+        <option value="Std 1">Std 1</option>
+        <option value="Std 2">Std 2</option>
+        <option value="Std 3">Std 3</option>
+        <option value="Std 4">Std 4</option>
+        <option value="Std 5">Std 5</option>
+        <option value="Std 6">Std 6</option>
+        <option value="Std 7">Std 7</option>
+        <option value="Std 8">Std 8</option>
+        <option value="Std 9">Std 9</option>
+        <option value="Std 10">Std 10</option>
+      </select>       
+    </div>
+     
+  </div>
+  <div class="form-row mx-0 justify-content-center align-items-end flex-nowrap my-3">  
+    <div class="col-auto d-flex flex-column align-items-center" *ngIf="showMaintenanceToggle">
+      <label for="">Maintenance Mode</label>
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="maintenanceMode" (change)="getMaintenanceMode()">
+        <span class="slider round"></span>
+      </label>
+    </div>  
+    <div class="col-auto">
+      <label for="filterSchoolName">School Name:</label>
+      <input type="text" class="form-control" placeholder="Enter School Name" name="filterSchoolName"
+        id="filterSchoolName" [(ngModel)]="filterSchoolName" [ngbTypeahead]="searchSchool" #instance2="ngbTypeahead"
+        (focus)="focus$2.next($any($event).target.value)" />
+      <button type="button" class="btn inputClear" *ngIf="schoolName"
+        (click)="filterSchoolName = '';getSchoolNameList()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>        
+    <div class="col-auto">
+     
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary btn-sm" (click)="DownloadFilteredParticipantsData()">Download</button>
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary btn-sm" (click)="applyfilter()">Apply Filter</button>
+    </div>
+    <div class="col-auto">
+    
+      <span class="menu"><button class="btn btn-primary btn-sm" (click) = "emailButtonsClick()">Send Email</button>
+        <div class="markAsBox" *ngIf="emailButtons">              
+          <p class="m-0 p-2">Select</p>
+          <span >
+            <div class="emailBtn1" >
+            <button class="btn btn-primary btn-sm" (click)="openReconfirmEmail(reconfirmEmail)">Send Re-Confirmation Email</button>
+          </div><div class="emailBtn2"><button class="btn btn-primary btn-sm" (click)="sendBulkslotEmail()">Send Slot Detail Email</button>
+          </div> </span>
+        </div>
+      </span>
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-outline-primary btn-sm" (click)="resetData()">Reset Filter</button>
+    </div>
+    <div class="col-auto d-flex flex-column align-items-center">
+      Total Count: <strong>{{ totalCount || 0 }}</strong>
+    </div>  
+    <div class="col-auto"><button class="btn btn-primary btn-sm" (click)="SelectParticipentButton(); pIdArr = []">Select for Re-Slotting</button>
+    </div>  
+  </div>
+</div>
+
+<div class="cust-table-view" *ngIf="totalCount != 0">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        
+        <th scope="col">ILM No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email Id</th>
+        <th scope="col">Contact#1</th>
+        <th scope="col">School Name</th>
+        <!-- <th scope="col">Reg. Fees</th> -->
+        <th scope="col">STD</th>
+        <th scope="col">Status</th>
+        <th scope="col">Paid</th>
+        <th scope="col">Payment ID</th>
+        <th scope="col">Payment Status</th>
+        <th scope="col" *ngIf="paymentMethod == 'manual'">Payment ID</th>
+        <th scope="col" *ngIf="paymentMethod == 'manual'">Payment Type</th>
+        <th scope="col" *ngIf="paymentMethod == 'manual'">Payment Image</th>
+        <!-- <th scope="col">Email Status</th> -->
+        <th scope="col" *ngIf="paymentMethod == 'manual'">Send Email</th>
+        <th scope="col">InstaMOJO Contact</th>
+        <th scope="col">Ex-Participant</th>
+        <th scope="col">Reason</th>
+        <th scope="col">Contact#2</th>
+        <th scope="col">Email</th>
+        <th scope="col" style="padding: 0px 45px">Select Rank</th>
+        <th scope="col" style="padding: 0px 55px">Certificate</th>
+        <th scope="col" style="padding: 0px 55px">Attendance</th>
+        <!-- <th scope="col" style="padding: 0px 55px">Email Status</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let participant of participatedList"
+        [ngClass]="{'highlightMultiparticipant' : participant.amount > 100}">
+        <td scope="col" (click)="openLg(longContent,'edit',participant,null)">
+          <span class="editRow">
+            <i class="fas fa-edit"></i>
+          </span>
+        </td>
+        <td scope="col" (click)="openMd(content,participant)">
+          <span class="editRow">
+            <i class="fas fa-trash-alt"></i>
+          </span>
+          
+        </td>
+        <td scope="col">
+          <span class="editRow">
+                <input type="checkbox" 
+                class = "selectParticipant"
+                value="participant.participant.id" 
+                id="{{participant.participant.id}}"
+                (change)= "selectParticipant(participant.participant.id)"
+                [(ngModel)]="participant.checked"
+                [checked] = "pIdArr.includes(participant.participant.id)">                    
+          </span>
+          
+        </td>
+        
+       
+        <td scope="col"><span [innerHTML]="participant.participant.id">ILM No.</span></td>
+        <td scope="col"><span class="changeCase"
+            [innerHTML]="participant.participant.firstName.toLowerCase() + ' ' + participant.participant.lastName.toLowerCase()">Name</span>
+        </td>
+        <td scope="col"><span [innerHTML]="participant.participant.emailId">Email Id</span></td>
+        <td scope="col"><span [innerHTML]="participant.participant.primaryContactNo">Contact#1</span></td>
+
+        <td scope="col"><span [innerHTML]="participant.participant?.school?.schoolName || '--'">School Name</span></td>
+        <!-- <td scope="col"><span [innerHTML]="participant.participant.school.reg_fees || '--'">Reg. Fees</span></td> -->
+        <td scope="col"><span [innerHTML]="participant.participant.std || '--'">STD</span></td>
+        <td scope="col">
+          <span class="d-flex align-items-center justify-content-center"
+            *ngIf="participant.participant.status == 'Delete'"><i class="fas fa-user-times deleteIcon"></i></span>
+          <span class="d-flex align-items-center justify-content-center"
+            *ngIf="participant.participant.status == 'Registered'"><i
+              class="far fa-registered registeredIcon"></i></span>
+          <span class="d-flex align-items-center justify-content-center"
+            *ngIf="participant.participant.status == 'Registered & Confirmed'"><i
+              class="far fa-registered registeredIcon"></i><i class="fas fa-check-double confRegIcon"></i></span>
+          <span class="d-flex align-items-center justify-content-center"
+            *ngIf="participant.participant.status == 'Payment Failed'"><i class="fas fa-rupee-sign"></i><i
+              class="far fa-times-circle payFailed"></i></span>
+          <span class="d-flex align-items-center justify-content-center"
+            *ngIf="participant.participant.status == 'Form Submitted'">
+            <img src="../../assets/img/verify.svg" height="35px" alt="">
+          </span>
+        </td>
+        <td scope="col">
+          <span *ngIf="participant.amount != null" [innerHTML]="participant.amount + ' Rs' || '--'">Paid</span>
+          <span *ngIf="participant.amount == null" [innerHTML]="'--'">Paid</span>
+        </td>
+        <td scope="col">
+          <div class="paymentId" *ngIf="participant.payment_id">
+            <span [innerHTML]="participant.payment_id || '--'"></span>
+            <button class="btn copy-btn" (click)="copyPymntIdForRef(participant.payment_id)"><i
+                class="far fa-copy"></i></button>
+          </div>
+          <span *ngIf="!participant.payment_id">--</span>
+        </td>
+        <td scope="col" *ngIf="paymentMethod == 'instamojo'">
+          <div>
+            <!-- (mouseenter)="getPaymentDetails(participant)" -->
+            <button class="btn btn-sm btn-light btn-block" [ngbTooltip]="tipContent" container="body"
+              (mouseenter)="getPaymentDetails(participant)" tooltipClass="my-custom-class">
+              <span class="iconCntents" *ngIf="participant.payment_status == 'Credit'"><i
+                  class="fas fa-rupee-sign"></i><i class="far fa-check-circle paySuccess"></i></span>
+              <span class="iconCntents" *ngIf="participant.payment_status == 'Failed'"><i
+                  class="fas fa-rupee-sign"></i><i class="far fa-times-circle payFailed"></i></span>
+              <span class="iconCntents"
+                *ngIf="participant.payment_status != 'Failed' && participant.payment_status != 'Credit'"><i
+                  class="fas fa-rupee-sign"></i><i class="fas fa-exclamation-circle payPending"></i></span>
+            </button>
+          </div>
+        </td>
+        <td scope="col" *ngIf="paymentMethod == 'manual'"><span [innerHTML]="participant.transaction_id || '--'">Payment
+            ID</span></td>
+        <td scope="col" *ngIf="paymentMethod == 'manual'"><span [innerHTML]="participant.payment_type || '--'">Payment
+            Type</span></td>
+        <td scope="col" *ngIf="paymentMethod == 'manual'"><span>
+            <button *ngIf="participant.image_path" class="btn btn-primary smallBtn"
+              (click)="openImg(imgContent,participant)">Payment Screenshot</button>
+            <button *ngIf="participant.image_path == null" disabled class="btn btn-primary smallBtn">Payment
+              Screenshot</button>
+            <!-- <img [src]="imgRootUrl + participant.image_path || '--'" width="50px" alt=""> -->
+          </span></td>
+        <!-- <td scope="col"><span [innerHTML]="'participant.participant.'">Email Status</span></td> -->
+        <td scope="col" *ngIf="paymentMethod == 'manual'">
+          <button *ngIf="participant.participant.status == 'Payment pending'"
+            (click)="openPaymentLinkConf(paymentLink,participant)" class="btn btn-primary smallBtn">Send Payment
+            Link</button>
+          <button *ngIf="participant.participant.status == 'Registered'" class="btn btn-success smallBtn"
+            (click)="openConfEmail(confEmail,participant)">Send Confirmation Email</button>
+          <button *ngIf="participant.participant.status == 'Payment verification pending'" disabled
+            class="btn btn-primary smallBtn">Send Confirmation Email</button>
+        </td>
+        <td scope="col"><span [innerHTML]="participant.contactNo || '--'">InstaMOJO Contact</span></td>
+        <td scope="col"><span class="changeCase"
+            [innerHTML]="participant.participant.question1 || '--'">Ex-Participant.participant</span></td>
+        <td scope="col"><span [innerHTML]="participant.participant.question2 || '--'">Reason</span></td>
+        <td scope="col"><span [innerHTML]="participant.participant.secondaryContactNo || '--'">Contact#2</span></td>
+        <td scope="col">
+          <span>
+            <span *ngIf ="participant.participant.status != 'Registered' && !((participant.participant.status == 'Registered & Confirmed' || participant.participant.status == 'reallocate') && participant.participant.isAlloted == 1)"></span>
+            <button  class="btn btn-primary btn-sm sendMail" *ngIf ="participant.participant.status == 'Registered'" (click)="sendEmail(participant.participant.participantToken)">Confimation Email</button>
+            <button  class="btn btn-primary btn-sm sendMail" *ngIf ="(participant.participant.status == 'Registered & Confirmed' || participant.participant.status == 'reallocate') && participant.participant.isAlloted == 1" (click)="sendEmailSlotting(participant.participant.participantToken)">Slotting Email</button>
+            
+          </span>
+        </td>
+        <td scope="col" >
+          <select class="form-control formInput" placeholder="Select Rank" id="participantRank" name="participantRank" 
+          [(ngModel)]="participant.participant.rank" autofocus (ngModelChange)="openLg(longContent,'edit',participant,'rank')">
+            <option disabled>Select</option>
+            <option value="1st" >1'st Rank</option>
+            <option value="2nd" >2'nd Rank</option>
+            <option value="3rd" >3'rd Rank</option>
+            <option value="motivational" >Motivational</option>
+            <option value="participant" [selected]  >Participant</option>
+          </select>
+        </td>
+        <td scope="col" >
+          <button class="certifcat0 px-1 py-2 btn btn-primary"[disabled]="participant.participant.attendance == 0"  *ngIf="participant.participant.rank == 'participant' || participant.participant.rank == null" (click)="opencertificate(certificate,participant.participant)">Participant</button>
+          <button class="certifcat1 px-1 py-2 btn btn-primary" [disabled]="participant.participant.attendance == 0" *ngIf="participant.participant.rank == '1st'" (click)="openWinnercertificate(certificatewinner,participant.participant)">1'st Rank</button>
+          <button class="certifcat2 px-1 py-2 btn btn-primary" [disabled]="participant.participant.attendance == 0" *ngIf="participant.participant.rank == '2nd'" (click)="openWinnercertificate(certificatewinner,participant.participant)">2'nd Rank</button>
+          <button class="certifcat3 px-1 py-2 btn btn-primary" [disabled]="participant.participant.attendance == 0"  *ngIf="participant.participant.rank == '3rd'" (click)="openWinnercertificate(certificatewinner,participant.participant)">3'rd Rank</button>
+          <button class="certifcat4 px-1 py-2 btn btn-primary" [disabled]="participant.participant.attendance == 0" *ngIf="participant.participant.rank == 'motivational'" (click)="opencertificate(certificatewinner,participant.participant)">Motivational</button>
+        </td>
+     
+        <td scope="col" >
+          <select class="form-control formInput" placeholder="Select Attendance" id="attendance" name="attendance"
+          [(ngModel)]="participant.participant.attendance" autofocus (ngModelChange)="openLg(longContent,'edit',participant,'attendance')">
+            <option disabled>Select</option>
+            <option value=1 >Present</option>
+            <option value=0 >Absent</option>           
+          </select>
+        </td>
+        <!-- <td scope="col" >
+          
+          <i class="far fa-envelope emailLogo" (click)= "modelBoxStatus(emailStatus)" ></i>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="error-msg-view" *ngIf="totalCount == 0">
+  <i class="fas fa-exclamation-triangle"></i>
+  <h4>No data found</h4>
+</div>
+<div class="pagination justify-content-center mt-3">
+  <ngb-pagination [collectionSize]="totalCount" [(pageSize)]="pageSize" [(page)]="page"
+    (pageChange)="pageChanged($event)" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
+  </ngb-pagination>
+</div>
+
+<ng-template #tipContent>
+  <div class="text-left">
+    <img *ngIf="paymentResponse" src="assets/img/loader.gif" width="20px" alt="Loading..." />
+    <div *ngIf="responseFalse == false">
+
+      <p>
+        <span>Amount : </span>
+        <span class="boldTooltip" [innerHTML]="'Rs ' + paymentStatusInstamojoAmount"></span></p>
+      <p>
+        <span>Email Id : </span>
+        <span class="boldTooltip" [innerHTML]="paymentStatusInstamojoEmail"></span></p>
+      <p>
+        <span>Card Type : </span>
+        <span class="boldTooltip" [innerHTML]="paymentStatusInstamojoCardType"></span></p>
+      <p>
+        <span>Date : </span>
+        <span class="boldTooltip" [innerHTML]="paymentStatusInstamojoTime | date:'medium'"></span></p>
+      <!-- <p [innerHTML]="'Payment Id : ' + paymentStatusInstamojoPaymentID"></p> -->
+      <p>
+        <span>Payment Status : </span>
+        <span class="boldTooltip" [innerHTML]="paymentStatusInstamojoStatus"></span></p>
+      <p *ngIf="paymentStatusInstamojoFailure">
+        <span>Failure Reason : </span>
+        <span class="boldTooltip" [innerHTML]="failureReason"></span></p>
+      <p *ngIf="paymentStatusInstamojoFailure">
+        <span>Failure Message : </span>
+        <span class="boldTooltip" [innerHTML]="failureMessage"></span></p>
+    </div>
+    <p class="mb-0" *ngIf="responseFalse" [innerHTML]="paymentResponsePending"></p>
+  </div>
+</ng-template>
+
+
+<ng-template #longContent let-modal>
+  <div class="modal-header test">
+    <h4 class="modal-title" *ngIf="addParticipantShow">Add Participant</h4>
+    <h4 class="modal-title" *ngIf="updateParticipantShow">Update Participant</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-row justify-content-center">
+      <div class="col-4">
+        <div class="form-group">
+          <label for="participantFName">First Name:</label>
+          <input type="text" class="form-control" name="participantFName" id="participantFName"
+            [(ngModel)]="participantFName">
+          <small class="text-danger" *ngIf="formSubmit && !participantFName">
+            This field is required
+          </small>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="participantMName">Middle Name:</label>
+          <input type="text" class="form-control" name="participantMName" id="participantMName"
+            [(ngModel)]="participantMName">
+          <!-- <small class="text-danger" *ngIf="formSubmit && !participantMName">
+                            This field is required
+                        </small> -->
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="participantLName">Last Name:</label>
+          <input type="text" class="form-control" name="participantLName" id="participantLName"
+            [(ngModel)]="participantLName">
+          <small class="text-danger" *ngIf="formSubmit && !participantLName">
+            This field is required
+          </small>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="col-4">
+        <div class="form-group">
+          <label for="participantEmailId">Email ID:</label>
+          <input type="email" class="form-control" name="participantEmailId" id="participantEmailId"
+            [(ngModel)]="participantEmailId" #email="ngModel" (ngModelChange)="validationCheck()">
+
+          <small class="text-danger" *ngIf="formSubmit && !participantEmailId">
+            This field is required
+          </small>
+          <small class="text-danger" *ngIf="participantEmailId && !validEmail">
+            Please enter valid email Id
+          </small>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="form-row justify-content-center">
+      <div class="col-4">
+        <div class="form-group">
+          <label for="participantMobileNo1">Mobile no:</label>
+          <input type="tel" class="form-control" id="participantMobileNo1" name="participantMobileNo1"
+            [(ngModel)]="participantMobileNo1" (ngModelChange)="validationCheck()">
+
+          <small class="text-danger" *ngIf="formSubmit && !participantMobileNo1">
+            This field is required
+          </small>
+          <small class="text-danger" *ngIf="participantMobileNo1 && !validMobile1">
+            Please enter valid Mobile Number
+          </small>
+
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="form-group">
+          <label for="participantMobileNo2">Alternate Mobile no:</label>
+          <input type="tel" class="form-control" id="participantMobileNo2" name="participantMobileNo2"
+            [(ngModel)]="participantMobileNo2" (ngModelChange)="validationCheck()">
+
+
+          <small class="text-danger" *ngIf="participantMobileNo2 && !validMobile2">
+            Please enter valid Mobile Number
+          </small>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group formFocus">
+          <label for="participantStd" class="formLabelsActive">STD *</label>
+          <select class="form-control formInput" placeholder="Select STD" id="participantStd" name="participantStd"
+            [(ngModel)]="participantStd" autofocus (change)="changeStd()">
+            <option disabled>Select STD</option>
+            <option>Std 11 & Above</option>
+            <option>Nursery</option>
+            <option>Jr Kg</option>
+            <option>Sr Kg</option>
+            <option>Std 1</option>
+            <option>Std 2</option>
+            <option>Std 3</option>
+            <option>Std 4</option>
+            <option>Std 5</option>
+            <option>Std 6</option>
+            <option>Std 7</option>
+            <option>Std 8</option>
+            <option>Std 9</option>
+            <option>Std 10</option>
+          </select>
+          <small class="text-danger" *ngIf="formSubmit && !participantStd">
+            This field is required
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="form-row" *ngIf="participantStd">
+
+      <div class="col-6" *ngIf="participantStd">
+        <div *ngIf="participantStd != 'Std 11 & Above'">
+          <div class="mb-3 form-group formFocus">
+            <!-- <label for="participantSchoolName" class="formLabelsActive">School name *</label>
+                            <select class="form-control formInput" id="participantSchoolName"
+                                name="participantSchoolName" [(ngModel)]="participantSchoolName"
+                                (change)="onChangeSchoolName()">
+                                <option disabled>Select School name</option>
+                                <option *ngFor="let schoolName of schoolList" [ngValue]="schoolName">
+                                    {{schoolName.schoolName}}</option>
+                            </select> -->
+
+
+            <label for="participantSchoolName" class="formLabelsActive">School name *</label>
+            <input list="browsers" placeholder="Search and select school" class="form-control formInput"
+              name="participantSchoolName" id="participantSchoolName" [(ngModel)]="participantSchoolName">
+            <datalist id="browsers">
+              <option disabled>Select School name</option>
+              <option *ngFor="let schoolName of schoolList" [value]="schoolName.schoolName">
+            </datalist>
+
+            <!--<input name="participantSchoolName" [taList]="schoolNameList" [value]="participantSchoolName"
+                            placeholder="Search School name" class="form-control" ngxTypeahead (taSelected)="onChangeSchoolName($event)"> -->
+
+            <!-- <input id="typeahead-template" type="text" class="form-control" [(ngModel)]="participantSchoolName" [ngbTypeahead]="search" [resultTemplate]="rt"
+                            [inputFormatter]="formatter" /> -->
+
+
+            <small class="text-danger" *ngIf="formSubmit && !participantSchoolName">
+              This field is required
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6" *ngIf="participantStd">
+        <div *ngIf="participantStd == 'Std 11 & Above'">
+          <div class="mb-3 form-group formFocus">
+            <label for="participantAdultName" class="formLabelsActive">Student / Others *</label>
+            <select class="form-control formInput" placeholder="Select Student / Others" id="participantAdultName"
+              name="participantAdultName" [(ngModel)]="participantAdultName">
+              <option disabled>Select Student / others </option>
+              <option *ngFor="let adult of adultList" [value]="adult.schoolName">
+                {{adult.schoolName}}</option>
+            </select>
+
+            <small class="text-danger" *ngIf="formSubmit && !participantAdultName">
+              This field is required
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 mt-2" *ngIf="participantStd">
+        <div *ngIf="participantStd != 'Std 11 & Above' && participantSchoolName == 'Others'">
+          <div class="mb-4 form-group formFocus">
+            <label for="otherSchool" class="formLabelsActive">Other Schools *</label>
+            <input type="text" placeholder="Type here" class="form-control formInput" name="otherSchool"
+              id="otherSchool" [(ngModel)]="otherSchool">
+            <small class="text-danger" *ngIf="formSubmit && !otherSchool">
+              This field is required
+            </small>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row mt-2 mb-0">
+      <div class="col-6">
+        <div class="form-group mb-0">
+          <label for="text">Did you participate in GCC 2020 ?</label>
+
+        </div>
+      </div>
+      <div class="col-6 mb-1" *ngIf="showNextQuestion">
+        <div class="form-group mb-0">
+          <label for="text">How did you get to know about GCC 2021 ?</label>
+
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-3">
+        <button class="btn btn-outline-primary btn-block" (click)="clickYesParticipated();"
+          [ngClass]="{'active':activeBtn == 'yes'}">Yes</button>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-outline-primary btn-block" (click)="clickNoParticipated();"
+          [ngClass]="{'active':activeBtn == 'no'}">No</button>
+      </div>
+      <div class="col-6" *ngIf="showNextQuestion">
+        <div class="form-group">
+          <label for="participantReason">Select reason:</label>
+          <select class="form-control" id="participantReason" name="participantReason" [(ngModel)]="participantReason">
+            <option disabled>Select reason</option>
+            <option>Website</option>
+            <option>School</option>
+            <option>Email</option>
+            <option>Others</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row mt-2">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="paymentStatus">Payment Status:</label>
+          <select class="form-control" id="paymentStatus" name="paymentStatus" [(ngModel)]="paymentStatus">
+            <option disabled>Select status</option>
+            <option value="pending">Pending</option>
+            <option value="Credit">Done</option>
+            <option value="Failed">Failed</option>
+          </select>
+          <small class="text-danger" *ngIf="formSubmit && !paymentStatus">
+            This field is required
+          </small>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="participantStatus">Status:</label>
+          <select class="form-control" id="participantStatus" name="participantStatus" [(ngModel)]="participantStatus">
+            <option disabled>Select status</option>
+            <option value="Registered">Registered</option>
+            <option value="Payment Failed">Payment Failed</option>
+            <option value="Form Submitted">Form Submitted</option>
+            <option value="Delete">Deleted</option>
+            <option value="Registered & Confirmed">Registered & Confirmed</option>
+
+          </select>
+          <small class="text-danger" *ngIf="formSubmit && !participantStatus">
+            This field is required
+          </small>
+        </div>
+      </div>
+      <!-- <div class="col-6" *ngIf="paymentStatus == 'Done'">
+                    <div class="form-group">
+                        <label for="participantStatus">Status:</label>
+                       <select class="form-control" id="participantStatus" name="participantStatus"
+                            [(ngModel)]="participantStatus">
+                            <option disabled>Select status</option>
+                            <option>Payment verification pending</option>
+                            <option>Follow up</option>
+                            <option>Registered</option>
+                            <option>Delete</option>
+                        </select>
+                    </div>
+                </div> -->
+    </div>
+    <div *ngIf='paymentStatus == "Credit"'>
+      <div class="form-row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="participantPaymentID">Payment Id:</label>
+
+            <input type="text" class="form-control" name="participantPaymentID" id="participantPaymentID"
+              [(ngModel)]="participantPaymentID">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="participantPaymentType">Payment Type:</label>
+
+
+            <input type="text" class="form-control" name="participantPaymentType" id="participantPaymentType"
+              [(ngModel)]="participantPaymentType">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="form-row justify-content-end">
+      <div class="col-12">
+        <button class="btn btn-primary btn-block" *ngIf="updateParticipantShow" (click)="saveFormData()">Update
+          Participant</button>
+        <button class="btn btn-primary btn-block" *ngIf="addParticipantShow" (click)="saveFormData();modal.dismiss('Cross click')">Add
+          Participant</button>
+      </div>
+
+    </div>
+  </div>
+
+
+</ng-template>
+
+<ng-template #reconfirmEmail let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Send bulk re-confirmation email</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <div class="confirmationDelete">
+      Are you sure?
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-row reconfirmEmailRow">
+      <div class="col-6">
+        <button class="btn btn-primary btn-block" (click)="sendBulkReconfirmationEmail()">Send email</button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-primary btn-block" (click)="modal.dismiss('Cross click')">No</button>
+      </div>
+    
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Delete Participant</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="confirmationDelete">
+      Are you sure?
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-row justify-content-end">
+      <div class="col-12">
+        <button class="btn btn-primary btn-block" (click)="deleteParticipant()">Delete Participant</button>
+      </div>
+      <!-- (click)="deleteParticipant();" -->
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #imgContent let-modal class="imgModal">
+
+  <div class="modal-header">
+    <h4 class="modal-title">Payment Screenshot</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body text-center">
+    <img [src]="imgParticipantUrl" width="390" alt="">
+  </div>
+
+  <div class="modal-footer">
+    <div class="form-row justify-content-end">
+      <div class="col-12">
+        <button class="btn btn-primary btn-block" (click)="modal.dismiss('Cross click')">Close</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #paymentLink let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Send Payment link</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="confirmationDelete">
+      Are you sure you want to send email ?
+      <div class="row no-gutters">
+        <div class="col-2">Name</div>
+        <div class="col-6" [innerHTML]="': '+ sendPayLinkName + ' ' + sendPayLinkLastName"></div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-2">Email</div>
+        <div class="col-6" [innerHTML]="': '+ sendPayLinkEmailid"></div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-row justify-content-end">
+      <div class="col-12">
+        <button (click)="sendTokenPaymentLink();" class="btn btn-primary btn-block">Send Payment Link</button>
+      </div>
+      <!-- (click)="deleteParticipant();" -->
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #confEmail let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Send successfully registered email</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="confirmationDelete">
+      Are you sure you want to send email ?
+      <div class="row no-gutters">
+        <div class="col-2">Name</div>
+        <div class="col-6" [innerHTML]="': '+ sendEmailName + ' ' + sendEmailLastName"></div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-2">Email</div>
+        <div class="col-6" [innerHTML]="': '+ sendEmailEmailid"></div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-row justify-content-end">
+      <div class="col-12">
+        <button class="btn btn-primary btn-block" (click)="sendConfirmationEmail()">Send Confirmation Email</button>
+      </div>
+      <!-- (click)="deleteParticipant();" -->
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #certificate let-modal>
+  <!-- <div class="modal-header">
+   
+  </div> -->
+  <div class="modal-body certificateVIew">
+    <div>
+      <div class="downloadCerti">
+        <!-- [useExistingCss]="true" [printTitle]="participantName + '_' +'GCC-2020_Participation'" printSectionId="print-section" ngxPrint -->
+        <button type="button" class="btn btn-btn-light pb-2 mr-2 certificateCloseBtn" (click)="modal.dismiss('Cross click')">Close</button>
+        <button type="button" class="btn btn-primary pb-2 mr-2" (click)="sendWinnerCertificate()">Send Certificate<span class="pl-3"><img src="./assets/img/sendIcon.svg" width="20px"/></span></button>
+      </div>
+    
+      <div id="print-section">
+        <div class="text-center">
+          <div class="bgImgPreview">
+            <img class="backImg" src="../../assets/img/ParticipationC.svg" width="765px" alt="CMT" />
+            <!-- <div class="leftImg">
+              <img src="../../assets/img/Lamp.png" alt="">
+            </div>
+            <div class="middleHeading">
+              <h3>Chimaya Mission, Thane</h3>
+              <p class="mb-1">Rutu Enclave, Anand Nagar, Ghodbunder Road,</p>
+              <p>Thane (W) - 400 615. &nbsp;&nbsp; Tel. :022-25970087</p>
+            </div>
+            <div class="rightImg">
+              <img src="../../assets/img/BG.png" alt="">
+            </div> -->
+            <div class="mainCertiContent">
+              <div class="row no-gutters">
+                <!-- <div class="col-auto">We sincerely appreciate the participation of</div> -->
+                <div class="col-12 partiCertiName" [innerHTML]="certificateName"></div>
+                <div class="col-12 partiCertiStd" [innerHTML]="certificateStd"></div>
+              </div>
+              <!-- <p class="mb-4"> <span class="certiName"></span></p> -->
+              <!-- <p class="certiFared"> in the Geeta chanting competition, 2020
+                With Pujya Gurudev's blessings</p> -->
+              
+            </div>
+            <!-- <div class="certiFooter">
+              <p>Swamini Anaghananda Acharya</p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="modal-footer">
+    
+  </div> -->
+</ng-template>
+<ng-template #certificatewinner let-modal>
+  <!-- <div class="modal-header">
+   
+  </div> -->
+  <div class="modal-body certificateVIew">
+    <div>
+      <div class="downloadCerti">
+        <!-- [useExistingCss]="true" [printTitle]="participantName + '_' +'GCC-2020_Participation'" printSectionId="print-section" ngxPrint  -->
+        <button type="button" class="btn btn-btn-light pb-2 mr-2 certificateCloseBtn" (click)="modal.dismiss('Cross click')">Close</button>
+        <button type="button" class="btn btn-primary pb-2"(click)="sendWinnerCertificate();">Send Certificate<span class="pl-3"><img src="./assets/img/sendIcon.svg" width="20px"/></span></button>
+      </div>
+    
+      <div id="print-section">
+        <div class="text-center">
+          <div class="bgImgPreview">
+            <img class="backImg" src="../../assets/img/Winner'sC.svg" width="765px" alt="CMT" />
+            <!-- <div class="leftImg">
+              <img src="../../assets/img/Lamp.png" alt="">
+            </div>
+            <div class="middleHeading">
+              <h3>Chimaya Mission, Thane</h3>
+              <p class="mb-1">Rutu Enclave, Anand Nagar, Ghodbunder Road,</p>
+              <p>Thane (W) - 400 615. &nbsp;&nbsp; Tel. :022-25970087</p>
+            </div>
+            <div class="rightImg">
+              <img src="../../assets/img/BG.png" alt="">
+            </div> -->
+            <div class="mainCertiContent">
+              <div class="row no-gutters">
+                <!-- <div class="col-auto">We sincerely appreciate the participation of</div> -->
+                <div class="col-12 partiCertiName" [innerHTML]="certificateName"></div>
+                <div class="col-12 partiCertiStd" [innerHTML]="certificateStd"></div>
+                <div class="col-12 partiCertirank" *ngIf="sendSingleCertificate == '1st'"> 
+                  <div>1<sup>st</sup>Rank</div>
+                </div>
+                <div class="col-12 partiCertirank" *ngIf="sendSingleCertificate == '2nd'"> 
+                  <div>2<sup>nd</sup>Rank</div>
+                </div>
+                <div class="col-12 partiCertirank" *ngIf="sendSingleCertificate == '3rd'"> 
+                  <div>3<sup>rd</sup>Rank</div>
+                </div>
+                <div class="col-12 partiCertiMot" *ngIf="sendSingleCertificate == 'motivational'"> 
+                  Motivational Prize
+                </div>
+              </div>
+              <!-- <p class="mb-4"> <span class="certiName"></span></p> -->
+              <!-- <p class="certiFared"> in the Geeta chanting competition, 2020
+                With Pujya Gurudev's blessings</p> -->
+              
+            </div>
+            <!-- <div class="certiFooter">
+              <p>Swamini Anaghananda Acharya</p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="modal-footer">
+    
+  </div> -->
+</ng-template>
+
+<!-- <ng-template #emailStatus  let-modal class="statusModel">
+  <div class="modelBox statusGeneration" >
+    <div class="model-header certificateStatusHeader">
+      <span class="model-title" id="modal-basic-title">Certificate Generate Status</span>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true" style="color: #fff;">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <p>
+        <span>Registration Email: </span>
+        <span class="boldTooltip" ></span>
+      </p>
+      <p>
+        <span>Re-confirmation  : </span>
+        <span class="boldTooltip" ></span>
+      </p>
+      <p>
+        <span>Slotting Email : </span>
+        <span class="boldTooltip" ></span>
+      </p>
+      <p>
+        <span>Thank you Email: </span>
+        <span class="boldTooltip" ></span>
+      </p>
+    </div>
+  </div>
+    
+  <div class="modal-body text-left">
+   
+      
+     </div>
+</ng-template>
+ -->

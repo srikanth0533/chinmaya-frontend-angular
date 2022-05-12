@@ -1,0 +1,119 @@
+/*  */
+.main-header {
+  background-color: #145782;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  color: #eee;
+}
+
+.main-header .navbar-brand {
+  color: inherit;
+}
+
+.main-container {
+  display: flex;
+  overflow: auto;
+  order: 1;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.main-section {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.side-navbar {
+  background: linear-gradient(
+    35deg,
+    rgba(20, 87, 130, 0.8),
+    rgba(204, 204, 204, 0.5)
+  );
+  box-shadow: inset 1px 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 250px;
+  overflow: auto;
+  position: fixed;
+  left: 0;
+  top: 52px;
+}
+
+.nanbar-scroller {
+  height: 100%;
+  overflow: auto;
+}
+
+.logo-img {
+  text-align: center;
+  padding: 20px 0;
+  margin: 0;
+}
+
+.logo-img img {
+  max-width: 100px;
+  max-height: 150px;
+}
+
+.menu-list {
+  list-style: none;
+}
+
+.menu-list > li {
+  margin-bottom: 5px;
+}
+
+.menu-list > li > a {
+  display: block;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px;
+  text-decoration: none;
+  transition: all 0.1s ease-in-out;
+}
+
+.menu-list > li > a:hover,
+.menu-list > li > a.active {
+  background-color: #ffffff;
+  color: #145782;
+  cursor: pointer;
+}
+
+.menu-list > li > a.active {
+  box-shadow: 1px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.menu-list > li > a i {
+  margin-right: 5px;
+}
+
+.copyright-text {
+  padding: 5px;
+  text-align: center;
+  order: 1;
+  z-index: 0;
+}
+
+.copyright-text a {
+  color: #ffffff;
+  display: block;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.btn-scrlTop {
+  bottom: 20px;
+  border-radius: 50%;
+  color: #ffffff;
+  position: absolute;
+  right: 30px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  z-index: 1000;
+}

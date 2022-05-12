@@ -1,0 +1,489 @@
+.main-section {
+  padding-left: 250px !important;
+}
+.menu {
+  position: relative;
+  display: inline-block; 
+}
+
+.menu .markAsBox {
+  visibility: hidden;
+  background-color: #f7f7f7;
+  color: #007bff;
+  text-align: center;
+  border-radius: 6px;
+  top: -8px;
+  right: 18px;
+  position: absolute;
+  z-index: 1;
+  border: 1px solid #ccced0;
+  height: max-content;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.sendMail{
+  height: 28px;
+  width: 98px;
+}
+  
+.emailBtn1{
+  padding: 5px 15px;
+}
+.emailBtn2{
+  padding-bottom: 15px;
+
+}
+
+
+.menu:hover .markAsBox {
+  visibility: visible;
+}
+
+.isAliveactive{
+  border: 1px solid #44c371;
+  color: #44c371;
+  border-radius: 4px;  
+  padding: 4px 8px;
+  background: #fff;
+  margin-left: 2px !important;  
+ 
+}
+.isAliveTrue{
+  background: #44c371;
+  color: #fff;
+}
+
+.isAlivedactive{
+  border: 1px solid #e0411c;
+  color: #e0411c;
+  border-radius: 4px;  
+  padding: 4px 8px;
+  background: #fff;
+  margin-right: 2px !important;
+  
+}
+
+.isAliveFalse{
+  background: #e0411c;
+  color: #fff;
+}
+
+.resizeTextARea{
+  margin-top: 8px !important;
+}
+.resizeTextARea1{
+  margin-top: -26px !important;
+}
+
+.alive_notalive{
+  opacity: 0.1;  
+  cursor: not-allowed;
+  pointer-events: none;  
+}
+
+.notAlive{
+  left: 0;
+    z-index: 1;
+    color: #a0a0a0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    
+    
+}
+.editBtn{
+  color:black;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+
+
+
+.cust-table-view .table thead th {
+  background-color: #175f8e;
+  border: 0;
+  color: white;
+  white-space: nowrap;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+  .cust-table-view tr td:nth-child(-n+5) , .cust-table-view tr th:nth-child(-n+5) {
+    position: -webkit-sticky;
+    position: sticky;
+    left:-15px;
+    z-index: 1;
+  }
+
+  .cust-table-view tr td:nth-child(-n+5) {
+ background: #fff;
+  }
+ 
+  
+  .cust-table-view tr.highlightMultiparticipant td:nth-child(-n+5)  {
+ background: #eef5fa
+  }
+
+.cust-table-view tr th:nth-child(-n+5){
+    top: 0px;
+    z-index: 2;
+  }
+
+  .cust-table-view tr td:nth-child(1) , .cust-table-view tr th:nth-child(1){
+    left: -15px;
+  }
+  .cust-table-view tr td:nth-child(2) , .cust-table-view tr th:nth-child(2){
+    left: 30px;
+  }
+  .cust-table-view tr td:nth-child(3) , .cust-table-view tr th:nth-child(3){
+    left: 71px;
+  }
+  .cust-table-view tr td:nth-child(4) , .cust-table-view tr th:nth-child(4){
+    left: 110px;
+  }
+  .cust-table-view tr td:nth-child(5) , .cust-table-view tr th:nth-child(5){
+    left: 160px;
+  }
+  
+
+.editRow {
+  color: #175f8e;
+  padding: 10px;
+}
+.sendMail{
+  width: max-content;
+}
+
+.editRow:hover {
+  background: aliceblue;
+
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cust-table-view .table td,
+.cust-table-view .table th {
+  padding: 15px 5px;
+}
+
+.imgModal .modal-sm {
+  max-width: 490px;
+}
+
+.smallBtn {
+  font-size: 0.8rem;
+  padding: 5px;
+}
+
+.iconCntents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payPending {
+  color: #ffe718;
+  margin-left: 8px;
+  font-size: 1.5rem;
+}
+
+.paySuccess {
+  color: #4caf50;
+  margin-left: 8px;
+  font-size: 1.5rem;
+}
+
+.payFailed {
+  color: #f44336;
+  margin-left: 8px;
+  font-size: 1.5rem;
+}
+
+.registeredIcon {
+  font-size: 1.7rem;
+  color: #009688;
+}
+
+.deleteIcon {
+  font-size: 1.5rem;
+  color: #f44336;
+}
+
+.paymentId {
+  background: #f7f7f7;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px dashed;
+  color: #333333;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.paymentId .copy-btn {
+  background-color: rgb(213 213 213);
+  box-shadow: none;
+  color: #161616;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 0 8px;
+  font-size: 1rem;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.paymentId:hover .copy-btn {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.changeCase {
+  text-transform: capitalize;
+}
+
+.highlightMultiparticipant {
+  background: #eef5fa;
+}
+
+.inputClear {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.54);
+  border: 1px solid #ac9167;
+  border-radius: 50%;
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: -2px;
+  box-shadow: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.inputClear i {
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.boldTooltip {
+  font-weight: 600;
+}
+
+/* toogle */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+    height: 25px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(19px);
+  -ms-transform: translateX(19px);
+  transform: translateX(19px);
+}
+.confRegIcon{
+  font-size: 1.2rem;
+    margin-left: 4px;
+    color: #009688;
+}
+.reconfirmEmailRow{
+  width: 276px;
+}
+
+.certifcat0{
+  background: #EEEEEE;
+  color: #333333;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+  margin-bottom: 3px;
+  box-shadow: 3px 2px 4px 0px #b3b3b3;;
+  width: 120px;
+}
+
+.certifcat1{
+  background: #C9B037;
+  color: #333333;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+  margin: 6px 0;
+  box-shadow: 3px 2px 4px 0px #b3b3b3;;
+  width: 120px;
+}
+
+.certifcat2{
+  background: #D7D7D7;
+  color: #333333;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+  margin: 6px 0;
+  box-shadow: 3px 2px 4px 0px #b3b3b3;;
+  width: 120px;
+}
+
+.certifcat3{
+  background: #AD8A56;
+  color: #333333;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+  margin: 6px 0;
+  box-shadow: 3px 2px 4px 0px #b3b3b3;;
+  width: 120px;
+}
+
+.certifcat4{
+  background: #FFFFFF;
+  color: #333333;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;  
+  box-shadow: 3px 2px 4px 0px #b3b3b3;;
+  width: 120px;
+}
+
+.bgImgPreview{
+  display: inline-block;
+  width: 770px;
+  position: relative;
+  padding-top: 15px;
+}
+
+.certificateVIew{
+  position: absolute;
+  top: 20px;
+}
+
+.presentBtn{
+  background: #5fa543;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;  
+  box-shadow: 3px 2px 4px 0px #b3b3b3;;
+  width: 120px;  
+}
+.presentBtn:hover{
+  background: #6dd046;
+}
+
+.absentBtn{
+  background: #f12929;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    border: none;
+    box-shadow: 3px 2px 4px 0px #b3b3b3;
+    width: 120px;
+}
+.absentBtn:hover{
+  background: #f74c4c;
+}
+.emailLogo{
+  font-size: 30px;
+}
+
+.certificateCloseBtn{
+  background-color: #fff;
+}
+.partiCertiStd{
+  font-family: 'Charm', cursive;
+  color: #BB7B00;
+  top: -5px;
+  
+}
+.partiCertiName{
+  color: #BB7B00;
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 0px 4px 4px #ffcd2b;
+}
+.partiCertirank{
+  top: -6px;
+  margin-left: 36px;
+  font-size: 15px;
+  font-family: 'Charm', cursive;
+  color: #BB7B00;
+}
+.partiCertiMot{
+  margin-left: 67px;
+  top: -6px;
+  font-size: 15px;
+  font-family: 'Charm', cursive;
+  color: #BB7B00;
+}

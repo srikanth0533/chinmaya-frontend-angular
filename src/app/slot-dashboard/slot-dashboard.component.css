@@ -1,0 +1,519 @@
+.main-section {
+  padding-left: 250px;
+}
+.slotCreateDashboard{
+  font-family: "Nunito Sans", sans-serif;
+}
+.slotTxt{
+  font-weight: 700;
+  font-size:20px;
+  color: #333;
+  line-height: 27px;
+  margin: 0.3rem 0rem;
+}
+.SlottingCapcity{
+  width: 40px;
+    text-align: center;
+    padding: 0;
+}
+
+.name.smallData{
+  text-transform: capitalize;
+}
+.name.smallData span{
+  display: inline-block;
+}
+.title{
+  font-size: 23px;
+  font-weight: 600;
+}
+.slotSetingTime{
+  border: none;
+  color: #004F74;
+  padding: 0px 10px;
+  background: #fff;
+  margin: 0px 12px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  box-shadow: 1px 1px 4px 1px #ccc;
+  border-radius: 4px;
+}
+.emptyList{
+  left: 55%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;  
+}
+.emptyList  p{
+  font-weight: 700;
+  color: #000;
+  font-size: 28px;
+  line-height: 38px;
+}
+
+.emptyList .emptyListContent{
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: #000;
+}
+
+.slotTableHedr{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #fff;
+  background-color: #004F74;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.createBtn{
+  color: #0180BC;
+  background: #ffffff1a;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  padding: 0px 6px;
+  box-shadow: 1px 3px 4px 2px #f2f2f2;
+  padding-bottom: 3px;
+}
+
+.deleteBtn{
+  color: #dc3545;
+  background: #ffffff1a;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  padding: 0px 6px;
+  box-shadow: 1px 3px 4px 2px #f2f2f2;
+  padding-bottom: 3px;
+}
+
+.addBtn{
+  font-weight: 700;
+    font-size: 16px;
+    color: #145782;
+    background: #fff;
+    border: none;
+}
+
+.editBtn{
+  color: #fff;
+  background:#0180BC;
+  padding: 4px 2px 4px 6px;;
+  border-radius: 4px;
+  margin-left: 4px;
+  border: none;
+}
+.editBtn:focus-visible{border: none;}
+
+.editIcon{
+  background-color: #DEE5ED;
+    color: #fff;
+    padding: 4px 2px 4px 6px;;
+    border-radius: 4px;
+    /* display: initial; */
+    margin-left: 4px;
+    border: none;
+}
+
+.disableRow{
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.stdTxt{
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #333;
+}
+
+.confrmPartCip{
+  font-weight: 400;
+  font-size: 16px;
+  color: #333;
+}
+.slotCapacityInput .form-group{
+margin-bottom: 0px;
+}
+.slotCapacityInput{
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.slotCapacityInput .form-group .form-control{
+  height: 34px;
+  color: #333333;
+  text-align: center;
+  font-weight: 700;
+}
+
+
+.addReduce{
+  border: 2px solid #3499C9;
+  padding: 4px 14px;
+  border-radius: 4px;
+  color: #3499c9;
+  background: #F2F8FF;
+}
+
+.penIcon {
+  font-weight: 900;
+  border: 2px solid #FFFFFF;
+  background: #ccc;
+  color: #fff;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.modelHeader{
+  font-weight: 700;
+  font-size: 16px;
+  color: #004F74;
+  line-height: 22px;
+}
+
+.modalHeader .close {  
+  color: #004f74;
+  border: none;
+}
+
+.modalHeader .close:focus {
+  border: none;
+}
+.modalContent{
+  background: #fafafa;
+}
+.modalHeader{
+  border: none;
+}
+.modalBody{
+  height: 130px;
+  overflow-y: auto;
+  padding: 0px 14px;
+}
+
+/* .modalSizeContent{
+  top: 30%;
+} */
+
+.modalFooter{
+  border: none;
+  display: block;
+}
+
+.modalFoterBtn{
+  padding: 6px 40px;
+}
+
+.btn-close{
+  background: none;
+  border: none;
+  /* height: 12px; */
+  /* width: 12px; */
+  font-size: 24px;
+  color: #004F74;
+}
+
+.form-select{
+  border: 1px solid #d7d7d7;
+    border-radius: 4px;
+    width: 100%;
+     /* height: 90%; */
+    padding: 4px;
+    margin: 0px 4px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.form-select:focus-visible{
+  border: 1px solid #d7d7d7 !important;   
+}
+
+.dateicon{
+  position: absolute;
+    top: 22%;
+    right: 4px;
+    color: #999;
+    border: none;    
+}
+
+.dateInput{
+  /* height: 34px !important; */
+  border-radius: 4px;
+  font-weight: 700;
+  color: #333;
+  font-size: 16px;  
+  
+}
+
+.dateInput::placeholder {
+  color: #666;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.dateInput:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #666;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.dateInput::-ms-input-placeholder { /* Microsoft Edge */
+  color: #666;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.editIcon{
+  background-color: #DEE5ED;
+    color: #fff;
+    padding: 2px 2px 4px 5px;;
+    border-radius: 4px;
+    /* display: initial; */
+    margin-left: 4px;
+    border: none;
+}
+
+.copyTxtIcon{
+  position: absolute;
+    right: 4px;
+    top: 14px;
+    color: #004F74;
+    background: #fff;
+    padding: 6px 6px;
+}
+
+/* .copyInputBox{
+  max-width:200px
+} */
+
+.pendingSeat{
+  color: #00BA07;
+}
+
+.assignBtn{
+  padding: 3px 14px;
+  color: #004F74;
+  background: #fff;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 1px 3px 4px 2px #f2f2f2;
+  font-weight: 700;
+  font-size:16;
+}
+
+.assignPendingSeat{
+  background: #EF4923;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 4px 0px;
+  position: relative;
+  right: 6px;
+  top: -6px;
+  width: 25px;
+  height: 25px;
+}
+
+.viewBtn{
+  background: #fff;
+  color: #004F74;
+  font-weight: 700;
+  font-size: 16px;
+  border: 1px solid #D7D7D7;
+  padding: 3px 10px;
+}
+
+.deleteBinIcon{
+  padding-top: 10px;
+  color: #d50000;
+}
+
+.confirmSlot{
+  padding: 2px 10px;
+  background: #fff;
+  color: #00bb07;
+  border-radius: 1px 10px 10px 1px;
+  border: none;
+}
+.cencelSlot{
+  padding: 2px 10px;
+  background: #fff;
+  color: #666;
+  border-radius: 10px 1px 1px 10px;
+  border: none;
+  font-weight: 700;
+}
+
+.colSeven{
+  max-width: 58.333333%;
+    margin-right: 5px;
+    background: #f2f8ff;
+    padding: 8px 5px;
+}
+.colTwo{
+  max-width: 25%;
+    margin-left: 3px;
+    background: #f2f8ff;
+    padding: 8px 5px;
+}
+.colThree{
+  max-width: 23.666667%;
+    margin-right: 2px;
+    background: #f2f8ff;
+    padding: 11px 5px;
+}
+
+.colSevenHead{
+  max-width: 58.333333%;
+    margin-right: 5px;
+}
+.colTwoHead{
+  max-width: 25%;
+    margin-left: 3px;
+}
+.colThreeHead{
+  max-width: 23.666667%;
+    margin-right: 2px;
+}
+
+
+.saveUpdateSlot{
+  padding: 6px 17px;
+    color: #004F74;
+    background: #fff;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 3px 4px 2px #f2f2f2;
+    font-weight: 700;
+    font-size: 16;
+}
+/* download sheet */
+.download{
+  display: flex;
+  justify-content: flex-end;
+   
+}
+.downloadbtn{
+  height: max-content;
+    margin: 30px;
+}
+
+table{
+  width: 100%;
+}
+.mainScoreTable table, th, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.mainScoreTable .bigHead{
+  padding:5px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.smallData{
+  padding: 0px 10px;
+  font-size: 0.8rem;
+}
+.OverallPresHead{
+  padding:5px;
+  font-size: 0.8rem;
+    text-align: center;
+}
+.OverallPres{
+  padding: 10px 4px;
+}
+.bigData{
+  padding: 25px 130px;
+}
+.pronunData{
+  padding: 25px 80px;
+}
+.memoryData{
+  padding: 25px 95px;
+}
+.modal-lg{
+  max-width: 1024px;
+}
+.nameData{
+  padding: 0px 75px;
+}
+@media print {
+  @page { size: landscape; }
+
+}
+
+
+
+/* .dashboadContainer {
+  margin: 15px;
+}
+.dashboardTable {
+  box-shadow: 0px 0px 5px 4px #00000052;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+.dashboardHeader {
+  background: #145782;
+  color: #fff;
+  padding: 6px 5px;
+  border-radius: 5px 5px 0px 0px;
+}
+.dashboardData {
+  padding: 6px;
+}
+.singleData {
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 6px;
+  font-weight: 600;
+}
+.singleData:last-child {
+  border-bottom: none;
+  padding-bottom: 0px;
+}
+.blurArea {
+  background: #0000006b;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  z-index: 12;
+  align-items: center;
+}
+.mainModalContent {
+  width: 500px;
+  height: 300px;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.modalHeader {
+  border-bottom: 1px solid #efefef;
+}
+.modalBody {
+  padding: 50px 0;
+  text-align: center;
+}
+.modalFooter {
+  border-top: 1px solid #efefef;
+}
+.modalTitle {
+  color: #00558c;
+}
+.sendEmail {
+  color: #00558c;
+}
+.email02Bg {
+  background: #e2f2fb;
+} */
+

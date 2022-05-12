@@ -1,0 +1,453 @@
+.navbar {
+  display: none !important;
+}
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+::-webkit-scrollbar {
+  background-color: #ffffff;
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: none;
+  border-radius: 10px;
+  background-color: #eb5757;
+}
+.pageContent {
+  width: 100%;
+  height: 100%;
+  /* overflow: auto; */
+  padding: 20px;
+  font-family: "Nunito Sans", sans-serif;
+}
+.imgHeader {
+  display: flex;
+  justify-content: center;
+}
+.imgHeader img {
+  max-width: 624px;
+  width: 100%;
+}
+.mainContent {
+  margin: 0px auto;
+  max-width: 624px;
+  width: 100%;
+}
+.appealMainContent{
+  margin: 0px auto;
+  max-width: 624px;
+  width: 100%;
+
+}
+.appealDataBold{
+  font-weight: 600;
+}
+.accDetails {
+  font-size: 14px;
+  text-align: center;
+}
+.accTitle{
+  font-weight: 600;
+}
+.preJoinedclosedSession {
+  color: #eb5757;
+  font-size: 20px;
+  font-weight: bold;
+}
+.appealTitle{
+  color: #0077B6;
+  font-weight: bold;
+font-size: 24px;
+text-align: center;
+margin: 20px 0;
+}
+.appealSubTitle{
+  color: #0077B6;
+  font-weight: bold;
+font-size: 20px;
+}
+.appealData{
+  color: #333333;
+  font-size: 18px;
+}
+.appealBtn{
+max-width: 289px;
+cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #eb5757;
+    border-color: #eb5757;
+    max-width: 277px;
+    width: 100%;
+    margin: 0 auto;
+}
+.appealPageContent{
+  max-width: 560px;
+    margin: 0 auto;
+}
+.appealMainContent{
+  margin: 0px auto;
+  max-width: 752px;
+  width: 100%;
+background: #FFFFFF;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+}
+.accMob{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.mainHeader {
+  text-align: center;
+  margin: 16px 0px;
+  color:var(--formPrimary);
+  font-size: 32px;
+  font-weight: 700;
+  font-family: 'Charm', cursive;
+}
+.ticket {
+  text-align: center;
+color: #333333;
+}
+.boldWeight{
+  font-weight: 700;
+}
+.boldColor{
+  font-weight: 700;
+  color: var(--formPrimary);
+}
+.editName {
+  color: #333333;
+    text-transform: capitalize;
+}
+.hideShow{
+  box-shadow: 0px 12px 20px rgb(0 0 0 / 10%);
+    border-top: 6px solid #eb5757;
+    overflow: hidden;
+}
+.note{
+  
+  font-size: 13px;
+    font-weight: 700;
+    color: #333333;
+}
+.bgContent {
+  background-color: var(--formSecondary);
+  padding: 15px 10px;
+  text-align: center;
+}
+.editableContent {
+  max-width: 260px;
+  width: 100%;
+  margin: 15px auto 30px;
+}
+.partiLabel {
+  margin-bottom: 4px;
+  text-align: left;
+  font-size: 12px;
+    color: #333333;
+    font-weight: 300;
+}
+.candidateName {
+  font-weight: 700;
+  font-size: 18px;
+  color: #333333;
+  text-align: left;
+  text-transform: capitalize;
+}
+.editNo {
+  cursor: pointer;
+  font-size: 12px;
+    color: #eb5757;
+    
+}
+.candidateNameEdit .form-control {
+  letter-spacing: 3px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #333333;
+  background: white;
+  border-color: #eb5757;
+  padding: 0px 22px;
+  border-left: none;
+  border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.candidateNameEdit .form-control:focus{
+  box-shadow: none;
+}
+.input-group-text{
+  color: #666666;
+  background-color: #ffffff;
+      border: 1px solid #eb5757;
+      border-right: none;
+}
+.input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child){
+  border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+.checkedRecorded {
+  font-size: 12px;
+  color: #666666;
+}
+.validation {
+  font-size: 12px;
+    font-weight: 600;
+    color: #eb5757;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+.confirmMob {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #eb5757;
+  border-color: #eb5757;
+  max-width: 262px;
+  width: 100%;
+  margin: 0 auto;
+}
+.confirmMob:hover{
+  background-color: #d93737;
+  border-color: #d93737;
+}
+.lastConfInfo {
+  text-align: center;
+}
+.commonHead{
+  font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+}
+.verifiedData{
+  font-size: 20px;
+  font-weight: 600;
+color: #333333;
+}
+.dayTime {
+  margin: 0px auto;
+  max-width: 382px;
+  padding: 20px 0px;
+  width: 100%;
+  color: #333333;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+.infoCompetition{
+  max-width: 624px;
+  width: 100%;
+  background-color: var(--formSecondary);
+}
+.confirmedData {
+  color: #00BA07;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+
+
+
+.confirmIcon {
+  font-size: 10rem;
+  color: #28a745;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.errorIcon {
+  width: 450px;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  display: block;
+}
+.expiryInfoPage{
+  padding: 15px;
+  border: 1px dashed #000;
+  background: #fff;
+}
+.expiryIcon{
+  color: #EF4923;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+.expiryNote{
+  margin-top: 15px;
+  font-size: 0.8rem;
+}
+.expiryClosed{
+  color: #EF4923;
+}
+.imgBlock {
+  position: relative;
+}
+.insideImg {
+  padding: 25px 0px;
+}
+.confirmedInsideImg {
+  color: #377abd;
+}
+.participantImg {
+  background: #f9f9f9;
+  margin: 0px -5px;
+}
+.correctData {
+  color: #007bff;
+}
+.noEditName {
+  width: 400px;
+  margin: 0 auto;
+  font-size: 1.3rem;
+}
+
+.mPinInputCont .checkedRecorded {
+  font-size: 0.9rem;
+  width: 350px;
+  margin: 25px auto 0px;
+  font-weight: 500;
+  text-align: left;
+  color: #868686;
+  max-width: 100%;
+}
+
+.bankCard {
+  width: 400px;
+  box-shadow: 0px 0px 3px 4px #00000012;
+  border-radius: 3px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.bankHeading {
+  color: #888888;
+  font-size: 14px;;
+}
+hr {
+  border: 1px dashed #e7e4e4;
+}
+/* .appealBtn:hover {
+  background-color: #ffffff;
+  border-color: #002944;
+  color: #000;
+} */
+
+.mobViewTicketHereBy{
+padding: 0 135px;
+}
+.redText{
+  color: #EF4923;
+}
+.ackBtn{
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #eb5757;
+  border-color: #eb5757;
+  margin: 0 auto;
+  max-width: 426px;
+    width: 100%;
+}
+
+
+
+
+@media (max-width: 576px) {
+  .pageContent {
+    /* max-width: 576px;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    font-family: "Nunito Sans", sans-serif; */
+    max-width: 576px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Nunito Sans", sans-serif;
+  }
+  .bankCard {
+    width: 100%;
+    max-width: 300px;
+}
+.ackBtn{
+  position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    max-width: 576px;
+    width: 100%;
+    border-radius: 0px;
+    padding: 14px 0px;
+    margin: none;
+}
+.appealMainContent{
+  margin-bottom: 89px;
+}
+.appealPage{
+  margin: 0 10px;
+}
+.mobViewTicketHereBy {
+  padding: 0px 11px;
+}
+.accDetails {
+  font-size: 9px;
+  text-align: center;
+}
+  .mainContent {
+    margin: 0px auto;
+    max-width: 576px;
+    width: 100%;
+  }
+  .note{
+    text-align: center;
+  }
+  .imgHeader img {
+    max-width: 576px;
+    width: 100%;
+  }
+  .mainHeader {
+    font-size: 20px;
+  }
+  .mobViewTicketName{
+    font-size: 18px;
+  }
+  .mobViewTicketHereBy{
+font-size: 14px;
+  }
+  .mobViewTicketConfirmed{
+    font-size: 18px;
+  }
+
+  .confirmIcon {
+    font-size: 7rem;
+  }
+  .errorIcon {
+    font-size: 7rem;
+  }
+  .errorIcon {
+    width: 325px;
+    
+  }
+  .expiryIcon{
+      font-size: 1rem;
+  }
+  .expiryNote{
+    font-size: 0.7rem;
+  }
+  .dayTime {
+    max-width: 290px;
+    width: 100%;
+   
+  }
+}

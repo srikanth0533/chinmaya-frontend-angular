@@ -1,0 +1,605 @@
+<div class="main-loader" *ngIf="mainLoaderIs">
+    <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+
+<div class="pageContent">
+    <div class="introPageContainer" *ngIf="introPage">
+        <div class="webViewContainer">
+            <div class="introPage">
+                <div class="introHeader">
+                    <div class="row no-gutters">
+                        <div class="col-auto"><img src="../../assets/img/lampForm.svg" alt=""></div>
+                        <div class="col-9 introTitle">Chinmaya Mission, Thane</div>
+                    </div>
+                </div>
+                <hr class="formDivider">
+                <div class="introContent">
+                    <div class="row">
+                        <div class="col-12 firstCont">
+                            Geeta Chanting Competition - 2021
+                        </div>
+                        <div class="col-12 secondCont">
+                            After the extremely encouraging response received for our first ever Online Geeta
+Chanting Competition in 2020, Chinmaya Mission, Thane is pleased to announce
+opening of registrations for GCC 2021, which will again be an online event.
+                        </div>
+                        <div class="fixedBottomIntro">
+                       
+                        <div class="col-12 thirdCont">
+                            Please read the Instructions carefully and thereafter proceed to fill in the details
+required in the Registration form and remit the Donation amount.
+                        </div>
+                        <div class="col-12 introBtn">
+                            <button class="btn formBtn" (click)="introPage = false;instructions = true;">Read
+                                Instructions</button>
+                        </div>     
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="webViewContainer" *ngIf="instructions">
+        <div class="instructions">
+            <div class="instructionsFirst">
+                <div class="row no-gutters">
+                    <div class="col-12 title">
+                        Geeta Chanting Competition - 2021
+                    </div>
+                    <div class="col-12 instruct">
+                        INSTRUCTIONS
+                    </div>
+                    <!-- <div class="col-12 steps">
+                        Steps to fill the form and make payment :
+                    </div> -->
+                </div>
+            </div>
+            <div class="instructionsSecond">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        
+                            <p><span class="boldDark">1.</span> Please fill in all the details in the registration form carefully.
+                            </p>
+                            <p><span class="boldDark">2.</span> Please review the details entered in the form and check
+                                if accurate.
+                            </p>
+                            <p><span class="boldDark">3.</span> In case you wish to add more than one participant’s
+                                details, please click on “Add more entries” and fill in the details in the second form.
+                                Else go to Confirm and Pay.
+                            </p>
+                            <p><span class="boldDark">4.</span> You will be directed to the payment page where you can
+                                make the donation of Rs 100 per participant. You can make payment for multiple
+                                registrations through a single transaction.
+                            </p>
+                            <p><span class="boldDark">5.</span> Complete the payment using your preferred mode of
+                                remittance.
+                            </p>
+                            <!-- <p><span class="boldDark">5. Take a screenshot</span> of the successful transaction and
+                                <span class="boldDark">Upload the photo</span> on the same page.
+                            </p>
+                            <p><span class="boldDark">6.</span> If you are not able to upload the photo of transaction,
+                                click on <span class="boldDark">Other verification</span> and add <span
+                                    class="boldDark">Transaction ID and amount paid.</span>
+                            </p> -->
+                            <p><span class="boldDark">6.</span> You will receive a confirmation email with a PDF file of
+                                the receipt once your payment is done.
+                            </p>
+                            <p><span class="boldDark">7. Please note that the Donation made is non-refundable
+                                even in the event of non-participation.</span>
+                            </p>
+                            <!-- <p><span class="boldDark">9.</span> After uploading photo, click on Confirm and submit
+                                application.
+                            </p> -->
+                            <!-- <p class="mb-0"><span class="boldDark">8.</span> You will receive a confirmation email once your
+                                registration is accepted.
+                            </p> -->
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="instructionsThird">
+                <div class="row no-gutters">
+                    <div class="col-12 mb-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="confirming" [(ngModel)]="isChecked"
+                                [checked]="isChecked">
+                            <label class="form-check-label" for="confirming">I have read all the Instructions</label>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <button class="btn formBtnBroad" [disabled]="!isChecked"
+                            (click)="goToFormArea()">Go to Registration Form</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="webViewContainer" *ngIf="regForm">
+        <div class="registrationFormCommon">
+            <div class="whiteBg">
+            <div class="progressBar">
+                <div class="redBarArea"
+                    [ngClass]="{'redBarFirst':showFormName == true,'redBarSecond':showFormEmailId == true,'redBarThird':showFormContact == true,'redBarFourth':showFormSchool == true,'redBarFifth':showFormExParticipant == true}">
+                </div>
+
+            </div>
+            <p *ngIf="showFormName" class="countProgress"><span class="boldDark">1</span><span> out of 5</span></p>
+            <p *ngIf="showFormEmailId" class="countProgress"><span class="boldDark">2</span><span> out of 5</span></p>
+            <p *ngIf="showFormContact" class="countProgress"><span class="boldDark">3</span><span> out of 5</span></p>
+            <p *ngIf="showFormSchool" class="countProgress"><span class="boldDark">4</span><span> out of 5</span></p>
+            <p *ngIf="showFormExParticipant" class="countProgress"><span class="boldDark">5</span><span> out of 5</span>
+            </p>
+            <div class="regFormSpacingBulk">
+            <div class="mainHeader" *ngIf="showFormName">
+                <p>Registration Form</p>
+            </div>
+            <div class="nameHeader" *ngIf="showFormName">
+                <p><span class="headerCountNumber">1 </span> <i class="fas fa-arrow-right headerCount"></i> <span
+                        class="headerCountName"> Participant's name</span></p>
+                <div class="shortHeaderMsg">
+                    Please fill the participant’s name as it would appear on the <span class="boldDark"> Participation
+                        Certificate.</span>
+                </div>
+            </div>
+            <div class="emailHeader" *ngIf="showFormEmailId">
+                <p><span class="headerCountNumber">2 </span> <i class="fas fa-arrow-right headerCount"></i> <span
+                        class="headerCountName"> Contact Information</span></p>
+                <div class="shortHeaderMsg">Please provide an email ID where you would like to receive all <span
+                        class="boldDark"> competition related updates.</span></div>
+
+            </div>
+            <div class="contactHeader" *ngIf="showFormContact">
+                <p><span class="headerCountNumber">3 </span> <i class="fas fa-arrow-right headerCount"></i> <span
+                        class="headerCountName"> Contact Information</span></p>
+                <div class="shortHeaderMsg">Please provide us a Contact Number, where you would like to receive all
+                    competition related updates.</div>
+            </div>
+            <div class="schoolHeader" *ngIf="showFormSchool">
+                <p><span class="headerCountNumber">4 </span> <i class="fas fa-arrow-right headerCount"></i> <span
+                        class="headerCountName"> Participant details</span></p>
+                <div class="shortHeaderMsg">Select options from the drop-down list given below.</div>
+            </div>
+            <div class="extraInfoHeader" *ngIf="showFormExParticipant">
+                <p><span class="headerCountNumber">5 </span> <i class="fas fa-arrow-right headerCount"></i> <span
+                        class="headerCountName"> Feedback</span></p>
+                <div class="shortHeaderMsg">Help us understand more about you.</div>
+            </div>
+        </div>
+        </div>
+            <div class="nameFields" *ngIf="showFormName">
+
+                <div class="form-row justify-content-center">
+                    <div class="col-12">
+                        <div class="mb-4 form-group formFocus">
+                            <label for="participantFName" class="formLabelsActive">First Name *</label>
+                            <input type="text" placeholder="Type here" class="form-control formInput"
+                                name="participantFName" id="participantFName" [(ngModel)]="participantFName" autofocus>
+                            <small class="text-danger" *ngIf="formSubmit && !participantFName">
+                                This field is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-4 form-group formFocus">
+                            <label for="participantMName" class="formLabelsActive">Middle Name</label>
+                            <input type="text" placeholder="Type here" class="form-control formInput"
+                                name="participantMName" id="participantMName" [(ngModel)]="participantMName">
+                            <!-- <small class="text-danger" *ngIf="formSubmit && !participantMName">
+                                This field is required
+                            </small> -->
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group formFocus">
+                            <label for="participantLName" class="formLabelsActive">Last Name *</label>
+                            <input type="text" placeholder="Type here" class="form-control formInput"
+                                name="participantLName" id="participantLName" [(ngModel)]="participantLName">
+                            <small class="text-danger" *ngIf="formSubmit && !participantLName">
+                                This field is required
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row no-gutters">
+                    <div *ngIf="addMoreBtn == false" class="col-4 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn formBtnBroadBack" (click)="backBtnPage();"><i
+                            class="fas fa-arrow-left mr-2"></i> Back</button>
+                    </div>
+                    <div *ngIf="addMoreBtn == false" class="col-8 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn btn-block formBtnBroad" (click)="checkFormDataValidation();">Next <i
+                                class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                    <div *ngIf="addMoreBtn" class="col-12 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn btn-block formBtnBroad" (click)="checkFormDataValidation();">Next <i
+                                class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                </div>
+                
+
+            </div>
+            <div class="nameFields" *ngIf="showFormEmailId">
+
+                <div class="form-row justify-content-center">
+                    <div class="col-12">
+                        <div class="mb-4 form-group formFocus">
+                            <label for="participantEmailId" class="formLabelsActive">Email ID *</label>
+                            <input type="email" placeholder="Type here" class="form-control formInput" name="participantEmailId"
+                                id="participantEmailId" [(ngModel)]="participantEmailId" #email="ngModel"
+                                (ngModelChange)="validationCheck()" autofocus>
+
+                            <small class="text-danger" *ngIf="formSubmit && !participantEmailId">
+                                This field is required
+                            </small>
+                            <small class="text-danger" *ngIf="participantEmailId && !validEmail">
+                                Please enter valid email Id
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-4  formFocus">
+                            <label for="participantEmailIdRecheck" class="formLabelsActive">Re-enter Email ID *</label>
+                            <input type="email" placeholder="Type here" class="form-control formInput" name="participantEmailIdRecheck"
+                                id="participantEmailIdRecheckRecheck" [(ngModel)]="participantEmailIdRecheck"
+                                #email="ngModel" (ngModelChange)="validationCheck()">
+
+                            <small class="text-danger" *ngIf="formSubmit && !participantEmailIdRecheck">
+                                This field is required
+                            </small>
+                            <small class="text-danger" *ngIf="participantEmailIdRecheck && !validEmailRecheck">
+                                Please enter valid email Id
+                            </small>
+
+                            <small *ngIf="participantEmailId && participantEmailIdRecheck && validEmailRecheck">
+                                <span class="text-danger" *ngIf="participantEmailId != participantEmailIdRecheck">
+                                    Email ids are not matching
+                                </span>
+                            </small>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-4 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn formBtnBroadBack" (click)="backBtnPage();"><i
+                            class="fas fa-arrow-left mr-2"></i> Back</button>
+                    </div>
+                    <div class="col-8 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn btn-block formBtnBroad" (click)="checkFormDataValidation();">Next <i
+                                class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nameFields" *ngIf="showFormContact">
+                <div class="form-row justify-content-center">
+                    <div class="col-12">
+                        <div class="mb-4 form-group formFocus">
+                            <label for="participantMobileNo1" class="formLabelsActive">Mobile No *</label>
+                            <input type="tel" placeholder="Type here" class="form-control formInput" id="participantMobileNo1"
+                                name="participantMobileNo1" [(ngModel)]="participantMobileNo1"
+                                (ngModelChange)="validationCheck()" autofocus>
+
+                            <small class="text-danger" *ngIf="formSubmit && !participantMobileNo1">
+                                This field is required
+                            </small>
+                            <small class="text-danger" *ngIf="participantMobileNo1 && !validMobile1">
+                                Please enter valid 10 digit Mobile Number
+                            </small>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group formFocus">
+                            <label for="participantMobileNo2" class="formLabelsActive">Alternate Mobile No. (Optional)</label>
+                            <input type="tel" placeholder="Type here" class="form-control formInput" id="participantMobileNo2"
+                                name="participantMobileNo2" [(ngModel)]="participantMobileNo2"
+                                (ngModelChange)="validationCheck()">
+
+
+                            <small class="text-danger" *ngIf="participantMobileNo2 && !validMobile2">
+                                Please enter valid Mobile Number
+                            </small>
+                            <small class="text-danger" *ngIf="participantMobileNo2 && participantMobileNo2 == participantMobileNo1">
+                                Please give alternate number
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-4 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn formBtnBroadBack" (click)="backBtnPage();"><i
+                            class="fas fa-arrow-left mr-2"></i> Back</button>
+                    </div>
+                    <div class="col-8 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn  btn-block formBtnBroad" (click)="checkFormDataValidation();">Next <i
+                                class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nameFields" *ngIf="showFormSchool">
+                <div class="form-row justify-content-center">
+                    <div class="col-12">
+                        <div class="form-group formFocus">
+                            <label for="participantStd" class="formLabelsActive">STD *</label>
+                            <select class="form-control formInput" placeholder="Select STD" id="participantStd" name="participantStd"
+                                [(ngModel)]="participantStd" autofocus (change)="changeStd()">
+                                <option disabled>Select STD</option>
+                                <option>Std 11 & Above</option>
+                                <option>Nursery</option>
+                                <option>Jr Kg</option>
+                                <option>Sr Kg</option>
+                                <option>Std 1</option>
+                                <option>Std 2</option>
+                                <option>Std 3</option>
+                                <option>Std 4</option>
+                                <option>Std 5</option>
+                                <option>Std 6</option>
+                                <option>Std 7</option>
+                                <option>Std 8</option>
+                                <option>Std 9</option>
+                                <option>Std 10</option>
+                            </select>
+                            <small class="text-danger" *ngIf="formSubmit && !participantStd">
+                                This field is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-12" *ngIf="participantStd">
+                        <div *ngIf="participantStd != 'Std 11 & Above'">
+                            <div class="mb-3 form-group formFocus">
+                                <!-- <label for="participantSchoolName" class="formLabelsActive">School name *</label>
+                                <select class="form-control formInput" id="participantSchoolName"
+                                    name="participantSchoolName" [(ngModel)]="participantSchoolName"
+                                    (change)="onChangeSchoolName()">
+                                    <option disabled>Select School name</option>
+                                    <option *ngFor="let schoolName of schoolList" [ngValue]="schoolName">
+                                        {{schoolName.schoolName}}</option>
+                                </select> -->
+                            
+
+                                <!-- <label for="participantSchoolName" class="formLabelsActive">School name *</label>
+                                <input list="browsers" placeholder="Search and select school" class="form-control formInput" name="participantSchoolName" id="participantSchoolName" [(ngModel)]="participantSchoolName">
+                                <datalist id="browsers">
+                                    <option disabled>Select School name</option>
+                                    <option *ngFor="let schoolName of schoolList" [value]="schoolName.schoolName">
+                                </datalist> -->
+
+                                <label for="participantSchoolName" class="formLabelsActive">School name *</label>
+                                <select placeholder="Search and select school" class="form-control formInput" name="participantSchoolName" id="participantSchoolName" [(ngModel)]="participantSchoolName">
+                                    <option disabled>Select School name</option>
+                                    <option *ngFor="let schoolName of schoolList" [value]="schoolName.schoolName">{{schoolName.schoolName}}</option>
+                                </select>
+
+                               <!--<input name="participantSchoolName" [taList]="schoolNameList" [value]="participantSchoolName"
+                                placeholder="Search School name" class="form-control" ngxTypeahead (taSelected)="onChangeSchoolName($event)"> -->
+
+                                <!-- <input id="typeahead-template" type="text" class="form-control" [(ngModel)]="participantSchoolName" [ngbTypeahead]="search" [resultTemplate]="rt"
+                                [inputFormatter]="formatter" /> -->
+
+
+                                <small class="text-danger" *ngIf="formSubmit && !participantSchoolName">
+                                    This field is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12" *ngIf="participantStd">
+                        <div *ngIf="participantStd == 'Std 11 & Above'">
+                            <div class="mb-3 form-group formFocus">
+                                <label for="participantAdultName" class="formLabelsActive">Student / Others *</label>
+                                <select class="form-control formInput" placeholder="Select Student / Others" id="participantAdultName"
+                                    name="participantAdultName" [(ngModel)]="participantAdultName">
+                                    <option disabled>Select Student / others </option>
+                                    <option *ngFor="let adult of adultList" [value]="adult.schoolName">
+                                        {{adult.schoolName}}</option>
+                                </select>
+                            
+                                <small class="text-danger" *ngIf="formSubmit && !participantAdultName">
+                                    This field is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center mb-0" *ngIf="participantStd && participantStd != 'Std 11 & Above'">
+                        <p class="mb-1 otherSchoolText">If your school name doesn't appear in the given list please select the option Others.</p>
+                    </div>
+                    <div class="col-12 mt-2" *ngIf="participantStd">
+                        <div *ngIf="participantStd != 'Std 11 & Above' && participantSchoolName == 'Others'">
+                            <div class="mb-4 form-group formFocus">
+                                <label for="otherSchool" class="formLabelsActive">Other Schools *</label>
+                                <input type="text" placeholder="Type here" class="form-control formInput"
+                                    name="otherSchool" id="otherSchool" [(ngModel)]="otherSchool">
+                                <small class="text-danger" *ngIf="formSubmit && !otherSchool">
+                                    This field is required
+                                </small>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-12 d-flex justify-content-center mb-3" *ngIf="participantStd && participantStd != 'Std 11 & Above'">
+                        
+                        <button *ngIf="isOtherSchoolPrvided == false" class="btn btn-block formBtnBroad" (click)="provideSchool()">Provide other school name</button>
+                        <button *ngIf="isOtherSchoolPrvided == true" class="btn btn-block formBtnBroad" (click)="selectSchool()">Select school name</button>
+                    </div> -->
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-4 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn formBtnBroadBack" (click)="backBtnPage();"><i
+                            class="fas fa-arrow-left mr-2"></i> Back</button>
+                    </div>
+                    <div class="col-8 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn btn-block formBtnBroad" (click)="checkFormDataValidation();">Next <i
+                                class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="nameFields extraFeedbackQuestions" *ngIf="showFormExParticipant">
+                <div class="form-row mb-4">
+                    <div class="col-12 feedbackBtn">
+                        <div class="form-group">
+                            <label for="text" class="formLabelsActive">Did you participate in GCC 2020 ?</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-block btnCustom" (click)="clickYesParticipated();"
+                            [ngClass]="{'active':activeBtn == 'yes'}">Yes</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-block btnCustom" (click)="clickNoParticipated();"
+                            [ngClass]="{'active':activeBtn == 'no'}">No</button>
+                    </div>
+                </div>
+
+                <div class="form-row justify-content-center mt-3" *ngIf="showNextQuestion">
+                    <div class="col-12">
+                        <div class="form-group removeFeedbackFocus">
+                            <label for="participantReason" class="formLabelsActive mb-0">How did you get to know about
+                                GCC 2021 ?</label>
+                            <select class="form-control formInput" id="participantReason" name="participantReason"
+                                [(ngModel)]="participantReason">
+                                <option disabled>Select reason</option>
+                                <option>Website</option>
+                                <option>School</option>
+                                <option>Email</option>
+                                <option>Others</option>
+                            </select>
+                            <small class="text-danger" *ngIf="formSubmit && !participantReason">
+                                This field is required
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-4 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn formBtnBroadBack" (click)="backBtnPage();"><i
+                            class="fas fa-arrow-left mr-2"></i> Back</button>
+                    </div>
+                    <div class="col-8 d-flex justify-content-center mt-2 p-0">
+                        <button class="btn btn-block formBtnBroad" (click)="checkFormDataValidation();">Proceed to Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="webViewContainer" *ngIf="showPreview">
+        <div class="previewForm">
+            <!-- <div class="row no-gutters">
+                <div class="col-12">
+                    <img class = "previewLampImg" src="../../assets/img/lampPreviewMobBigSize.svg" alt="">
+                </div>
+            </div> -->
+            <div class="previewSpacing">
+                <div class="previewHeading">
+                    Review Details
+                </div>
+            </div>
+           
+                <div class="previewDetailsBlock">
+                  
+                    <div class="previewDetails" *ngFor="let single of finalMultiparticipantList">
+                        <div class="form-row justify-content-center mb-2">
+                            <div class="col-12">
+                                <span class="preHeading">Full Name </span>
+                            </div>
+                            <div class="col-12 preAns preAnsFullName">
+                                 <span
+                                    [innerHTML]="single.firstName.toLowerCase() + ' ' + single.lastName.toLowerCase()"></span>
+                            </div>
+                        </div>
+                        <div class="form-row justify-content-center mb-2">
+                            <div class="col-12">
+                                <span class="preHeading">Email Address </span>
+                            </div>
+                            <div class="col-12 preAns">
+                                 <span [innerHTML]="single.emailId"></span>
+                            </div>
+                        </div>
+                        <div class="form-row justify-content-center mb-2">
+                            <div class="col-12">
+                                <span class="preHeading" *ngIf="single.std != 'Std 11 & Above'">School</span>
+                                <span class="preHeading" *ngIf="single.std == 'Std 11 & Above'">Student/Others</span>
+                            </div>
+                            <div class="col-12 preAns">
+                                 <span [innerHTML]="single.schoolNameSelected"></span>
+                            </div>
+                        </div>
+                        <div class="form-row justify-content-center mb-2">
+                            <div class="col-12">
+                                <span class="preHeading">STD</span>
+                            </div>
+                            <div class="col-12 preAns">
+                                 <span [innerHTML]="single.std"></span>
+                            </div>
+                        </div>
+                        <div class="form-row justify-content-center mb-2">
+                            <div class="col-12">
+                                <span class="preHeading">Mobile No.</span>
+                            </div>
+                            <div class="col-12 preAns">
+                                 <span [innerHTML]="single.primaryContactNo"></span><span *ngIf="single.secondaryContactNo" [innerHTML]="', ' + single.secondaryContactNo"></span>
+                            </div>
+                        </div>
+                        <!-- <div class="form-row justify-content-center mb-2">
+                            <div class="col-12">
+                                <span class="preHeading">Alternate Mobile No.</span>
+                            </div>
+                            <div class="col-12 preAns">
+                                 <span [innerHTML]="single.secondaryContactNo"></span>
+                            </div>
+                        </div> -->
+                        <div class="row no-gutters">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button class="btn editBtn" (click)="editForm(single);">Edit Details <span><img
+                                            src="../../assets/img/editPreview.svg" alt=""></span></button>
+                            </div>
+                        </div>
+                   
+                </div>
+                    <div class="addMoreBtn text-center mt-2">
+                        <button class="btn formBtnBroadAdd" (click)="openMd(addMore);">+ Add more entries</button>
+    
+                    </div>
+                </div>
+                <div class="previewSpacingBtn">
+                <div class="form-row justify-content-center">
+                    <div class="col-12 text-center my-4">
+                        <button class="btn formBtnBroad" (click)="saveFormData();">CONFIRM AND PAY</button>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<ng-template #addMore let-modal>
+    <!-- <div class="modal-header">
+      <h4 class="modal-title">Delete Participant</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+    <div class="modal-body">
+      <div class="modalText">
+        Do you want to add one more entry ?
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="form-row justify-content-center modalBtn">
+        <div class="col-6">
+            <button class="btn btn-primary btn-block modalAddMoreBtnNo" (click)="modal.dismiss('Cross click')">No</button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-primary btn-block modalAddMoreBtnYes" (click)="addMoreParticipant()">Yes! Add</button>
+        </div>
+        
+    </div>
+      </div>
+  </ng-template>

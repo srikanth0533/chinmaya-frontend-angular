@@ -1,0 +1,41 @@
+.partiCertiName{
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #C73D07;
+}
+.mainCertiContent {
+    top: 48%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translateX(-50%);
+      text-align: center;
+      font-weight: 600;
+      color: #2a5090;
+      font-size: 1.1rem;
+      width: 80%;
+      letter-spacing: 0.05rem;
+  }
+  .partiCertiName{
+    font-family: 'Great Vibes', cursive;
+      font-size: 2.7rem;
+      margin-bottom: 15px;
+      font-weight: 500;
+      color: #C73D07;
+  }
+  .rank{
+    color:#C73D07;
+}
+  @media print {
+
+    .mainCertiContent {
+      top: 48%;
+    }
+    .partiCertiName{
+        font-size: 3.4rem;
+        margin-bottom: 20px;
+    }
+    .partiCertiRank{
+        font-size: 1.3rem;
+      }
+  }
+  

@@ -1,0 +1,61 @@
+
+<div class="main-loader" *ngIf="mainLoaderIs">
+    <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+
+<div class="pageContent">
+    <div class="pageMainContent">
+        <div class="unSubscribeContent">
+            <div class="contentHeaderUnsubscribe">
+                <h2>Chinmaya Mission, Thane’s</h2>
+            </div>
+            <div class="secondaryHeading">
+                <h3>Annual Geeta Chanting Competition 2021</h3>
+            </div>
+            <div class="infoContent">
+                <div class="hideContent" *ngIf="isButtonClicked == false">
+                    <h3>Unsubscribe from this List</h3>
+                    <p class="nonHighlights">When you click the button below <span class="highlightsText"> you will be
+                            unsubscribed</span> from receiving all future updates for GCC
+                        2021 event <span class="highlightsText">including registration process.</span></p>
+                    <div class="spacer"></div>
+                    <div class="emailaddress">
+                        <span class="highlightsText"> Email Address : </span> <span class="nameEmail" [innerHTML]="participantEmailId"></span>
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="participantName">
+                        <span class="highlightsText">Name of participant : </span> <span class="nameEmail" [innerHTML]="participantName"></span>
+                    </div>
+                    <div class="spacer"></div>
+    
+                    <div class="unsubscribeBtn">
+                        <button class="btn btn-primary" (click)="unSubscribe();">Unsubscribe me from GCC 2021</button>
+                    </div>
+                </div>
+                
+                <div class="hideContent" *ngIf="isButtonClicked">
+                    <div class="feedback">
+                        <img class="feedbackImg" src="../../assets/img/feedback.svg" alt="CMT" />
+                        <p class="highlightsText">You have Unsubscribed to GCC 2021 Event</p>
+                    </div>
+                    <div class="div">
+                        <button class="btn btn-primary" (click)="Subscribe();">subscribe</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="pageContent">
+    <div class="successPage">
+        <div class="webViewSuccessPage">
+            <div class="row no-gutters justify-content-center align-items-center">
+                <img src="../../assets/img/mainetenance.svg" alt="">
+            </div>
+           <h3 class="maintenanceHeading">Website is under maintenance</h3>
+           <p class="maintenanceMsg">Our team is working on some fixes right now. Please check again after some time.</p>
+        </div>
+    </div>
+</div> -->
+

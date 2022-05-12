@@ -1,0 +1,20 @@
+<div class="app-body">
+  <div class="main-loader" *ngIf="mainLoaderIs">
+    <img src="assets/img/loader.gif" alt="Loading..." />
+  </div>
+  <header class="navbar main-header" *ngIf="!isHeader">
+    <a class="navbar-brand" href="#">CHINMAYA MISSION, THANE</a>
+    <button type="button" class="btn btn-light" *ngIf="isLogoutButtonShow" (click)="logout();">Logout <i class="fas fa-sign-out-alt"></i></button>
+  </header>
+
+  <div class="main-container">
+   
+    <section class="main-section" id="mainSection">
+      <router-outlet></router-outlet>
+    </section>
+    <!-- <button type="button" class="btn btn-primary btn-scrlTop" (click)="scrollTop()" *ngIf="scrolled" placement="left"
+      ngbTooltip="Scroll to top">
+      <i class="fas fa-chevron-up"></i>
+    </button> -->
+  </div>
+</div>

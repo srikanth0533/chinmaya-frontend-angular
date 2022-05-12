@@ -1,0 +1,122 @@
+.setup-completed-sec,
+.file-uploading-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.main-section {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  scroll-behavior: smooth;
+  padding-left: 250px;
+}
+
+.file-upload-box {
+  border: 2px dashed #d2d2d2;
+  text-align: center;
+  max-width: 500px;
+  min-width: 350px;
+  margin: 10px;
+  padding: 30px;
+  position: relative;
+}
+
+.file-upload-box > img {
+  max-width: 100px;
+  max-height: 100px;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.drag-msg-text {
+  color: #868686;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  margin: 12px 0;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.file-name-view {
+  border: 2px dashed transparent;
+  margin-bottom: 12px;
+  padding: 8px;
+  position: relative;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.file-name-view.fileIn {
+  border-color: #353535;
+  color: #0a7b3f;
+}
+
+.file-name-view .icon-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+.file-up-btn {
+  position: relative;
+}
+
+.file-up-btn input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.file-up-btn .btn {
+  cursor: pointer;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.global-upload-box {
+  text-align: right;
+  padding-bottom: 15px;
+}
+
+/*  */
+.setup-completed-sec > ul {
+  margin: 0;
+  list-style: none;
+}
+
+.setup-completed-sec > ul > li {
+  font-size: 22px;
+  margin-bottom: 25px;
+  position: relative;
+  padding-left: 40px;
+}
+
+.setup-completed-sec > ul > li .micon {
+  color: #145782;
+  font-size: 24px;
+  position: absolute;
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  width: 40px;
+  text-align: center;
+}
+
+.file-status {
+  font-size: 28px;
+  vertical-align: middle;
+  color: #4caf50;
+}
+
+.setup-msg-box {
+  margin: 50px;
+}

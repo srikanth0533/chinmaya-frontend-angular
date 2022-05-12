@@ -1,0 +1,85 @@
+
+<app-nav-bar></app-nav-bar>
+
+<div class="main-loader" *ngIf="mainLoaderIs">
+  <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+
+<div class="file-uploading-sec" *ngIf="onloadShownSection == 1">
+  <h2><strong>Step 1 :-</strong> Upload participants excel</h2>
+  <div class="file-upload-box" appDragDrop (files)="filesDropped($event, 'partiFileUploader')" id="partiDragAndDropBox">
+    <img src="assets/img/excel-icon.png" />
+    <p class="drag-msg-text">Drag & Drop File Here</p>
+    <h6 class="file-name-view" [ngClass]="{ fileIn: partiSection.fileSelectedIs }">
+      {{ partiSection.fileObj.name || "No file" }}
+      <button class="btn icon-btn" *ngIf="partiSection.fileSelectedIs" (click)="cancelSelectedFile()">
+        <i class="fas fa-times"></i>
+      </button>
+    </h6>
+    <div class="file-up-btn">
+      <input type="file" name="file" id="partiFileUploader" (change)="checkSelectedFile($event.target, 'undefined')" />
+      <label for="partiFileUploader" class="btn btn-primary" *ngIf="!partiSection.fileSelectedIs"><i
+          class="fas fa-file-import mr-1"></i>
+        Choose File...</label>
+      <button type="button" class="btn btn-secondary" *ngIf="partiSection.fileSelectedIs"
+        (click)="uploadSelectedFile('parti')">
+        <i class="fas fa-file-upload mr-1"></i>
+        Upload
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="partiSection.fileSelectedIs">
+    <ngb-alert [dismissible]="false" [type]="'warning'">
+      <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>
+      uploading an Excel will remove previous data if any.
+    </ngb-alert>
+  </div>
+</div>
+
+<!-- Group -->
+<div class="file-uploading-sec" *ngIf="onloadShownSection == 2">
+  <h2><strong>Step 2 :-</strong> Upload slots excel</h2>
+  <div class="file-upload-box" appDragDrop (files)="filesDropped($event, 'grpFileUploader')" id="groupDragAndDropBox">
+    <img src="assets/img/excel-icon.png" />
+    <p class="drag-msg-text">Drag & Drop File Here</p>
+    <h6 class="file-name-view" [ngClass]="{ fileIn: groupSection.fileSelectedIs }">
+      {{ groupSection.fileObj.name || "No file" }}
+      <button class="btn icon-btn" *ngIf="groupSection.fileSelectedIs" (click)="cancelSelectedFile()">
+        <i class="fas fa-times"></i>
+      </button>
+    </h6>
+    <div class="file-up-btn">
+      <input type="file" name="file" id="grpFileUploader" (change)="checkSelectedFile($event.target, 'undefined')" />
+      <label for="grpFileUploader" class="btn btn-primary" *ngIf="!groupSection.fileSelectedIs"><i
+          class="fas fa-file-import mr-1"></i>
+        Choose File...</label>
+      <button type="button" class="btn btn-secondary" *ngIf="groupSection.fileSelectedIs"
+        (click)="uploadSelectedFile('group')">
+        <i class="fas fa-file-upload mr-1"></i>
+        Upload
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Setup Completed Section -->
+
+<div class="setup-completed-sec" *ngIf="onloadShownSection == 3">
+  <ul>
+    <li>
+      <i class="fas fa-list-ul micon"></i> <span class="align-middle">Participants excel uploaded </span><i
+        class="file-status fas fa-check-circle"></i>
+    </li>
+    <li>
+      <i class="fas fa-door-open micon"></i> <span class="align-middle">Slots excel uploaded </span><i
+        class="file-status fas fa-check-circle"></i>
+    </li>
+  </ul>
+  <p class="setup-msg-box">
+    <span class="align-middle">You have already done setup of hall ticket generation. To Setup again, click<i
+        class="fas fa-arrow-right px-2"></i></span>
+    <button type="button" class="btn btn-primary" (click)="fileSetup()"><i class="fas fa-cogs"></i>
+      Setup</button>
+  </p>
+</div>

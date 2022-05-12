@@ -1,0 +1,50 @@
+<app-nav-bar></app-nav-bar>
+<div class="main-loader" *ngIf="mainLoaderIs">
+    <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+<div class="configuration-page">
+   <div class="configuration-page-heder">
+       <div class="row mx-0 justify-content-center p-3">
+           <div class="col-auto p-6 justify-content-center configurationTitle">
+               <span>Expiry Setting</span>
+           </div>
+       </div>
+   </div>
+   <div class="configuration-page-body">
+       <div class="configuration-page-body-contain pt-3">
+           <div class="configurationRegistration">
+               <div class="row mx-0 p-2">
+                <div class="col-4">
+                    <span>Registration Date:</span>
+                </div>
+                <div class="col-4">
+                    <input type="date"  class="form-control dateInput p-1" [(ngModel)]="registrationExpiryDate" (ngModelChange)="sendExpiryDate('registration')" placeholder="Enter Date"/>
+                </div>
+               </div>
+           </div>
+           <div class="configurationReconfirmation">
+               <div class="row mx-0 p-2">
+                    <div class="col-4">
+                        <span>Reconfirmation :</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="date" [(ngModel)]="reconfirmationDate" (ngModelChange)="sendExpiryDate('confirmation')"  class="form-control dateInput p-1" placeholder="Enter Date"/>
+                    </div>
+               </div>
+           </div>
+           <div class="configurationSlotting">
+            <div class="row mx-0 p-2">
+                 <div class="col-4">
+                     <span>Slotting:</span>
+                 </div>
+                 <div class="col-4">
+                    <input type="date" class="form-control dateInput p-1" [(ngModel)]="slottingDate" (ngModelChange)="sendExpiryDate('slotting')" placeholder="Enter Date"/>
+                 </div>
+               
+            </div>
+        </div>
+      
+       </div>
+   </div>
+</div>
+

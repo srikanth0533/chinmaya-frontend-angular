@@ -1,0 +1,38 @@
+<nav class="side-navbar">
+    <div class="nanbar-scroller">
+      <p class="logo-img"><img src="assets/img/logo.svg" alt="Logo" /></p>
+      <ul class="menu-list">
+        <!-- <li>
+          <a (click)="redirect('dashboard')" [ngClass]="{'active':activePage == 'dashboard'}"><i class="fas fa-cogs"></i> Setup</a>
+        </li> -->
+        <li>
+          <a (click)="redirect('paymentDashboard')" [ngClass]="{'active':activePage == 'paymentDashboard'}"><i class="fas fa-list-ul"></i>Registration Dashboard</a>
+        </li>
+       
+        <li>
+          <a (click)="redirect('slotDashboard')" [ngClass]="{'active':activePage == 'slotDashboard'}"><i class="fas fa-list-ul"></i> Slot Dashboard</a>
+        </li>
+        <!-- <li>
+          <a (click)="redirect('batchDashboard')" [ngClass]="{'active':activePage == 'batchDashboard'}"><i class="fas fa-list-ul"></i> Batch Dashboard</a>
+        </li> -->
+        <!-- <li>
+          <a (click)="redirect('groupList')" [ngClass]="{'active':activePage == 'groupList'}"><i class="fas fa-door-open"></i> Slots</a>
+        </li> -->
+        <!-- <li>
+          <a (click)="redirect('hallTickets')" [ngClass]="{'active':activePage == 'hallTickets'}"><i class="fas fa-ticket-alt"></i> Hall Tickets</a>
+        </li> -->
+        <li>
+          <a (click)="redirect('certificate')" [ngClass]="{'active':activePage == 'certificate'}"><i class="fas fa-certificate"></i> Certificates</a>
+        </li>
+        <li>
+          <a (click)="redirect('configuration')" [ngClass]="{'active':activePage == 'configuration'}"><i class="fas fa-cogs"></i>Configurations</a>
+        </li>
+        <li>
+          <a (click)="redirect('participants')" [ngClass]="{'active':activePage == 'participants'}"><i class="fas fa-list-ul"></i>GCC 2020</a>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright-text">
+      <a href="http://www.ilmux.com/" target="_blank">Courtesy <strong>ILMUX Pvt. Ltd.</strong></a>
+    </div>
+  </nav>

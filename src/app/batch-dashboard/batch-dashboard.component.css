@@ -1,0 +1,131 @@
+.main-section {
+  padding-left: 250px;
+}
+.dashboadContainer {
+  margin: 15px;
+  height: 95%;
+  /* padding-left: 250px; */
+}
+.dashboardTable {
+  box-shadow: 0px 0px 5px 4px #00000052;
+  border-radius: 5px;
+  margin-top: 15px;
+  /* height: 95%; */
+}
+.dashboardHeader {
+  background: #145782;
+  color: #fff;
+  padding: 6px 5px;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 0.85rem;
+}
+.dashboardBatchData {
+  height: 520px;
+  overflow: overlay;
+}
+.singleBatchData {
+  border-bottom: 1px solid #cccccc;
+  padding: 6px;
+  font-weight: 500;
+  display: flex;
+  font-size: 0.9rem;
+  align-items: center;
+  /* cursor: pointer; */
+}
+.singleBatchData:last-child {
+  border-bottom: none;
+}
+.blurArea {
+  background: #0000006b;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  z-index: 12;
+  align-items: center;
+}
+.mainModalContent {
+  max-width: 1024px;
+  height: 950px;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.modalHeader {
+  border-bottom: 1px solid #efefef;
+}
+.modalBody {
+  padding: 50px 0;
+  text-align: center;
+}
+.modalFooter {
+  border-top: 1px solid #efefef;
+}
+.modalTitle {
+  color: #00558c;
+}
+.sendEmail {
+  color: #00558c;
+}
+.email02Bg {
+  background: #e2f2fb;
+}
+.ifPhaseOne {
+  background: #28a7453b;
+  color: #1a8031;
+  font-weight: 600;
+}
+.ifPhaseOne:last-child {
+  border-bottom: none;
+}
+.downloadBtn{
+  margin: 10px;
+  display: flex;
+  justify-content: flex-end;
+    margin: 10px;
+}
+table{
+  width: 100%;
+}
+.mainScoreTable table, th, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.mainScoreTable .bigHead{
+  padding:5px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.smallData{
+  padding: 0px 10px;
+  font-size: 0.8rem;
+}
+.OverallPresHead{
+  padding:5px;
+  font-size: 0.8rem;
+    text-align: center;
+}
+.OverallPres{
+  padding: 10px 4px;
+}
+.bigData{
+  padding: 25px 130px;
+}
+.pronunData{
+  padding: 25px 80px;
+}
+.memoryData{
+  padding: 25px 95px;
+}
+.modal-lg{
+  max-width: 1024px;
+}
+.nameData{
+  padding: 0px 75px;
+}
+@media print {
+  @page { size: landscape; }
+
+}

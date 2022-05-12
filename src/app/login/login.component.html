@@ -1,0 +1,35 @@
+<div class="main-loader" *ngIf="mainLoaderIs">
+    <img src="assets/img/loader.gif" alt="Loading..." />
+  </div>
+<div class="loginArea boxshadow rounded">
+    <div class="contentHeader"> Login </div>
+    <div class="loginInner bg-white">
+        <div class="contentArea">
+         <form>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" [(ngModel)]="isUserLogin.email" required autocomplete="off">
+
+                    </div>
+                    <!-- <div *ngIf="isUserLogin.email.length > 0 && isEmail.invalid" class="invalid-feedback">
+                        <div *ngIf="isEmail.errors.required">
+                            Name is required
+                        </div>
+                    </div>
+                    <div [hidden]="!isEmail.hasError('pattern')" class="invalid-feedback">
+                        Not a valid Email Address
+                    </div> -->
+                    <div class="col-12 form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" [(ngModel)]="isUserLogin.password" required autocomplete="off">
+                          
+                    </div>
+                    <div class="col-12 actionArea">
+                        <button class="btn btn-primary btn-lg btn-block " (click)="userLogin();">Login </button>                    
+                    </div>
+                </div>
+           </form>
+        </div>
+    </div> 
+</div>

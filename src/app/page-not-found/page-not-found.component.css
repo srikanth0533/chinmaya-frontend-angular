@@ -1,0 +1,17 @@
+.error-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.error-section h3 {
+  color: #145782;
+  font-size: 2.5rem;
+  margin: 0;
+}
+.main-section {
+  padding-left: 0px;
+}

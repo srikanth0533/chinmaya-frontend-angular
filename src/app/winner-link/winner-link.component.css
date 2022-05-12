@@ -1,0 +1,881 @@
+.pageContent {
+    /* width: 100%;
+    margin: 15px auto;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute; */
+  
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    padding: 30px 0;
+  }
+  
+  .imgHeader {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .mainHeader {
+    text-align: center;
+    margin: 16px 0px;
+    color: #ef4923;
+  }
+  
+  .ticket {
+    text-align: center;
+    position: relative;
+    /* margin: -15px 0px;
+        width: 638px; */
+  }
+  
+  .mainContent {
+    text-align: center;
+    margin: 0px auto;
+    width: 34%;
+    /* box-shadow: 1px 1px 3px 3px #0000003d; */
+    padding: 0px 15px;
+  }
+  
+  /* .hideShow{
+      margin: 25px 0px 0px;
+    } */
+  .bgContent {
+    background-color: #f5f5f5;
+    padding: 10px;
+  }
+  
+  /* .main-container .main-section {
+    padding-left: 10px !important;
+  } */
+  
+  .navbar {
+    display: none !important;
+  }
+  
+  .lastConfInfo {
+    box-shadow: 0px 0px 3px 3px #0000002b;
+    padding: 5px;
+  }
+  
+  .mPinInputCont {
+    max-width: 500px;
+    margin: 6px auto;
+    margin-bottom: 0px;
+  }
+  
+  .mPinInputCont p {
+    color: var(--primary);
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .mPinInputCont .form-group {
+    display: flex;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 3px 3px #f3f3f3;
+    padding: 0px 10px 10px;
+    border-radius: 5px;
+  }
+  
+  .mPinInputCont .form-group .form-control {
+    color: var(--primary);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-right: 10px;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    /* background: #efefef; */
+  }
+  
+  .mPinInputCont .form-group .form-control:last-child {
+    margin-right: 0;
+  }
+  
+  .geetaChanting {
+    color: #377abd;
+  }
+  
+  .plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 1.4rem;
+    color: #ccc;
+  }
+  
+  .confirmIcon {
+    font-size: 10rem;
+    color: #28a745;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .errorIcon {
+    width: 450px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    display: block;
+  }
+  
+  .expiryInfoPage {
+    padding: 15px;
+    border: 1px dashed #000;
+    background: #fff;
+  }
+  .wrongInfoPage {
+    padding: 15px;
+    border: 1px dashed #000;
+    background: #fff;
+  }
+  .wrongPhase {
+    font-size: 1.2rem;
+  }
+  
+  .expiryIcon {
+    color: #ef4923;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+  
+  .expiryNote {
+    margin-top: 15px;
+    font-size: 0.8rem;
+  }
+  
+  .expiryClosed {
+    color: #ef4923;
+  }
+  
+  .imgBlock {
+    position: relative;
+  }
+  
+  .insideImg {
+    /* position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); */
+    padding: 25px 0px;
+  }
+  
+  .confirmedInsideImg {
+    color: #377abd;
+  }
+  
+  .participantImg {
+    background: #f9f9f9;
+    margin: 0px -5px;
+  }
+  
+  .correctData {
+    color: #007bff;
+  }
+  
+  .noEditName {
+    width: 400px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+  }
+  
+  .editName {
+    width: 100%;
+    position: absolute;
+    top: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .ticket img {
+    width: 100%;
+  }
+  
+  .editNameOption {
+    color: #007bff;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  
+  .editNameOption i {
+    font-size: 0.75rem;
+  }
+  
+  .editNo {
+    color: #007bff;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  
+  .editNo i {
+    font-size: 0.75rem;
+  }
+  
+  .confirmMob {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    background-color: #0077b6;
+    border-color: #0077b6;
+    padding: 10px;
+  }
+  
+  .candidateName .form-control {
+    background: #cce4f0;
+    border: none;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #007bff;
+  }
+  
+  .checkedRecorded {
+    font-size: 0.8rem;
+  }
+  
+  hr {
+    border-color: #fff;
+  }
+  
+  .candidateNameEdit .form-control {
+    background: #ffffff;
+    border: none;
+    letter-spacing: 1px;
+    box-shadow: 1px 1px 3px 3px #00000014;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #007bff;
+  }
+  
+  .partiLabel {
+    width: 350px;
+    margin: 15px auto 6px;
+    text-align: left;
+  }
+  
+  .mobLabel {
+    width: 350px;
+    margin: 15px auto 6px;
+    text-align: left;
+  }
+  
+  .inpBelow {
+    width: 350px;
+    margin: 0px auto;
+  }
+  
+  .inpBelow .form-group {
+    margin-bottom: 0px;
+  }
+  
+  .belowTxt {
+    width: 350px;
+    font-size: 0.9rem;
+    color: #dc3545;
+    text-align: left;
+    margin: 0 auto;
+  }
+  
+  /* .checkedRecorded {
+    text-align: left;
+    } */
+  .mPinInputCont .checkedRecorded {
+    font-size: 0.9rem;
+    width: 350px;
+    margin: 25px auto 0px;
+    font-weight: 500;
+    text-align: left;
+    color: #868686;
+    max-width: 100%;
+  }
+  
+  .dayTime {
+    margin: 28px auto;
+    width: 400px;
+    background: #ffe00040;
+    padding: 10px;
+    max-width: 100%;
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  .confirmedData {
+    color: #28a745;
+  }
+  
+  .validation {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #e21a2d;
+  }
+  
+  .hariOm {
+    text-align: center;
+    color: #ef4923;
+  }
+  
+  .onBoardingInfo {
+    padding: 15px;
+    border: 1px dashed #00ba07;
+    background: #fff;
+    margin: 0px 10px;
+    color: #00ba07;
+  }
+  
+  .onBoardNote {
+    color: #d30000;
+    text-align: left;
+    margin: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .agreementConfirmation {
+    margin-left: 8px;
+  }
+  
+  .agreementConfirmation .checkbox input {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .agreementText {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 1.1rem;
+  }
+  
+  .referSlot {
+    width: 100%;
+    position: absolute;
+    top: 64px;
+  
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  
+  .timeSlot {
+    width: 100%;
+    position: absolute;
+    top: 112px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  
+  .reportingTime {
+    width: 100%;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  
+  .reportTime {
+    color: #ef4923;
+    display: inline;
+  }
+  
+  .time {
+    display: inline-block;
+  }
+  
+  .slotDate {
+    background: #f5f5f5;
+    margin: 0px 10px;
+    padding: 5px 20px;
+    border-radius: 5px;
+  }
+  
+  .slotTime {
+    background: #f5f5f5;
+    margin: 0px 10px;
+    padding: 5px 36px;
+    border-radius: 5px;
+    /* width: 175px; */
+  }
+  
+  .expiryInfoPage {
+    padding: 15px;
+    border: 1px dashed #000;
+    background: #fff;
+  }
+  
+  .expiryIcon {
+    color: #ef4923;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+  
+  .expiryNote {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    text-align: left;
+  }
+  .prejoinedInstructionNote {
+    margin-top: 15px;
+    font-size: 1rem;
+    text-align: left;
+    font-weight: 700;
+  }
+  .preJoinMsg{
+    font-size: 1.2rem;
+  }
+  .rulesBtn {
+    background-color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+  
+    padding: 10px;
+    border-color: #fff;
+    color: #2959a2;
+    box-shadow: 0px 0px 2px 2px #f7f0f0;
+  }
+  
+  .preJoinedButton {
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+  
+  .preJoinedInfo {
+    padding: 15px;
+    border: 1px dashed #ef4923;
+    background: #fff;
+    margin: 0px 10px;
+    color: #ef4923;
+  }
+  
+  .preJoinedNote {
+    /* color: #D30000; */
+    text-align: left;
+    margin: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .reportTime {
+    color: #ef4923;
+  }
+  
+  .listOfInstructions {
+    padding-left: 20px;
+  }
+  
+  .countDown {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  .preJoinedclosedSession {
+    color: #ef4923;
+  }
+  
+  .appeal {
+    padding: 15px;
+    text-align: center;
+    position: absolute;
+    top: 290px;
+    right: 200px;
+    width: 225px;
+    box-shadow: 0px 0px 4px 3px #0000001f;
+  }
+  
+  .appealBtn {
+    width: 200px;
+    position: relative;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  .appealImg {
+    width: 200px;
+    cursor: pointer;
+  }
+  .textOfBtn {
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .appealNote {
+    width: 150px;
+    margin: 0 auto;
+  }
+  .appealGreet {
+    color: #ef4923;
+    margin-top: 10px;
+  }
+  .blurArea {
+    background: #0000006b;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    z-index: 12;
+    align-items: center;
+  }
+  .mainModalContent {
+    width: 750px;
+    height: 100%;
+    overflow: auto;
+    box-shadow: 0px 0px 3px 4px #00000012;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+  .modalHeader {
+    border-bottom: 1px solid #efefef;
+  }
+  .modalBody {
+    padding: 10px;
+    /* text-align: center; */
+  }
+  .modalFooter {
+    border-top: 1px solid #efefef;
+  }
+  .modalTitle {
+    color: #00558c;
+    text-align: center;
+  }
+  .bankCard {
+    width: 400px;
+    box-shadow: 0px 0px 3px 4px #00000012;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  .bankHeading {
+    color: #888888;
+  }
+  .cross {
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .cross:hover {
+    color: #00558c;
+  }
+  .appealMobileBtn {
+    width: 200px;
+    position: relative;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  .modalFooterAppeal {
+    background: #fff5bf;
+    padding: 15px;
+    text-align: center;
+  }
+  .kindlyNote {
+    font-weight: 500;
+  }
+  .inactive {
+    color: #9fa5aa;
+  }
+  .activated {
+    color: #00558c;
+  }
+  .timeLeft {
+    color: #ef4923;
+  }
+  .accDetails {
+    text-align: center;
+  }
+  @media (min-width: 999px) {
+    .appealMobileBtn {
+      width: 200px;
+      position: relative;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+    .appealBtn {
+      width: 175px;
+      cursor: pointer;
+    }
+    .appealImg {
+      width: 175px;
+      cursor: pointer;
+    }
+  }
+  @media (min-width: 999px) {
+    .appealMobileBtn {
+      display: none;
+    }
+  }
+  @media (max-width: 1000px) {
+    .appeal {
+      display: none;
+    }
+  }
+  
+  @media (min-width: 1000px) and (max-width: 1399px) {
+    .appeal {
+      top: 256px;
+      right: 95px;
+      width: 200px;
+    }
+    .appealBtn {
+      width: 175px;
+      cursor: pointer;
+    }
+    .appealImg {
+      width: 175px;
+      cursor: pointer;
+    }
+  }
+  @media (max-width: 1400px) {
+    .pageContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* justify-content: center; */
+      width: 100%;
+      /* margin: 50px auto; */
+    }
+  
+    .mPinInputCont .form-group .form-control {
+      font-size: 0.9rem;
+    }
+  
+    .confirmIcon {
+      font-size: 7rem;
+    }
+  
+    .errorIcon {
+      font-size: 7rem;
+    }
+  
+    .noEditName {
+      font-size: 1rem;
+      width: 325px;
+    }
+  
+    .mainContent {
+      width: 325px;
+      /* padding: 8px; */
+      padding: 0px;
+    }
+  
+    .insideImg {
+      font-size: 0.9rem;
+      width: 325px;
+    }
+  
+    .participantImg {
+      margin: 0px -5px;
+    }
+  
+    .note {
+      font-size: 0.9rem;
+    }
+  
+    .partiLabel {
+      width: 250px;
+      font-size: 0.6rem;
+    }
+  
+    .candidateName {
+      width: 250px;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+  
+    .candidateName .form-control {
+      /* padding: 24px 12px; */
+      font-size: 0.9rem;
+    }
+  
+    .candidateNameEdit .form-control {
+      font-size: 1rem;
+    }
+  
+    .inpBelow {
+      width: 250px;
+    }
+  
+    .belowTxt {
+      font-size: 0.6rem;
+      width: 250px;
+      margin: 3px auto 0px;
+    }
+  
+    .editNameOption {
+      font-size: 0.7rem;
+    }
+  
+    .editNo {
+      font-size: 0.7rem;
+    }
+  
+    .editNameOption i {
+      font-size: 0.6rem;
+    }
+  
+    .editNo i {
+      font-size: 0.6rem;
+    }
+  
+    .mobLabel {
+      width: 250px;
+      margin: 12px auto 6px;
+      font-size: 0.6rem;
+    }
+  
+    .mPinInputCont {
+      max-width: 250px;
+    }
+  
+    .plus {
+      font-size: 1rem;
+    }
+  
+    .mPinInputCont .form-group .form-control {
+      margin-right: 4px;
+      padding: 3px;
+    }
+  
+    .dayTime {
+      font-size: 0.8rem;
+    }
+  
+    .imgHeader img {
+      width: 325px;
+      /* margin: 15px 0px 0px; */
+    }
+  
+    .ticket img {
+      width: 325px;
+    }
+  
+    .editName {
+      top: 16px;
+      left: 50%;
+      font-size: 1rem;
+      width: 100%;
+    }
+  
+    .ticket img {
+      width: 100%;
+    }
+  
+    .mainHeader {
+      width: 325px;
+      font-size: 1.5rem;
+    }
+  
+    .validation {
+      font-size: 0.5rem;
+    }
+  
+    .errorIcon {
+      width: 325px;
+    }
+  
+    .expiryIcon {
+      font-size: 1rem;
+    }
+  
+    .expiryNote {
+      font-size: 0.7rem;
+    }
+  
+    .referSlot {
+      top: 48px;
+      font-size: 0.7rem;
+    }
+  
+    .reportHeading {
+      font-size: 0.7rem;
+    }
+  
+    .timeSlot {
+      top: 80px;
+    }
+  
+    .reportTime {
+      font-size: 1rem;
+    }
+  
+    .reportingTime {
+      top: 138px;
+      font-size: 0.65rem;
+    }
+  
+    .onBoardNote {
+      font-size: 0.7rem;
+    }
+  
+    .preJoinedNote {
+      font-size: 0.7rem;
+    }
+  
+    .agreementText {
+      font-size: 0.7rem;
+    }
+  
+    .onBoardingInfo h4 {
+      font-size: 0.9rem;
+    }
+  
+    .preJoinedInfo h4 {
+      font-size: 0.9rem;
+    }
+  
+    .listOfInstructions {
+      padding-left: 20px;
+      font-size: 1rem;
+    }
+  
+    .modalHariOm h4 {
+      font-size: 1.2rem;
+    }
+  
+    .modalInstructions h5 {
+      font-size: 0.9rem;
+    }
+  
+    .countDown {
+      font-size: 1.2rem;
+    }
+    .rulesBtn {
+      font-size: 0.85rem;
+    }
+    .preJoinMsg {
+      font-size: 0.9rem;
+    }
+    .prejoinedInstructionNote {
+      font-size: 0.8rem;
+    }
+    .mainModalContent {
+      width: 340px;
+    }
+    .mainModalContent p {
+      font-size: 1rem;
+    }
+    .bankCard {
+      width: 280px;
+    }
+    .accDetails {
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    .modalFooterAppeal h5 {
+      font-size: 1rem;
+    }
+    .modalFooterAppeal button {
+      font-size: 1rem;
+    }
+  }
+  

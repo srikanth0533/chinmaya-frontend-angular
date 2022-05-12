@@ -1,0 +1,415 @@
+<app-nav-bar></app-nav-bar>
+<div class="main-loader" *ngIf="hallTicketLoaderIs">
+  <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+<div class="filter-tickets-inputs">
+  <div class="row">
+    <div class="col-8">
+      <div class="form-row mx-0 mb-4 justify-content-center flex-nowrap">
+        <div class="col">
+          <label for="selSchool">School:</label>
+          <select class="form-control" (change)="reset_list('school')" id="selSchool" name="school"
+            [(ngModel)]="ticketFilterObj.schoolName" [disabled]="roomsNotAssigned">
+            <option value="all">All</option>
+            <option *ngFor="let schList of ticketFilteringData.schools" value="{{schList.schoolName}}">
+              {{schList.schoolName}}</option>
+          </select>
+          <p class="m-0">Total Count: <strong>{{total || 0}}</strong></p>
+        </div>
+        <div class="col">
+          <label for="selBranch">Branch:</label>
+          <select class="form-control" (change)="reset_list('select')" id="selBranch" name="branch"
+            [(ngModel)]="ticketFilterObj.branch" [disabled]="roomsNotAssigned">
+            <option value="all" *ngIf="ticketFilteringData.branch.length > 1">All</option>
+            <option *ngFor="let brnList of ticketFilteringData.branch" value="{{brnList.branch}}">{{brnList.branch}}
+            </option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="selStandard">Standard:</label>
+          <select class="form-control" (change)="reset_list('select')" id="selStandard" name="std"
+            [(ngModel)]="ticketFilterObj.std" [disabled]="roomsNotAssigned">
+            <option value="all">All</option>
+            <option *ngFor="let stdList of ticketFilteringData.std" value="{{stdList.std}}">{{stdList.std}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row mx-0 justify-content-center align-items-center" *ngIf="total>99">
+        <div class="col-auto">
+          <button type="button" (click)="get_hallTicket_list('start')" class="btn btn-primary"><i
+              class="fas fa-angle-double-left"></i>
+            First</button>
+        </div>
+        <div class="col-auto">
+          <button type="button" (click)="get_hallTicket_list('prev')" class="btn btn-primary">Previous 99</button>
+        </div>
+        <div class="col-auto">
+          <select class="form-control" (change)="get_hallTicket_list('pageNo')" name="std" [(ngModel)]="pagination">
+            <option *ngFor="let pageNo of pageNumber" value="{{pageNo.offset}}">{{pageNo.value}}</option>
+          </select>
+        </div>
+        <div class="col-auto">
+          <button type="button" (click)="get_hallTicket_list('next')" class="btn btn-primary">Next 99</button>
+        </div>
+        <div class="col-auto">
+          <button type="button" (click)="get_hallTicket_list('end')" class="btn btn-primary">Last <i
+              class="fas fa-angle-double-right"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-row align-items-end blank-ticket-filter">
+        <span class="legend">For Blank Ticket</span>
+        <div class="col">
+          <label for="blankHallTicketPointer">Select Event Name:</label>
+          <select class="form-control" id="blankHallTicketName" name="blankHallTicketName"
+            [(ngModel)]="blankHallTicketPointerVal">
+            <option *ngFor="let events of eventsData" value="{{events.event_name}}">{{events.event_name}}</option>
+          </select>
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-info" printSectionId="blankTicket" [useExistingCss]="true" ngxPrint
+            (click)="infoMsgToaster()">
+            <i class="fas fa-file"></i>
+            Print Blank Tickets</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hall Tickets -->
+<div class="print-ticket-sec" *ngIf="total>0">
+  <button type="button" class="btn btn-print btn-sm" printSectionId="hallTicket" [useExistingCss]="true" ngxPrint
+    (click)="printedSuccessModalBox(printedSuccessModal)"><i class="fas fa-print"></i> Print</button>
+  <div id="hallTicket">
+    <div class="ticket-view" *ngFor="let tkList of hallTicketsList.result; index as i">
+      <!-- <p class="srNoBox">Sr. No.: <strong [innerHTML]="tkList.id || '--'"></strong></p> -->
+      <div class="print-Logo">
+        <img src="assets/img/logo.gif" alt="logo" />
+      </div>
+      <!-- <ul class="room-allocation">
+        <li><strong>Room No: </strong></li>
+        <li><strong>Sr.No: </strong></li>
+      </ul> -->
+      <div class="ticket-header">
+        <h6>Geeta Utsav</h6>
+        <h5><strong>HALL TICKET - </strong>Geeta Utsav - 2019 <br>Chinmaya Mission, Thane.</h5>
+        <div class="row event-details justify-content-center flex-nowrap">
+          <div class="col-6">
+            <div class="row no-gutters flex-nowrap justify-content-center align-items-center">
+              <div class="col-auto">
+                <span class="content-label"><i class="fas fa-calendar"></i>Event:</span>
+              </div>
+              <div class="col-auto text-break">
+                <strong class="important-field">{{tkList.eventName || '--'}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="qr-code-box">
+          <img src={{tkList.qrcode}}>
+        </div>
+      </div>
+      <div class="print-details">
+        <div class="person-details">
+          <div class="row no-gutters basicDetails">
+            <div class="col-7">
+              <div class="row no-gutters">
+                <div class="col-auto">
+                  <span class="content-label"><i class="fas fa-user"></i>Name:</span>
+                </div>
+                <div class="col">
+                  <strong>{{tkList.name || '--'}}</strong>
+                </div>
+              </div>
+              <div class="row no-gutters">
+                <div class="col-auto">
+                  <span class="content-label"><i class="fas fa-envelope"></i>Email:</span>
+                </div>
+                <div class="col">
+                  <strong *ngIf="tkList.emailid">{{tkList.emailid}}</strong>
+                  <span *ngIf="!tkList.emailid" class="placeholder-box fullBorder withText"></span>
+                </div>
+              </div>
+              <div class="row no-gutters">
+                <div class="col-auto">
+                  <span class="content-label"><i class="fas fa-school"></i>School:</span>
+                </div>
+                <div class="col">
+                  <strong>{{tkList.schoolName || '--'}}</strong>
+                </div>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="row no-gutters">
+                <div class="col-auto">
+                  <span class="content-label"><i class="fas fa-graduation-cap"></i>Standard:</span>
+                </div>
+                <div class="col">
+                  <strong>{{tkList.std || '--'}}</strong>
+                </div>
+              </div>
+              <div class="row no-gutters align-items-center">
+                <div class="col-auto">
+                  <span class="content-label"><i class="fas fa-mobile-alt"></i>Mobile No:</span>
+                </div>
+                <div class="col">
+                  <strong *ngIf="tkList.contactNo">{{tkList.contactNo}}</strong>
+                  <ol *ngIf="!tkList.contactNo" class="placeholder-box withText">
+                    <li *ngFor="let dummyArray of [1,2,3,4,5,6,7,8,9]"></li>
+                  </ol>
+                </div>
+              </div>
+              <div class="row no-gutters">
+                <div class="col-auto">
+                  <span class="content-label"><i class="fas fa-hashtag"></i>Sr. No.:</span>
+                </div>
+                <div class="col">
+                  <strong>{{tkList.id || '--'}}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="row no-gutters flex-nowrap">
+                <div class="col-auto">
+                  <span class="content-label"><i class="fas fa-calendar-alt"></i>Date:</span>
+                </div>
+                <div class="col-auto">
+                  <div class="date-nd-time-view">
+                    <p>{{tkList.date[2]}}<sup>{{tkList.ordinalIndicator}}</sup> {{tkList.date[1]}} {{tkList.date[0]}}
+                    </p>
+                    <small>{{tkList.slotStartTime || '--'}}
+                      <!-- - {{tkList.slotEndTime || '--'}} --></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row no-gutters">
+                <div class="col-auto">
+                  <span class="content-label"><i class="fas fa-clock"></i>Reporting Time:</span>
+                </div>
+                <div class="col">
+                  <strong class="important-field">{{tkList.reportTime || '--'}}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row no-gutters event-imp-details">
+          <div class="col-7">
+            <div *ngFor="let evntList of eventsData">
+              <div *ngIf="evntList.event_name.toLowerCase() == tkList.eventName.toLowerCase()">
+                <ul class="first-common">
+                  <li *ngFor="let insts of evntList.event_specific">
+                    {{insts.value}}
+                  </li>
+                </ul>
+                <ul>
+                  <li *ngFor="let insts of evntList.generic; index as i"
+                    [ngClass]="{'font-weight-bold':(evntList.generic.length-1)===i}">
+                    {{insts.value}}
+                  </li>
+                  <li class="spacer" *ngFor="let insts of evntList.spacer"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-5">
+            <!-- <p>Please Provide</p> -->
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <span class="content-label" style="width: 100px;"><i class="fas fa-phone-alt"></i>Tel:</span>
+              </div>
+              <div class="col">
+                <span>022 2597 0087</span>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <span class="content-label" style="width: 100px;"><i class="fas fa-map-marker-alt"></i>Venue:</span>
+              </div>
+              <div class="col">
+                <span><strong>Chinmaya Mission</strong>, Rutu Enclave, Anand Nagar, Thane West, Thane, Maharashtra
+                  400615.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blank Ticket View -->
+<div hidden id="blankTicket">
+  <div class="ticket-view blank-ticket-view" *ngFor="let dummyCount of [1,2,3]; index as i">
+    <div class="print-Logo">
+      <img src="assets/img/logo.gif" alt="logo" />
+    </div>
+    <div class="ticket-header">
+      <h6>Geeta Utsav</h6>
+      <h5><strong>HALL TICKET - </strong>Geeta Utsav - 2019 <br>Chinmaya Mission, Thane.</h5>
+      <div class="row event-details flex-nowrap justify-content-center">
+        <div class="col-6">
+          <div class="row no-gutters flex-nowrap justify-content-center">
+            <div class="col-auto">
+              <span class="content-label" style="width: auto;"><i class="fas fa-calendar"></i>Event:</span>
+            </div>
+            <div class="col-auto text-break">
+              <strong class="important-field">{{ blankHallTicketPointerVal }}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="print-details">
+      <div class="person-details">
+        <div class="row no-gutters basicDetails">
+          <div class="col-7">
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <span class="content-label"><i class="fas fa-user"></i>Name:</span>
+              </div>
+              <div class="col">
+                <span class="placeholder-box"></span>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <span class="content-label"><i class="fas fa-envelope"></i>Email:</span>
+              </div>
+              <div class="col">
+                <span class="placeholder-box fullBorder withText"></span>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <span class="content-label"><i class="fas fa-school"></i>School:</span>
+              </div>
+              <div class="col">
+                <span class="placeholder-box"></span>
+              </div>
+            </div>
+            <div class="row no-gutters flex-nowrap">
+              <div class="col-auto">
+                <span class="content-label"><i class="fas fa-calendar-alt"></i>Date:</span>
+              </div>
+              <div class="col-6">
+                <span class="placeholder-box"></span>
+              </div>
+            </div>
+            <div class="row no-gutters flex-nowrap">
+              <div class="col-auto">
+                <span class="content-label"><i class="fas fa-clock"></i>Time:</span>
+              </div>
+              <div class="col">
+                <span class="placeholder-box time-box withText"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <span class="content-label"><i class="fas fa-graduation-cap"></i>Standard:</span>
+              </div>
+              <div class="col">
+                <span class="placeholder-box"></span>
+              </div>
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <span class="content-label"><i class="fas fa-mobile-alt"></i>Mobile No:</span>
+              </div>
+              <div class="col">
+                <ol class="placeholder-box withText">
+                  <li *ngFor="let dummyArray of [1,2,3,4,5,6,7,8,9]"></li>
+                </ol>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <span class="content-label"><i class="fas fa-hashtag"></i>Sr. No.:</span>
+              </div>
+              <div class="col">
+                <span class="placeholder-box"></span>
+              </div>
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <span class="content-label" style="width: auto;"><i class="fas fa-flag-checkered"></i>Reporting
+                  Time:</span>
+              </div>
+              <div class="col">
+                <span class="placeholder-box reportingTime-box"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row no-gutters event-imp-details">
+        <div class="col-7">
+          <div *ngFor="let evntList of eventsData">
+            <div *ngIf="evntList.event_name.toLowerCase()===blankHallTicketPointerVal.toLowerCase()">
+              <ul class="first-common">
+                <li *ngFor="let insts of evntList.event_specific">
+                  {{insts.value}}
+                </li>
+              </ul>
+              <ul>
+                <li *ngFor="let insts of evntList.generic; index as i"
+                  [ngClass]="{'font-weight-bold':(evntList.generic.length-1)===i}">
+                  {{insts.value}}
+                </li>
+                <li class="spacer" *ngFor="let insts of evntList.spacer"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <span class="content-label" style="width: 100px;"><i class="fas fa-phone-alt"></i>Tel:</span>
+            </div>
+            <div class="col">
+              <span>022 2597 0087</span>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <span class="content-label" style="width: 100px;"><i class="fas fa-map-marker-alt"></i>Venue:</span>
+            </div>
+            <div class="col">
+              <span><strong>Chinmaya Mission</strong>, Rutu Enclave, Anand Nagar, Thane West, Thane, Maharashtra
+                400615.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="error-msg-view" *ngIf="total==0">
+  <i class="fas fa-exclamation-triangle"></i>
+  <h4>No data found</h4>
+</div>
+
+<ng-template #printedSuccessModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Printed Status</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="printed-status-view">Generated print request, for page:<br /><strong>{{currentPage}}</strong></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">OK</button>
+  </div>
+</ng-template>

@@ -1,0 +1,359 @@
+<app-nav-bar></app-nav-bar>
+<div class="main-loader" *ngIf="mainLoaderIs">
+  <img src="assets/img/loader.gif" alt="Loading..." />
+</div>
+<!-- <div class="downloadCerti">
+  <button  *ngIf="isCerti04" type="button" class="btn btn-primary mt-2 ml-2" [useExistingCss]="true"  printTitle="GCC-2020_Participation" printSectionId="print-section"
+  ngxPrint>Download</button>
+  <button  *ngIf="isCerti04" type="button" class="btn btn-danger mt-2 ml-2" (click)="showSendBulkModal = true;isSendBulk=true;">Send Bulk Email#04</button>
+  <button  *ngIf="!isCerti04" type="button" class="btn btn-primary mt-2 ml-2" [useExistingCss]="true"  printTitle="GCC-2020_Participation" printSectionId="print-sectionWinners"
+  ngxPrint>Download</button>
+  <button  *ngIf="!isCerti04" type="button" class="btn btn-danger mt-2 ml-2" (click)="showSendBulkModalWinner = true;isSendBulkWinner=true;">Send Bulk Email#05</button>
+  
+      <div class="btn-group mt-2 ml-2" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" [ngClass]="{'active':isCerti04}" (click)="isCerti04=true">Email #04</button>
+        <button type="button" class="btn btn-primary" [ngClass]="{'active':!isCerti04}" (click)="!isCerti04=false">Email #05</button>
+      </div>
+</div>     -->
+
+<!-- <div class="certificatheader">
+  <button class="btn mr-3 certificatedis">Participant Certificate</button>
+  <button class="btn certificatedis">Winner Certificate</button>
+</div> -->
+
+
+<div style="position: absolute; left: 19%; padding-top: 10px;">
+  <ngb-tabset type="pills" (tabChange)="changeTab($event)">
+    <ngb-tab class="btn mr-3 certificatedis" title="Participant Certificate" [id]="0">
+      <ng-template ngbTabContent>
+        <div class="certificateMain" (click)="isSelectTab = 'participant'">
+          <div id="print-section">
+            <div class="text-center print-main-cont">
+              <div class="bgImg">
+                <img class="backImg" src="../../assets/img/ParticipationC.svg" alt="CMT"
+
+                  width="877px" />
+                <!-- <div class="leftImg">
+                <img src="../../assets/img/Lamp.png" alt="">
+              </div>
+              <div class="middleHeading">
+                <h3>Chimaya Mission, Thane</h3>
+                <p class="mb-1">Rutu Enclave, Anand Nagar, Ghodbunder Road,</p>
+                <p>Thane (W) - 400 615. &nbsp;&nbsp; Tel. :022-25970087</p>
+              </div>
+              <div class="rightImg">
+                <img src="../../assets/img/BG.png" alt="">
+              </div> -->
+                <!-- <div class="mainCertiContent">
+                <div class="row no-gutters">
+                  <div class="col-auto">We sincerely appreciate the participation of</div>
+                  <div class="col certiName"></div>
+                </div>
+                <p class="certiFared"> in the Geeta chanting competition, 2020
+                  With Pujya Gurudev's blessings</p>
+            
+              </div> -->
+                <!-- <div class="certiFooter">
+                <p>Swamini Anaghananda Acharya</p>
+              </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab class="btn certificatedis" title="Winner Certificate" [id]="1">
+      <ng-template ngbTabContent>
+        <div class="certificateMain">
+          <div id="print-sectionWinners">
+            <div class="text-center print-main-cont">
+              <div class="bgImg">
+                <img class="backImg" src="../../assets/img/Winner'sC.svg" alt="CMT" width="877px" />
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="stdSelect px-2">
+          <div class="multipleSelection">
+            <label class="labelSelect">Select Standard</label>
+            <div class="selectBox" (click)="showCheckboxes()">
+                <select class="form-control">
+                    <option class="optionSelect">Select</option>
+                </select>
+                <div class="overSelect"></div>
+            </div>
+      
+            <div id="checkBoxes" class="selectBg" [ngClass]= "isShow ? 'd-block' : 'd-none'" style="border: 1px solid #a7a7a7;">
+                <label for="first" class="optionSelect px-3" for="winnerAll"><input  type="checkbox" id="winnerAll"/> Select All</label>            
+                <label for="second" class="optionSelect px-3" for="winnerJrkg"><input  type="checkbox" id="winnerJrkg" /> Jr.KG</label>
+                <label for="third" class="optionSelect px-3" for="winnerSrkg"><input  type="checkbox" id="winnerSrkg" /> Sr.KG</label>
+                <label for="fourth" class="optionSelect px-3" for="winner1Std"><input  type="checkbox" id="winner1Std" /> Std 1</label>
+                <label for="first" class="optionSelect px-3" for="winner2Std"><input  type="checkbox" id="winner2Std" /> Std 2</label>            
+                <label for="second" class="optionSelect px-3" for="winner3Std"><input  type="checkbox" id="winner3Std" /> Std 3</label>
+                <label for="third" class="optionSelect px-3" for="winner4Std"><input  type="checkbox" id="winner4Std" /> Std 4</label>
+                <label for="fourth" class="optionSelect px-3" for="winner5Std"><input  type="checkbox" id="winner5Std" /> Std 5</label>
+                <label for="fourth" class="optionSelect px-3" for="winner6Std"><input  type="checkbox" id="winner6Std" /> Std 6</label>
+                <label for="first" class="optionSelect px-3" for="winner7Std"><input  type="checkbox" id="winner7Std" /> Std 7</label>            
+                <label for="second" class="optionSelect px-3" for="winner8Std"><input  type="checkbox" id="winner8Std" /> Std 8</label>
+                <label for="third" class="optionSelect px-3" for="winner9Std"><input  type="checkbox" id="winner9Std" /> Std 9</label>
+                <label for="fourth" class="optionSelect px-3" for="winner10Std"><input  type="checkbox" id="winner10Std" /> Std 10</label>
+                <label for="fourth" class="optionSelect px-3" for="winner11Std"><input  type="checkbox" id="winner11Std" /> Std 11 & above</label>
+            </div>
+
+            <div class=" row g-0 px-3">
+              <span class="col-auto mt-2 selectstdPill">1 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill">2 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill">3 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill">4 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill">5 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill">6 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill">7 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill">8 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill">9 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill">10 Std <i class="fas fa-times"></i></span>
+              <span class="col-auto mt-2 selectstdPill"><span class="txtEllip">11 & above</span> <i class="fas fa-times"></i></span>
+            </div>
+          </div>
+        </div>
+      
+        <div class="px-2">
+          <label class="labelSelect">Select Rank</label>
+          <select class="form-control">   
+            <option selected disabled class="optionSelect" value="">Select</option>   
+            <option class="optionSelect" value="1">1'st Rank</option>
+            <option class="optionSelect" value="2">2'nd Rank</option>
+            <option class="optionSelect" value="3">3'rd Rank</option>
+            <option class="optionSelect" value="4">Motivational</option>      
+          </select>
+        </div> -->
+        </div>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>
+<div style="position: absolute; left: 74%; padding-top: 20px;height: 100%;">
+  <div class="row g-0">
+    <div class="stdSelect px-2">
+      <div class="multipleSelection">
+        <label class="labelSelect">Select Standard</label>
+        <div class="selectBox" (click)="showStdCheckboxes()">
+          <select class="form-control">
+            <option class="optionSelect">Select</option>
+          </select>
+          <div class="overSelect"></div>
+        </div>
+
+        <div id="checkBoxes" class="selectBg" [ngClass]="isShow ? 'd-block' : 'd-none'">
+          <!-- <label class="optionSelect px-3" for="all"><input type="checkbox" [(ngModel)]="all"
+            (change)="onSelectStdOpen(selectedStd11,'all')" id="all" value="all" /> All
+        </label> -->
+          <label class="optionSelect px-3" for="jrkg"><input type="checkbox" [(ngModel)]="selectedStdJr"
+              (change)="onSelectStdOpen(selectedStdJr,'Jr Kg')" id="jrkg" value="jrkg" /> Jr.KG</label>
+              <label class="optionSelect px-3" for="Nursery"><input type="checkbox" [(ngModel)]="selectedNursery"
+                (change)="onSelectStdOpen(selectedStdNursery,'Nursery')" id="Nursery" value="Nursery" /> Nursery</label>
+          <label class="optionSelect px-3" for="srkg"><input type="checkbox" [(ngModel)]="selectedStdSr"
+              (change)="onSelectStdOpen(selectedStdSr,'Sr Kg')" id="srkg" value="srkg" /> Sr.KG</label>
+          <label class="optionSelect px-3" for="std1"><input type="checkbox" [(ngModel)]="selectedStd1"
+              (change)="onSelectStdOpen(selectedStd1,'Std 1')" id="std1" value="std1" /> Std 1</label>
+          <label class="optionSelect px-3" for="std2"><input type="checkbox" [(ngModel)]="selectedStd2"
+              (change)="onSelectStdOpen(selectedStd2,'Std 2')" id="std2" value="std2" /> Std 2</label>
+          <label class="optionSelect px-3" for="std3"><input type="checkbox" [(ngModel)]="selectedStd3"
+              (change)="onSelectStdOpen(selectedStd3,'Std 3')" id="std3" value="std3" /> Std 3</label>
+          <label class="optionSelect px-3" for="std4"><input type="checkbox" [(ngModel)]="selectedStd4"
+              (change)="onSelectStdOpen(selectedStd4,'Std 4')" id="std4" value="std4" /> Std 4</label>
+          <label class="optionSelect px-3" for="std5"><input type="checkbox" [(ngModel)]="selectedStd5"
+              (change)="onSelectStdOpen(selectedStd5,'Std 5')" id="std5" value="std5" /> Std 5</label>
+          <label class="optionSelect px-3" for="std6"><input type="checkbox" [(ngModel)]="selectedStd6"
+              (change)="onSelectStdOpen(selectedStd6,'Std 6')" id="std6" value="std6" /> Std 6</label>
+          <label class="optionSelect px-3" for="std7"><input type="checkbox" [(ngModel)]="selectedStd7"
+              (change)="onSelectStdOpen(selectedStd7,'Std 7')" id="7std" value="std7" /> Std 7</label>
+          <label class="optionSelect px-3" for="std8"><input type="checkbox" [(ngModel)]="selectedStd8"
+              (change)="onSelectStdOpen(selectedStd8,'Std 8')" id="std8" value="std8" /> Std 8</label>
+          <label class="optionSelect px-3" for="std9"><input type="checkbox" [(ngModel)]="selectedStd9"
+              (change)="onSelectStdOpen(selectedStd9,'Std 9')" id="std9" value="std9" /> Std 9</label>
+          <label class="optionSelect px-3" for="std10"><input type="checkbox" [(ngModel)]="selectedStd10"
+              (change)="onSelectStdOpen(selectedStd10,'Std 10')" id="std10" value="std10" /> Std 10</label>
+          <label class="optionSelect px-3" for="std11"><input type="checkbox" [(ngModel)]="selectedStd11"
+              (change)="onSelectStdOpen(selectedStd11,'Std 11 & Above')" id="std11" value="std11" /> Std 11 &
+            above</label>
+         
+           
+        </div>
+
+        <div class=" row g-0 px-3" *ngIf="emptySelectedPill">
+          <!-- <span class="col-auto mt-2 selectstdPill" *ngIf="all"><span class="txtEllip">All</span> <i
+          class="fas fa-times" (click)="onSelectStdOpen(false,'all');all=false;"></i></span> -->
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStdJr">Jr.KG <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Jr Kg');selectedStdJr=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStdNursery">Nursery <i class="fas fa-times"
+                (click)="onSelectStdOpen(false,'Nursery');selectedStdNursery=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStdSr">Sr.KG <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Sr Kg');selectedStdSr=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd1">1 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 1');selectedStd1=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd2">2 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 2');selectedStd2=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd3">3 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 3');selectedStd3=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd4">4 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 4');selectedStd4=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd5">5 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 5');selectedStd5=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd6">6 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 6');selectedStd6=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd7">7 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 7');selectedStd7=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd8">8 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 8');selectedStd8=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd9">9 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 9');selectedStd9=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd10">10 Std <i class="fas fa-times"
+              (click)="onSelectStdOpen(false,'Std 10');selectedStd10=false;"></i></span>
+          <span class="col-auto mt-2 selectstdPill" *ngIf="selectedStd11"><span class="txtEllip">11 & above</span> <i
+              class="fas fa-times" (click)="onSelectStdOpen(false,'Std 11 & Above');selectedStd11=false;"></i></span>
+        
+        </div>
+      </div>
+    </div>
+
+    <div class="stdSelect px-2" *ngIf="isSelectTab == 'winner'">
+      <div class="multipleSelection">
+        <label class="labelSelect">Select Rank</label>
+        <div class="selectBox" (click)="showRankCheckboxes()">
+          <select class="form-control">
+            <option class="optionSelect">Select</option>
+          </select>
+          <div class="overSelect"></div>
+        </div>
+
+        <div id="checkBoxes" class="selectBg" [ngClass]="isShowRank ? 'd-block' : 'd-none'">
+          <!-- <label class="optionSelect px-3" for="selectAll"><input type="checkbox" [(ngModel)]="selectAll"
+            (change)="onSelectRankOpen(selectedMotivational,'all')" id="selectAll" value="selectAll" />
+          All</label> -->
+          <label class="optionSelect px-3" for="1st"><input type="checkbox" [(ngModel)]="selectedRank1"
+              (change)="onSelectRankOpen(selectedRank1,'1st')" id="1st" value="1st" /> 1'st Rank</label>
+          <label class="optionSelect px-3" for="2nd"><input type="checkbox" [(ngModel)]="selectedRank2"
+              (change)="onSelectRankOpen(selectedRank2,'2nd')" id="2nd" value="2nd" /> 2'nd Rank</label>
+          <label class="optionSelect px-3" for="3rd"><input type="checkbox" [(ngModel)]="selectedRank3"
+              (change)="onSelectRankOpen(selectedRank3,'3rd')" id="3rd" value="3rd" /> 3'rd Rank</label>
+          <label class="optionSelect px-3" for="motivational"><input type="checkbox" [(ngModel)]="selectedMotivational"
+              (change)="onSelectRankOpen(selectedMotivational,'motivational')" id="motivational" value="motivational" />
+            Motivational</label>
+
+          <!-- <label class="optionSelect px-3" for="participant"><input  type="checkbox"  [(ngModel)]="selectedParticipant" (change)="onSelectRankOpen(selectedparticipant,'participant')" id="participant" value="participant"/> Participant</label>  -->
+        </div>
+
+        <div class=" row g-0 px-3" *ngIf="emptySelectedPill">
+          <!-- <span class="col-auto mt-2 selectstdRankPill" *ngIf="selectAll">All<i class="fas fa-times"
+            (click)="onSelectRankOpen(false,'all');selectAll=false;"></i></span> -->
+          <span class="col-auto mt-2 selectstdRankPill" *ngIf="selectedRank1">1'st Rank <i class="fas fa-times"
+              (click)="onSelectRankOpen(false,'1st');selectedRank1=false;"></i></span>
+          <span class="col-auto mt-2 selectstdRankPill" *ngIf="selectedRank2">2'nd Rank <i class="fas fa-times"
+              (click)="onSelectRankOpen(false,'2nd');selectedRank2=false;"></i></span>
+          <span class="col-auto mt-2 selectstdRankPill" *ngIf="selectedRank3">3'rd Rank <i class="fas fa-times"
+              (click)="onSelectRankOpen(false,'3rd');selectedRank3=false;"></i></span>
+          <span class="col-auto mt-2 selectstdRankPill" *ngIf="selectedMotivational">Motivational <i
+              class="fas fa-times"
+              (click)="onSelectRankOpen(false,'motivational');selectedMotivational=false;"></i></span>
+          <!-- <span class="col-auto mt-2 selectstdRankPill" *ngIf="selectedParticipant">Participant <i class="fas fa-times" (click)="onSelectRankOpen(false,'participant');selectedParticipant=false;"></i></span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn primary statusButton" (click)="modelBoxStatus(certificateStatus); dLogo = true; pLogo = true;" >Status</button>
+    <!-- <span class="progressLogo" *ngIf = "certificateStatusOverall == 'wip'">
+      <img src="./assets/img/certificateProgress.svg" class="progressLogo"  placement="top" ngbTooltip="Please wait Previous progress is running">
+    </span> -->
+    <span class="progressLogo"  *ngIf = "pLogo && certificateStatusOverall == 'wip'" placement="top" ngbTooltip="Previous progress is running"><img
+      src="./assets/img/certificateProgress.svg"  class="paindingLogo" ></span>
+    <span class="progressDoneLogo"  *ngIf = " dLogo && certificateStatusOverall == 'done'">
+      <i class="fas fa-check statusCompleteLogo" placement="top" ngbTooltip="Done"></i>
+    </span>
+  
+  <button class="btn btn primary sendButton" (click)="sendConfirmationEmail();" [disabled] = "sendButoon">Send Certificate<span class="pl-3"><img
+        src="./assets/img/sendIcon.svg" width="20px" /></span></button>
+</div>
+
+<div *ngIf="isSendBulk" class="blurArea">
+  <div *ngIf="showSendBulkModal" class="mainModalContent p-3">
+    <div class="modalHeader pb-3">
+      <h4 class="modalTitle">Confirmation to send email</h4>
+      <!-- <button type="button" class="close" aria-label="Close" (click)="showSendBulkModal = false">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+    </div>
+
+    <div class="modalBody">
+
+      <h5>Are you sure?</h5>
+      <h3>You want to <strong class="sendEmail">send bulk email</strong>. </h3>
+    </div>
+
+    <div class="modalFooter d-flex justify-content-end pt-2">
+      <button type="button" class="btn btn-light" (click)="showSendBulkModal = false;isSendBulk=false;">Close</button>
+      
+      <button type="submit" class="btn btn-primary ml-2" (click)="sendBulkEmail()">Submit</button>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isSendBulkWinner" class="blurArea">
+  <div *ngIf="showSendBulkModalWinner" class="mainModalContent p-3">
+
+    <div class="modalHeader pb-3">
+      <h4 class="modalTitle">Confirmation to send email</h4>
+      <!-- <button type="button" class="close" aria-label="Close" (click)="showSendBulkModal = false">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+    </div>
+
+    <div class="modalBody">
+
+      <h5>Are you sure?</h5>
+      <h3>You want to <strong class="sendEmail">send bulk email</strong>. </h3>
+    </div>
+
+    <div class="modalFooter d-flex justify-content-end pt-2">
+      <button type="button" class="btn btn-light"
+        (click)="showSendBulkModalWinner = false;isSendBulkWinner=false;">Close</button>
+      <button type="submit" class="btn btn-primary ml-2" (click)="sendBulkEmailOfWinner()">Submit</button>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #certificateStatus let-modal class="statusModel">
+  <div class="modelBox statusGeneration" *ngIf="certificateStatus">
+    <div class="model-header certificateStatusHeader">
+      <span class="model-title" id="modal-basic-title">Certificate Generate Status</span>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true" style="color: #fff;">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="content">
+        <div class="row mx-0 contentHeader text-center">
+          <div class="col-1 p-0 text-left">Sr.</div>
+          <div class="col-4 p-0 text-left">Std.</div>
+          <div class="col-5 p-0 text-left">Name</div>
+          <div class="col-2 p-0 text-left">Status</div>
+        </div>
+        <div class="row mx-0 contentBody text-left" *ngFor="let status of certificateStatusArr;let i = index">
+          <div class="col-1 p-0" [innerHTML]="i+1"></div>
+          <div class="col-4 p-0 text-left"><span [innerHTML]="status.participant.std"></span></div>
+          <div class="col-5 p-0 text-left stuName" [innerHTML]="status.participant.firstName + ' ' + status.participant.lastName "></div>
+          <div class="col-2 p-0 text-left">
+            <span  *ngIf = "status.status == 'started'"  placement="top" ngbTooltip="Started"><img
+              src="./assets/img/certificateStarted.png" class="startedLogo"></span>
+            <span  *ngIf = "status.status == 'inprogress'"  placement="top" ngbTooltip="In Progress"><img
+              src="./assets/img/certificateProgress.svg"  class="inprogressLogo" ></span>
+            <span *ngIf = "status.status == 'completed'"  placement="top" ngbTooltip="Done"><i class="fas fa-check statusCompleteLogo"></i></span>
+            <span *ngIf = "status.status == 'failed'"  placement="top" ngbTooltip="Fail"><i class="fas fa-times statusFailLogo"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

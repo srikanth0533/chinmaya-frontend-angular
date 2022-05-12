@@ -1,0 +1,38 @@
+<div class="certificateMain">
+  <div class="downloadCerti">
+    <button type="button" class="btn btn-primary mt-2 ml-2" [useExistingCss]="true" [printTitle]="participantName + '_' +'GCC-2020_Participation'" printSectionId="print-section"
+      ngxPrint (click)="getDownloadConfirmation();">Download</button>
+  </div>
+
+  <div id="print-section">
+    <div class="text-center">
+      <div class="bgImg">
+        <img class="backImg" src="../../assets/img/Certificate 31 Dec (High resolusion).svg" alt="CMT" />
+        <!-- <div class="leftImg">
+          <img src="../../assets/img/Lamp.png" alt="">
+        </div>
+        <div class="middleHeading">
+          <h3>Chimaya Mission, Thane</h3>
+          <p class="mb-1">Rutu Enclave, Anand Nagar, Ghodbunder Road,</p>
+          <p>Thane (W) - 400 615. &nbsp;&nbsp; Tel. :022-25970087</p>
+        </div>
+        <div class="rightImg">
+          <img src="../../assets/img/BG.png" alt="">
+        </div> -->
+        <div class="mainCertiContent">
+          <div class="row no-gutters">
+            <!-- <div class="col-auto">We sincerely appreciate the participation of</div> -->
+            <div class="col-12 partiCertiName" [innerHTML]="participantName"></div>
+          </div>
+          <!-- <p class="mb-4"> <span class="certiName"></span></p> -->
+          <!-- <p class="certiFared"> in the Geeta chanting competition, 2020
+            With Pujya Gurudev's blessings</p> -->
+          
+        </div>
+        <!-- <div class="certiFooter">
+          <p>Swamini Anaghananda Acharya</p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
